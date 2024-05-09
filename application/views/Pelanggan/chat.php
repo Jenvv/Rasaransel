@@ -295,114 +295,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="inbox_chat">
-						<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-						<div class="action_menu">
-							<ul>
-								<li><i class="fas fa-user-circle"></i> View profile</li>
-								<li><i class="fas fa-users"></i> Add to close friends</li>
-								<li><i class="fas fa-plus"></i> Add to group</li>
-								<li><i class="fas fa-ban"></i> Block</li>
-							</ul>
-						</div>
-						<div class="chat_list active_chat">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="chat_list">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="chat_list">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="chat_list">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="chat_list">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="chat_list">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="chat_list">
-							<div class="chat_people">
-								<div class="chat_img">
-									<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-								</div>
-								<div class="chat_ib">
-									<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-									<p>
-										Test, which is a new approach to have all solutions
-										astrology under one roof.
-									</p>
-								</div>
-							</div>
-						</div>
+					<div class="inbox_chat" id="yangAktif">
+						<!--  -->
+
 					</div>
 				</div>
 				<div class="mesgs">
@@ -425,9 +320,16 @@
 							<span class="time_date"></span>
 						</div>
 					</div> -->
+					<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+					<div class="action_menu">
+						<ul>
+							<li><i class="fas fa-user-circle"></i> View profile</li>
+							<li><i class="fas fa-users"></i> Add to close friends</li>
+							<li><i class="fas fa-plus"></i> Add to group</li>
+							<li><i class="fas fa-ban"></i> Block</li>
+						</ul>
+					</div>
 					<div class="msg_history" id="letakpesan">
-						<?= $data->id_user ?>
-
 					</div>
 					<div class="type_msg">
 						<div class="input_msg_write">
@@ -512,6 +414,83 @@
 			setInterval(() => {
 				pesan()
 			}, 1000);
+
+			$('.send_btn').click(function(e) {
+				var pesan = $('.pesan').val();
+				var id_pelanggan = '<?= $this->session->userdata("id") ?>'
+				var id_user = '<?= $data->id_user ?>';
+				if (pesan != "") {
+					$.ajax({
+						type: "post",
+						url: "<?= base_url() ?>pelanggan/cChatting/KirimPesan",
+						data: {
+							id_pelanggan,
+							id_user,
+							pesan
+						},
+						dataType: "json",
+						success: function(r) {
+							if (r.status) {
+								$('.search_btn').trigger('click');
+								$('.pesan').val('');
+								scrollToBottom()
+
+							}
+
+						}
+					});
+				}
+				scrollToBottom()
+
+				function scrollToBottom() {
+					$("#letakpesan").animate({
+						scrollTop: 200000000000000000000000000000000
+					}, "slow");
+				}
+
+			});
+
+			function orang() {
+				$.ajax({
+					type: "post",
+					url: "<?= base_url() ?>Pelanggan/cChatting/GetAllOrang",
+					data: {
+						id_pelanggan: '<?= $this->session->userdata("id"); ?>'
+					},
+					dataType: "json",
+					success: function(r) {
+						console.log(r);
+						var html = "";
+						$.each(r.data, function(index, d) {
+							html += `<div class="chat_list coba" data-id="${d.id_user}">
+                        <div class="chat_people">
+                            <div class="chat_img">
+                                <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
+                            </div>
+                            <div class="chat_ib">
+                                <h5>${d.username}<span class="chat_date">Dec 25</span></h5>
+                                <p>
+                                    Test, which is a new approach to have all solutions
+                                    astrology under one roof.
+                                </p>
+                            </div>
+                        </div>
+                    </div>`;
+						});
+						$('#yangAktif').append(html); 
+					},
+					error: function(xhr, status, error) {
+						console.log(xhr.responseText);
+					}
+				});
+			}
+			orang();
+		});
+
+		
+		$('body').on('click', '.coba', function() {
+			var id = $(this).data('id'); 
+			window.location.replace("<?= base_url() ?>pelanggan/cChatting/pesan/" + id);
 		});
 	</script>
 	<!-- <script>

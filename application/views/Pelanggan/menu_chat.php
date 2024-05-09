@@ -283,7 +283,7 @@
                     <div class="headind_srch">
                         <div class="recent_heading">
                             <h4>Recent</h4>
-                            <h4><?= $this->session->userdata('nama_pelanggan') ?></h4>
+                            <!--  -->
                         </div>
                         <div class="srch_bar">
                             <div class="stylish-input-group">
@@ -298,7 +298,7 @@
                     </div>
                     <div class="inbox_chat">
                         <div id="yangAktif"></div>
-                        <div class="chat_list active_chat">
+                        <!-- <div class="chat_list active_chat">
                             <div class="chat_people">
                                 <div class="chat_img">
                                     <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
@@ -311,7 +311,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div class="chat_list">
                             <div class="chat_people">
                                 <div class="chat_img">
@@ -352,20 +352,21 @@
                     type: "post",
                     url: "<?= base_url() ?>Pelanggan/cChatting/GetAllOrang",
                     data: {
-                        id_user: '<?= $this->session->userdata("id"); ?>'
+                        id_pelanggan: '<?= $this->session->userdata("id"); ?>'
                     },
                     dataType: "json",
-                    success: function(response) {
+                    success: function(r) {
+                        console.log(r);
                         var html = "";
-                        if (response) {
+                        $.each(r.data, function(index, d) {
                             html += `
-                    <div class="chat_list coba active_chat" data-id="${response.id_user}">
+                    <div class="chat_list coba" data-id="${d.id_user}">
                         <div class="chat_people">
                             <div class="chat_img">
                                 <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
                             </div>
                             <div class="chat_ib">
-                                <h5>${response.username}<span class="chat_date">Dec 25</span></h5>
+                                <h5>${d.username}<span class="chat_date">Dec 25</span></h5>
                                 <p>
                                     Test, which is a new approach to have all solutions
                                     astrology under one roof.
@@ -373,10 +374,8 @@
                             </div>
                         </div>
                     </div>`;
-                        } else {
-                            html += "<p>Data tidak ditemukan</p>";
-                        }
-                        $('#yangAktif').append(html);
+                        });
+                        $('#yangAktif').append(html); // Perubahan disini: append() untuk menambahkan HTML baru
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);

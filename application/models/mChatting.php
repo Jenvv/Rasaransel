@@ -31,14 +31,17 @@ class mChatting extends CI_Model
 		$query = $this->db->get('chatting');
 		return $query->result_array();
 	}
-	public function GetAllOrang($id_user)
+	public function GetAllOrang($id_pelanggan)
 	{
-		// $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('user');
 		$this->db->join('chatting', 'user.id_user = chatting.id_user');
-		$this->db->where('chatting.id_pelanggan', $id_user);
-		return $sql = $this->db->get()->row();
+		$this->db->where('chatting.id_pelanggan', $id_pelanggan);
+		$this->db->group_by('user.id_user'); // Mengelompokkan berdasarkan id_user
+		return $this->db->get()->result();
 	}
+
+
 
 	public function getDataById($no)
 	{
@@ -63,6 +66,12 @@ class mChatting extends CI_Model
 		$r = $this->db->get();
 
 		return $r->result();
+
+		# code...
+	}
+	public function TambahChatKeSatu($in)
+	{
+		$this->db->insert('chatting', $in);
 
 		# code...
 	}
