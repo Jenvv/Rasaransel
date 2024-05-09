@@ -35,7 +35,7 @@ class cChatting extends CI_Controller
 			die("user tidak ada nih");
 		} else {
 			// var_dump($data);die;	
-			$this->load->view('Pelanggan/chat', $data);
+			$this->load->view('Pelanggan/chot', $data);
 			$this->load->view('Pelanggan/Layouts/footer');
 		}
 	}

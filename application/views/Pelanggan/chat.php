@@ -295,7 +295,9 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="inbox_chat" id="yangAktif">
+
 						<!--  -->
 
 					</div>
@@ -320,14 +322,17 @@
 							<span class="time_date"></span>
 						</div>
 					</div> -->
-					<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-					<div class="action_menu">
-						<ul>
-							<li><i class="fas fa-user-circle"></i> View profile</li>
-							<li><i class="fas fa-users"></i> Add to close friends</li>
-							<li><i class="fas fa-plus"></i> Add to group</li>
-							<li><i class="fas fa-ban"></i> Block</li>
-						</ul>
+					<div class="container">
+						<div class="dropdown">
+							<button class="hamburger" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+								<button class="dropdown-item" type="button">Action</button>
+								<button class="dropdown-item" type="button">Another action</button>
+								<button class="dropdown-item" type="button">Something else here</button>
+							</div>
+						</div>
 					</div>
 					<div class="msg_history" id="letakpesan">
 					</div>
@@ -477,7 +482,7 @@
                         </div>
                     </div>`;
 						});
-						$('#yangAktif').append(html); 
+						$('#yangAktif').append(html);
 					},
 					error: function(xhr, status, error) {
 						console.log(xhr.responseText);
@@ -487,9 +492,9 @@
 			orang();
 		});
 
-		
+
 		$('body').on('click', '.coba', function() {
-			var id = $(this).data('id'); 
+			var id = $(this).data('id');
 			window.location.replace("<?= base_url() ?>pelanggan/cChatting/pesan/" + id);
 		});
 	</script>
