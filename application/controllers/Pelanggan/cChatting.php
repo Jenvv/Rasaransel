@@ -12,20 +12,14 @@ class cChatting extends CI_Controller
 
 	public function index()
 	{
-		$id_user = $this->session->userdata('id');
-		$data = $this->mChatting->GetAllOrang($id_user);
-		var_dump($data);
-
 		$data = array(
 			'pesan' => $this->mChatting->select(),
-			// 'data' => $this->mChatting->getDataById()
 		);
 		// $this->load->view('Pelanggan/layouts/header');
 		// $this->load->view('Pelanggan/layouts/aside');1
 		$this->load->view('Pelanggan/menu_chat', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
-
 
 	public function pesan()
 	{
@@ -36,7 +30,7 @@ class cChatting extends CI_Controller
 		} else {
 			// var_dump($data);die;	
 			$this->load->view('Pelanggan/chot', $data);
-			$this->load->view('Pelanggan/Layouts/footer');
+			// $this->load->view('Pelanggan/Layouts/footer');
 		}
 	}
 	public function saran()
@@ -65,8 +59,6 @@ class cChatting extends CI_Controller
 		$data = $this->mChatting->GetAllOrang($id_pelanggan);
 		echo json_encode(array('data' => $data));
 	}
-
-
 
 	public function loadChat()
 	{
@@ -105,6 +97,20 @@ class cChatting extends CI_Controller
 
 
 		# code...
+	}
+
+	public function hapusChat()
+	{
+		$id_pelanggan = $this->input->post('id_pelanggan');
+		$id_user = $this->input->post('id_user');
+
+		// Tambahkan operator logika 'AND' pada where
+		$this->db->where('id_pelanggan', $id_pelanggan);
+		$this->db->where('id_user', $id_user);
+
+		$this->db->delete('chatting');
+		// $this->session->set_flashdata('success', '<div class="alert alert-success alert-pesan">Data Lamaran berhasil dihapus.</div>');
+		redirect('pelanggan/cChatting');
 	}
 }
 
