@@ -31,6 +31,7 @@ class mChatting extends CI_Model
 		$query = $this->db->get('chatting');
 		return $query->result_array();
 	}
+
 	public function GetAllOrang($id_pelanggan)
 	{
 		$this->db->select('*');
@@ -40,13 +41,26 @@ class mChatting extends CI_Model
 		$this->db->group_by('user.id_user'); // Mengelompokkan berdasarkan id_user
 		return $this->db->get()->result();
 	}
-
-
+	public function GetAllOrangAdmin($id_user)
+	{
+		$this->db->select('*');
+		$this->db->from('pelanggan');
+		$this->db->join('chatting', 'pelanggan.id_pelanggan = chatting.id_pelanggan');
+		$this->db->where('chatting.id_user', $id_user);
+		$this->db->group_by('pelanggan.id_pelanggan'); // Mengelompokkan berdasarkan id_user
+		return $this->db->get()->result();
+	}
 
 	public function getDataById($no)
 	{
 		$this->db->from('user');
 		$this->db->where('id_user', $no);
+		return $sql = $this->db->get()->row();
+	}
+	public function getDataByIdAdmin($no)
+	{
+		$this->db->from('pelanggan');
+		$this->db->where('id_pelanggan', $no);
 		return $sql = $this->db->get()->row();
 	}
 
@@ -62,18 +76,12 @@ class mChatting extends CI_Model
 	{
 		$this->db->from('chatting');
 		$this->db->where('id_pelanggan= ' . $id_user . ' and id_user=' . $id_toko . ' or id_pelanggan= ' . $id_toko . ' and id_user=' . $id_user);
-
 		$r = $this->db->get();
-
 		return $r->result();
-
-		# code...
 	}
 	public function TambahChatKeSatu($in)
 	{
 		$this->db->insert('chatting', $in);
-
-		# code...
 	}
 }
 

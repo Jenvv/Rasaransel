@@ -108,6 +108,7 @@
                     <div class="px-4 d-none d-md-block">
                         <div class="d-flex align-items-center">
                             <h3>Pesan</h3>
+
                             <div class="flex-grow-1">
                                 <input type="text" class="form-control my-3" placeholder="Search..." style="background-color: #f1f1f1; width:400px; float:right;">
                             </div>
@@ -133,17 +134,25 @@
                     success: function(r) {
                         console.log(r);
                         var html = "";
+                        // Urutkan data berdasarkan id_chatting DESC (descending)
+                        r.data.sort((a, b) => b.id_chatting - a.id_chatting);
                         $.each(r.data, function(index, d) {
-                            html += `<div class="list-group-item list-group-item-action border-0 mt-1 coba" data-id="${d.id_user}">
-                            <div class="badge bg-success float-right">5</div>
-                            <div class="d-flex align-items-start">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
-                                <div class="flex-grow-1 ml-3">
-                                    ${d.nama}
-                                    <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> Online</div>
+                            html += `<div class="list-group-item list-group-item-action border-0 mt-1">
+                        <div class="float-right">
+                        <button class="btn-lg px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="javascript:void(0);" style="color: blue;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat Profil</a>
+                                    <a class="dropdown-item yakin" href="javascript:void(0);" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus Chat</a>
                                 </div>
+                        </div>
+                        <div class="d-flex align-items-start coba" data-id="${d.id_user}">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                            <div class="flex-grow-1 ml-3">
+                                ${d.nama}
+                                <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> ${d.id_chatting}</div>
                             </div>
-                        </div>`;
+                        </div>
+                    </div>`;
                         });
                         $('#yangAktif').append(html); // Perubahan disini: append() untuk menambahkan HTML baru
                     },
@@ -153,12 +162,39 @@
                 });
             }
             orang();
+
+
         });
+
 
         // Event handler untuk elemen yang belum ada saat halaman dimuat
         $('body').on('click', '.coba', function() {
             var id = $(this).data('id'); // Gunakan $(this) untuk mengambil data dari elemen yang diklik
-            window.location.replace("<?= base_url() ?>pelanggan/cChatting/pesan/" + id);
+            window.location.href = "<?= base_url() ?>pelanggan/cChatting/pesan/" + id;
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.yakin').click(function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

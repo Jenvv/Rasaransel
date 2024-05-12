@@ -135,7 +135,8 @@
                                     </div>
                                     <div class="flex-grow-1 pl-3">
                                         <strong><?= $data->nama ?></strong>
-                                        <div class="text-muted small"><em>Typing...
+                                        <div class="text-muted small"><em>
+                                            Ngepur...
                                             </em></div>
                                 </a>
                             </div>
@@ -186,7 +187,6 @@
                                 </div> -->
                         </div>
                     </div>
-
                     <div class="flex-grow-0 py-3 px-4 border-top">
                         <div class="input-group">
                             <input type="text" class="form-control pesan" placeholder="Ketik Pesan" style="background-color: #f1f1f1;">
@@ -280,41 +280,42 @@
                 pesan()
             }, 1000);
 
-            $('.send_btn').click(function(e) {
-                var pesan = $('.pesan').val();
-                var id_pelanggan = '<?= $this->session->userdata("id") ?>'
-                var id_user = '<?= $data->id_user ?>';
-                if (pesan != "") {
-                    $.ajax({
-                        type: "post",
-                        url: "<?= base_url() ?>pelanggan/cChatting/KirimPesan",
-                        data: {
-                            id_pelanggan,
-                            id_user,
-                            pesan
-                        },
-                        dataType: "json",
-                        success: function(r) {
-                            if (r.status) {
-                                $('.search_btn').trigger('click');
-                                $('.pesan').val('');
-                                scrollToBottom()
-
+            $('.pesan').keypress(function(e) {
+                if (e.which == 13) { // Deteksi tombol "Enter" (kode 13)
+                    e.preventDefault(); // Mencegah default action dari tombol "Enter"
+                    var pesan = $('.pesan').val();
+                    var id_pelanggan = '<?= $this->session->userdata("id") ?>';
+                    var id_user = '<?= $data->id_user ?>';
+                    if (pesan != "") {
+                        $.ajax({
+                            type: "post",
+                            url: "<?= base_url() ?>pelanggan/cChatting/KirimPesan",
+                            data: {
+                                id_pelanggan,
+                                id_user,
+                                pesan
+                            },
+                            dataType: "json",
+                            success: function(r) {
+                                if (r.status) {
+                                    $('.search_btn').trigger('click');
+                                    $('.pesan').val('');
+                                    scrollToBottom();
+                                }
                             }
+                        });
+                    }
+                    scrollToBottom();
+                    orang();
 
-                        }
-                    });
+                    function scrollToBottom() {
+                        $("#letakpesan").animate({
+                            scrollTop: 200000000000000000000000000000000
+                        }, "slow");
+                    }
                 }
-                scrollToBottom()
-                orang();
-
-                function scrollToBottom() {
-                    $("#letakpesan").animate({
-                        scrollTop: 200000000000000000000000000000000
-                    }, "slow");
-                }
-
             });
+
 
             function orang() {
                 $.ajax({
@@ -350,8 +351,9 @@
 
             $('body').on('click', '.coba', function() {
                 var id = $(this).data('id');
-                window.location.replace("<?= base_url() ?>pelanggan/cChatting/pesan/" + id);
+                window.location.href = "<?= base_url() ?>pelanggan/cChatting/pesan/" + id;
             });
+
 
             $('.yakin').click(function(e) {
                 e.preventDefault();

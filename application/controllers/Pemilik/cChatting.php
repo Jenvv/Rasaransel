@@ -30,6 +30,8 @@ class cChatting extends CI_Controller
 		$this->load->view('pemilik/Chatting/vDetailChatting', $data);
 		$this->load->view('pemilik/Layouts/footer');
 	}
+
+
 	public function balasan($id)
 	{
 		$data = array(

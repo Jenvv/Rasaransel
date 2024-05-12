@@ -12,12 +12,15 @@
 	<link rel="shortcut icon" href="<?= base_url('asset/adminkit/examples/') ?>img/icons/icon-48x48.png" />
 
 	<title>RASA RANSEL</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 	<link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">
 	<script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 	<style>
 		.checked {
 			color: orange;
@@ -41,6 +44,54 @@
 		.highlight,
 		.selected {
 			color: #F4B30A;
+		}
+
+		.chat-online {
+			color: #34ce57
+		}
+
+		.chat-offline {
+			color: #e4606d
+		}
+
+		.chat-messages {
+			display: flex;
+			flex-direction: column;
+			max-height: 800px;
+			overflow-y: scroll
+		}
+
+		.chat-message-left,
+		.chat-message-right {
+			display: flex;
+			flex-shrink: 0
+		}
+
+		.chat-message-left {
+			margin-right: auto
+		}
+
+		.chat-message-right {
+			flex-direction: row-reverse;
+			margin-left: auto
+		}
+
+		.py-3 {
+			padding-top: 1rem !important;
+			padding-bottom: 1rem !important;
+		}
+
+		.px-4 {
+			padding-right: 1.5rem !important;
+			padding-left: 1.5rem !important;
+		}
+
+		.flex-grow-0 {
+			flex-grow: 0 !important;
+		}
+
+		.border-top {
+			border-top: 1px solid #dee2e6 !important;
 		}
 	</style>
 
@@ -67,8 +118,8 @@
 					</li>
 
 					<!-- <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
-												echo 'active';
-											}  ?>">
+														echo 'active';
+													}  ?>">
 						<a class="sidebar-link" href="<?= base_url('Admin/cUser') ?>">
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
 						</a>

@@ -20,6 +20,41 @@ class cChatting extends CI_Controller
 		$this->load->view('Admin/Chatting/vChatting', $data);
 		$this->load->view('Admin/Layouts/footer');
 	}
+	
+	public function GetAllOrang()
+	{
+		$id_user = $this->input->post('id_user');
+		$data = $this->mChatting->GetAllOrangAdmin($id_user);
+		echo json_encode(array('data' => $data));
+	}
+	
+	public function pesan()
+	{
+		$no =  $this->uri->segment(4);
+		$data['data'] = $this->mChatting->getDataByIdAdmin($no);
+		if ($data == null) {
+			die("User Tidak Ditemukan!");
+		} else {
+			// var_dump($data);die;	
+			$this->load->view('Admin/Layouts/head');
+			$this->load->view('Admin/Chatting/vDetailChatting', $data);
+			$this->load->view('Admin/Layouts/footer');
+		}
+	}
+
+	public function loadChat()
+	{
+		$id_user = 	$this->input->post('id_user');
+		$id_toko = 	$this->input->post('id_toko');
+		// $id_user = 1;
+		// $id_toko = 	3;
+		$data = $this->mChatting->getPesan($id_user, $id_toko);
+
+		echo json_encode(array(
+			'data' => $data
+		));
+	}
+
 	public function detail_chatting($id)
 	{
 		$data = array(
