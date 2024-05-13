@@ -37,7 +37,7 @@ class cHome extends CI_Controller
 	}
 	public function cart()
 	{
-		$this->protect->protect();
+		// $this->protect->protect();
 		$data = array(
 			'id' => $this->input->post('id'),
 			'name' => $this->input->post('name'),
@@ -68,7 +68,7 @@ class cHome extends CI_Controller
 	}
 	public function view_cart()
 	{
-		$this->protect->protect();
+		// $this->protect->protect();
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
 		$this->load->view('Pelanggan/cart');
@@ -93,7 +93,7 @@ class cHome extends CI_Controller
 		$this->form_validation->set_rules('metode', 'Metode Pembayaran', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->protect->protect();
+			// $this->protect->protect();
 			$data = array(
 				'pelanggan' => $this->mKatalog->data_pelanggan()
 			);

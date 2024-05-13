@@ -12,7 +12,7 @@ class cPesananSaya extends CI_Controller
 
 	public function index()
 	{
-		$this->protect->protect();
+		// $this->protect->protect();
 		$data = array(
 			'pesanan' => $this->mPesanan_Saya->pesanan()
 		);

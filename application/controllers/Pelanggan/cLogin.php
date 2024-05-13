@@ -29,7 +29,7 @@ class cLogin extends CI_Controller
 			foreach ($query->result() as $row) {
 				// $additionalInfo = $this->db->get_where('data_pelamar', ['id_pelamar' => $row->id_pelamar])->row();
 				$sess = array(
-					'id' => $row->id_pelanggan,
+					'id_pelanggan' => $row->id_pelanggan,
 					'username' => $row->username,
 					'nama_pelanggan' => $row->nama_plggn,
 					'email' => $row->email,
@@ -44,40 +44,6 @@ class cLogin extends CI_Controller
 			redirect('pelanggan/clogin');
 		}
 	}
-
-
-	// public function regist()
-	// {
-	// 	$this->form_validation->set_rules('nama', 'Nama Pelanggan', 'required');
-	// 	$this->form_validation->set_rules('alamat', 'Alamat', 'required');
-	// 	$this->form_validation->set_rules('no_hp', 'No Telepon', 'required|min_length[11]|max_length[13]');
-	// 	$this->form_validation->set_rules('username', 'Username', 'required');
-	// 	$this->form_validation->set_rules('password', 'Password', 'required');
-	// 	$this->form_validation->set_rules('email', 'Email', 'required');
-	// 	$this->form_validation->set_rules('ttl', 'Tempat, Tanggal Lahir', 'required');
-	// 	$this->form_validation->set_rules('makanan', 'Makanan Favorite', 'required');
-
-	// 	if ($this->form_validation->run() == FALSE) {
-	// 		$this->load->view('Pelanggan/layouts/header');
-	// 		$this->load->view('Pelanggan/layouts/aside');
-	// 		$this->load->view('Pelanggan/registrasi');
-	// 		$this->load->view('Pelanggan/Layouts/footer');
-	// 	} else {
-	// 		$data = array(
-	// 			'nama_plggn' => $this->input->post('nama'),
-	// 			'alamat' => $this->input->post('alamat'),
-	// 			'no_hp' => $this->input->post('no_hp'),
-	// 			'username' => $this->input->post('username'),
-	// 			'password' => $this->input->post('password'),
-	// 			'email' => $this->input->post('email'),
-	// 			'ttl' => $this->input->post('ttl'),
-	// 			'makanan' => $this->input->post('makanan')
-	// 		);
-	// 		$this->mLogin_pelanggan->register($data);
-	// 		$this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
-	// 		redirect('pelanggan/clogin');
-	// 	}
-	// }
 
 	//registrasi pelanggan
 	public function registrasi()
@@ -165,15 +131,13 @@ class cLogin extends CI_Controller
 		];
 		$this->form_validation->set_rules($rules);
 		if ($this->form_validation->run() == FALSE) {
-			// $kodeUSER = $this->get_kodUSER();
-			// $kodeUSERD = $this->get_kodUSERDATA();
+			
 			$this->load->view('Pelanggan/layouts/header');
 			$this->load->view('Pelanggan/layouts/aside');
 			$this->load->view('Pelanggan/auth/registrasi');
 			$this->load->view('Pelanggan/Layouts/footer');
 		} else {
 			$ttl =  $this->input->post('tmpt') . ', ' . $this->input->post('tgl');
-			// var_dump($ttl);
 			$data = [
 				'nama_plggn' => $this->input->post('nama'),
 				'alamat' => $this->input->post('alamat'),
@@ -191,19 +155,15 @@ class cLogin extends CI_Controller
 				$this->session->set_flashdata('error', 'Registrasi Gagal!');
 				redirect('pelanggan/clogin/registrasi');
 			}
-			// $this->session->set_flashdata('error', 'Registrasi Gagal!');
-			// redirect('pelanggan/clogin/registrasi');
 		}
 	}
 
 	public function logout()
 	{
-		$this->cart->destroy();
-		$this->session->unset_userdata('id');
-		$this->session->unset_userdata('nama_pelanggan');
-		$this->session->unset_userdata('level');
-		$this->session->set_flashdata('success', 'Anda Berhasil LogOut!');
-		redirect('pelanggan/clogin');
+
+		$this->session->sess_destroy();
+		$this->session->set_flashdata('success', 'Anda telah berhasil logout.');
+		redirect(base_url(''));
 	}
 }
 

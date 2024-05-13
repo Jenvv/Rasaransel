@@ -58,8 +58,9 @@
 							</div>
 						</div>
 
-
-						<?= $produk->deskripsi?>
+<h6>
+	<?= $produk->deskripsi?>
+</h6>
 
 						<!-- - -->
 						<div class="text-blo4 p-t-33 mt-5">

@@ -125,7 +125,7 @@
 
                 <div class="col-md-4 p-t-30">
                     <?php
-						if ($this->session->userdata('id') != '') {
+						if ($this->session->userdata('id_pelanggan') != '') {
 						?>
                     <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
                         <input type="hidden" name="id" value="<?= $value->id_produk ?>">
@@ -174,7 +174,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-6"><?php
-																	if ($this->session->userdata('id') != ' ') {
+																	if ($this->session->userdata('id_pelanggan') != ' ') {
 																	?>
                                         <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To
                                             Cart</button>

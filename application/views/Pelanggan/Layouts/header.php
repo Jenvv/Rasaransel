@@ -80,7 +80,7 @@
 									<a href="https://api.whatsapp.com/send?phone=628123456789">Customer Service</a>
 								</li>
 								<?php
-								if ($this->session->userdata('id') != '') {
+								if ($this->session->userdata('id_pelanggan') != '') {
 								?>
 
 									<li>
@@ -113,7 +113,7 @@
 								}
 								?>
 								<?php
-								if ($this->session->userdata('id') == '') {
+								if ($this->session->userdata('id_pelanggan') == '') {
 								?>
 									<li>
 										<a href="<?= base_url('pelanggan/clogin') ?>"><?= $this->session->userdata('nama_pelanggan'); ?>Login</a>

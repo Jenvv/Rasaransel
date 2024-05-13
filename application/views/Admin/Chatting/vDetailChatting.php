@@ -21,7 +21,7 @@
 								<a href="" style="text-decoration: none; color: black;">
 
 									<div class="position-relative">
-										<img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+										<img src="<?= base_url('asset/pelanggan/') . $data->photo ?>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
 									</div>
 									<div class="flex-grow-1 pl-3">
 										<strong><?= $data->nama_plggn ?></strong>
@@ -140,25 +140,21 @@
 							}
 							if (d.pelanggan_send == 0) {
 								html += `<div class="chat-message-right pb-4">
-                                    <div>
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-                                        <div class="text-muted small text-nowrap mt-2">${time}</div>
-                                    </div>
+
                                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                                        <div class="font-weight-bold mb-1">You</div>
-                                       ${d.toko_send}
+									<div class="font-weight-bold mb-1">You</div>
+									${d.toko_send}
                                     </div>
+									<div class="text-muted small text-nowrap mt-2">${time}</div>
                                 </div>`;
 							} else {
 								html += `<div class="chat-message-left pb-4">
-                                    <div>
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-                                        <div class="text-muted small text-nowrap mt-2">${time}</div>
-                                    </div>
-                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                                        <div class="font-weight-bold mb-1">${pelanggan}</div>
-                                        ${d.pelanggan_send}
-                                    </div>
+                                        
+								<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+								<div class="font-weight-bold mb-1">${pelanggan}</div>
+								${d.pelanggan_send}
+								</div>
+								<div class="text-muted small text-nowrap mt-2">${time}</div>
                                 </div>`;
 
 							}
@@ -225,7 +221,7 @@
 							html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_user}">
                             <div class="badge bg-success float-right">5</div>
                             <div class="d-flex align-items-start">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                <img src="<?= base_url('asset/pelanggan/') ?>${d.photo}" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
                                 <div class="flex-grow-1 ml-3">
                                     ${d.nama_plggn}
                                     <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> Online</div>
