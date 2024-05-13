@@ -32,10 +32,42 @@
 				</div>
 				<form action="<?= base_url('pelanggan/clogin/registrasi') ?>" method="POST" class="wrap-form-reservation size22 m-l-r-auto">
 					<div class="row">
+						<div class="col-md-12">
+							<!-- Name -->
+							<span class="txt9">
+								Username
+							</span>
+							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= set_value('username') ?>" type="text" name="username" placeholder="Masukkan Username Anda">
+								<?= form_error('username', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<!-- Phone -->
+							<span class="txt9">
+								Password
+							</span>
+							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" type="password" name="password" placeholder="Masukkan Password Anda">
+								<?= form_error('password', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<!-- Phone -->
+							<span class="txt9">
+								Ulangi Password
+							</span>
+							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" type="password" name="password2" placeholder="Masukkan Password Anda Kembali">
+								<?= form_error('password2', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-md-6">
 							<!-- Name -->
 							<span class="txt9">
-								Nama Pelanggan
+								Nama Lengkap
 							</span>
 							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
 								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" value="<?= set_value('nama') ?>" name="nama" placeholder="Masukkan Nama Lengkap Anda">
@@ -53,19 +85,6 @@
 								<?= form_error('no_hp', '<small class="form-text text-danger">', '</small>'); ?>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Name -->
-							<span class="txt9">
-								Alamat
-							</span>
-							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= set_value('alamat') ?>" type="text" name="alamat" placeholder="Masukkan Alamat Anda">
-								<?= form_error('alamat', '<small class="form-text text-danger">', '</small>'); ?>
-							</div>
-						</div>
-
 					</div>
 					<div class="row">
 						<div class="col-md-6">
@@ -103,45 +122,15 @@
 						<div class="col-md-12">
 							<!-- Name -->
 							<span class="txt9">
-								Username
+								Alamat
 							</span>
 							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= set_value('username') ?>" type="text" name="username" placeholder="Masukkan Username Anda">
-								<?= form_error('username', '<small class="form-text text-danger">', '</small>'); ?>
+								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= set_value('alamat') ?>" type="text" name="alamat" placeholder="Masukkan Alamat Anda">
+								<?= form_error('alamat', '<small class="form-text text-danger">', '</small>'); ?>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<!-- Phone -->
-							<span class="txt9">
-								Password
-							</span>
-							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" type="password" name="password" placeholder="Masukkan Password Anda">
-								<?= form_error('password', '<small class="form-text text-danger">', '</small>'); ?>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<!-- Phone -->
-							<span class="txt9">
-								Ulangi Password
-							</span>
-							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" type="password" name="password2" placeholder="Masukkan Password Anda Kembali">
-								<?= form_error('password2', '<small class="form-text text-danger">', '</small>'); ?>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<!-- Phone -->
-							<span class="txt9">
-								Makanan Favorite
-							</span>
-							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<textarea class="form-control" value="<?= set_value('makanan') ?>" name="makanan" placeholder="Masukkan Makanan Favorite Anda (Optional)"></textarea>
-								<?= form_error('makanan', '<small class="form-text text-danger">', '</small>'); ?>
-							</div>
-						</div>
-					</div>
 
+					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<small>Sudah Memiliki Akun? <a href="<?= base_url('pelanggan/clogin') ?>">Login</a></small>

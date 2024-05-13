@@ -20,14 +20,14 @@ class cChatting extends CI_Controller
 		$this->load->view('Admin/Chatting/vChatting', $data);
 		$this->load->view('Admin/Layouts/footer');
 	}
-	
+
 	public function GetAllOrang()
 	{
 		$id_user = $this->input->post('id_user');
 		$data = $this->mChatting->GetAllOrangAdmin($id_user);
 		echo json_encode(array('data' => $data));
 	}
-	
+
 	public function pesan()
 	{
 		$no =  $this->uri->segment(4);
@@ -38,7 +38,7 @@ class cChatting extends CI_Controller
 			// var_dump($data);die;	
 			$this->load->view('Admin/Layouts/head');
 			$this->load->view('Admin/Chatting/vDetailChatting', $data);
-			$this->load->view('Admin/Layouts/footer');
+			// $this->load->view('Admin/Layouts/footer');
 		}
 	}
 
@@ -53,6 +53,41 @@ class cChatting extends CI_Controller
 		echo json_encode(array(
 			'data' => $data
 		));
+	}
+
+	public function KirimPesan()
+	{
+		$now = date("Y-m-d H:i:s");
+		// var_dump($now);die;
+		$pesan = $this->input->post('pesan');
+		$id_pelanggan = $this->input->post('id_pelanggan');
+		$id_user = $this->input->post('id_user');
+		$in = array(
+			'id_pelanggan' => $id_pelanggan,
+			'id_user' => $id_user,
+			'pelanggan_send' => 0,
+			'toko_send' => $pesan,
+			'time' => $now,
+		);
+
+		$this->mChatting->TambahChatKeSatu($in);
+		$log = array('status' => true);
+		echo json_encode($log);
+		return true;
+	}
+
+	public function hapusChat()
+	{
+		$id_pelanggan = $this->input->post('id_pelanggan');
+		$id_user = $this->input->post('id_user');
+
+		// Tambahkan operator logika 'AND' pada where
+		$this->db->where('id_pelanggan', $id_pelanggan);
+		$this->db->where('id_user', $id_user);
+
+		$this->db->delete('chatting');
+		// $this->session->set_flashdata('success', '<div class="alert alert-success alert-pesan">Data Lamaran berhasil dihapus.</div>');
+		redirect('pelanggan/cChatting');
 	}
 
 	public function detail_chatting($id)

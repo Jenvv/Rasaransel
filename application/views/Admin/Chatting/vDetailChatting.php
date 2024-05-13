@@ -90,7 +90,8 @@
 		</div>
 		</div>
 	</main>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
 	<script type="text/javascript" src="<?= base_url('asset/pato-master/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -263,23 +264,23 @@
 						var id_user = '<?= $this->session->userdata("id") ?>';
 						$.ajax({
 							type: "post",
-							url: "<?= base_url() ?>pelanggan/cChatting/hapusChat",
+							url: "<?= base_url() ?>admin/cChatting/hapusChat",
 							data: {
 								id_pelanggan: id_pelanggan,
 								id_user: id_user,
 							},
 							dataType: "json",
-							success: function(response) {
-								console.log(response);
-							}
+							success: function(response) {}
 						});
 						Swal.fire({
 							title: "Berhasil!",
 							text: "Chat Berhasil Terhapus.",
-							icon: "success"
+							icon: "success",
 						});
 					}
-
+					setInterval(() => {
+						window.location.href = "<?= base_url() ?>admin/cChatting/"
+					}, 1300);
 					orang();
 				});
 			});

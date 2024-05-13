@@ -15,7 +15,7 @@ class cLogin extends CI_Controller
 	{
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
-		$this->load->view('Pelanggan/login');
+		$this->load->view('Pelanggan/auth/login');
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
 	public function login()
@@ -169,7 +169,7 @@ class cLogin extends CI_Controller
 			// $kodeUSERD = $this->get_kodUSERDATA();
 			$this->load->view('Pelanggan/layouts/header');
 			$this->load->view('Pelanggan/layouts/aside');
-			$this->load->view('Pelanggan/registrasi');
+			$this->load->view('Pelanggan/auth/registrasi');
 			$this->load->view('Pelanggan/Layouts/footer');
 		} else {
 			$ttl =  $this->input->post('tmpt') . ', ' . $this->input->post('tgl');
@@ -182,7 +182,6 @@ class cLogin extends CI_Controller
 				'password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
 				'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
 				'ttl' => $ttl,
-				'makanan' => $this->input->post('makanan'),
 				'photo' => 'default.png',
 			];
 			if ($this->db->insert('pelanggan', $data)) {

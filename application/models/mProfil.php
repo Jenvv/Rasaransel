@@ -10,6 +10,17 @@ class mProfil extends CI_Model
 		$this->db->where('id_pelanggan', $this->session->userdata('id'));
 		return $this->db->get()->row();
 	}
+	function getData($table = null, $where = null)
+	{
+		$this->db->from($table);
+		$this->db->where($where);
+
+		return $this->db->get();
+	}
+	function update($table = null, $data = null, $where = null)
+	{
+		return $this->db->update($table, $data, $where);
+	}
 }
 
 /* End of file mProfil.php */
