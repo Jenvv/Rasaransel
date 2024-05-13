@@ -10,7 +10,7 @@ class mPesanan_Saya extends CI_Model
 		$this->db->from('pesanan');
 		$this->db->join('pelanggan', 'pesanan.id_pelanggan = pelanggan.id_pelanggan', 'left');
 		$this->db->join('nota', 'nota.id_pesanan = pesanan.id_pesanan', 'left');
-		$this->db->where('pesanan.id_pelanggan', $this->session->userdata('id'));
+		$this->db->where('pesanan.id_pelanggan', $this->session->userdata('id_pelanggan'));
 		return $this->db->get()->result();
 	}
 

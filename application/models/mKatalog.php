@@ -5,7 +5,7 @@ class mKatalog extends CI_Model
 {
 	public function menu()
 	{
-		$this->db->select('nama_produk, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, tgl_diskon');
+		$this->db->select('nama_produk , id_user, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, tgl_diskon');
 		$this->db->from('menu_makanan');
 		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
 		return $this->db->get()->result();
@@ -24,7 +24,7 @@ class mKatalog extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('pelanggan');
-		$this->db->where('id_pelanggan', $this->session->userdata('id'));
+		$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
 		return $this->db->get()->row();
 	}
 

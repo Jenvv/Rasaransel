@@ -116,6 +116,7 @@
 
 							<input class="ongkir" name="ongkir" hidden>
 							<input class="total" name="total" hidden>
+							<input type="hidden" name="user" value="<?= $items['user']; ?>">
 							<div class="col-lg-6">
 								<button type="submit" class="btn3 flex-c-m size13 txt11">
 									Checkout

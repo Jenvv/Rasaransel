@@ -43,6 +43,7 @@ class cHome extends CI_Controller
 			'name' => $this->input->post('name'),
 			'price' => $this->input->post('price'),
 			'qty' => $this->input->post('qty'),
+			'user' => $this->input->post('user'),
 			'picture' => $this->input->post('picture')
 		);
 		$this->cart->insert($data);
@@ -109,7 +110,8 @@ class cHome extends CI_Controller
 				$status_order = '0';
 			}
 			$data = array(
-				'id_pelanggan' => $this->session->userdata('id'),
+				'id_pelanggan' => $this->session->userdata('id_pelanggan'),
+				'id_user' => $this->input->post('user'),
 				'tgl_transaksi' => date('Y-m-d'),
 				'total_bayar' => $this->input->post('total'),
 				'status_order' => $status_order,

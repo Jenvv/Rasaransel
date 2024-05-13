@@ -133,6 +133,7 @@
 
                         <input type="hidden" name="qty" value="1">
                         <input type="hidden" name="picture" value="<?= $value->foto ?>">
+                        <input type="hidden" name="user" value="<?= $value->id_user ?>">
                         <!-- Block1 -->
                         <div class="blo1">
                             <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
