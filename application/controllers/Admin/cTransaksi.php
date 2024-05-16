@@ -27,9 +27,9 @@ class cTransaksi extends CI_Controller
 			'notif' => $this->mTransaksi->notif_admin($id_user)
 		);
 		// $this->protect->protect_admin();
-		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/Layouts/headers');
 		$this->load->view('Admin/transaksi/status_order', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('Admin/Layouts/footers');
 	}
 	public function detail_pesanan($id)
 	{
@@ -37,9 +37,9 @@ class cTransaksi extends CI_Controller
 		$data = array(
 			'detail' => $this->mTransaksi->detail_pesanan($id)
 		);
-		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/Layouts/headers');
 		$this->load->view('Admin/transaksi/detail_pesanan', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('Admin/Layouts/footers');
 	}
 
 

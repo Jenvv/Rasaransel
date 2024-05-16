@@ -218,7 +218,7 @@
                     type: "post",
                     url: "<?= base_url() ?>Pelanggan/cChatting/loadChat",
                     data: {
-                        id_user: '<?= $this->session->userdata('id') ?>',
+                        id_user: '<?= $this->session->userdata('id_pelanggan') ?>',
                         id_toko: id_toko
                     },
                     dataType: "json",
@@ -284,7 +284,7 @@
                 if (e.which == 13) { // Deteksi tombol "Enter" (kode 13)
                     e.preventDefault(); // Mencegah default action dari tombol "Enter"
                     var pesan = $('.pesan').val();
-                    var id_pelanggan = '<?= $this->session->userdata("id") ?>';
+                    var id_pelanggan = '<?= $this->session->userdata("id_pelanggan") ?>';
                     var id_user = '<?= $data->id_user ?>';
                     if (pesan != "") {
                         $.ajax({
@@ -322,7 +322,7 @@
                     type: "post",
                     url: "<?= base_url() ?>Pelanggan/cChatting/GetAllOrang",
                     data: {
-                        id_pelanggan: '<?= $this->session->userdata("id"); ?>'
+                        id_pelanggan: '<?= $this->session->userdata("id_pelanggan"); ?>'
                     },
                     dataType: "json",
                     success: function(r) {
@@ -367,7 +367,7 @@
                     confirmButtonText: "Hapus"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        var id_pelanggan = '<?= $this->session->userdata("id") ?>';
+                        var id_pelanggan = '<?= $this->session->userdata("id_pelanggan") ?>';
                         var id_user = '<?= $data->id_user ?>';
                         $.ajax({
                             type: "post",

@@ -22,9 +22,9 @@ class cPelanggan extends CI_Controller
 		$data = array(
 			'pelanggan' => $this->mPelanggan->select()
 		);
-		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/Layouts/headers');
 		$this->load->view('Admin/vPelanggan', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('Admin/Layouts/footers');
 	}
 	public function update($id)
 	{

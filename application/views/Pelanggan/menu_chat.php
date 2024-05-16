@@ -128,7 +128,7 @@
                     type: "post",
                     url: "<?= base_url() ?>Pelanggan/cChatting/GetAllOrang",
                     data: {
-                        id_pelanggan: '<?= $this->session->userdata("id"); ?>'
+                        id_pelanggan: '<?= $this->session->userdata("id_pelanggan"); ?>'
                     },
                     dataType: "json",
                     success: function(r) {

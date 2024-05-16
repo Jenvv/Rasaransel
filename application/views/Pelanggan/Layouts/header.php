@@ -68,26 +68,19 @@
 			<div class="container h-full">
 				<div class="wrap_header trans-0-3">
 
-
 					<!-- Menu -->
-					<div class="wrap_menu p-l-45 p-l-0-xl">
+					<div class="wrap_menu p-l-45 p-l-0-xl ">
 						<nav class="menu">
 							<ul class="main_menu">
 								<li>
 									<a href="<?= base_url('pelanggan/chome') ?>">Home</a>
 								</li>
 								<li>
-									<a href="https://api.whatsapp.com/send?phone=628123456789">Customer Service</a>
+									<a href="https://api.whatsapp.com/send?phone=">Menu</a>
 								</li>
-								<?php
-								if ($this->session->userdata('id_pelanggan') != '') {
-								?>
-
+								<?php if ($this->session->userdata('id_pelanggan') != '') { ?>
 									<li>
 										<a href="<?= base_url('pelanggan/cpesanansaya') ?>">Pesanan Saya</a>
-									</li>
-									<li>
-										<a href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
 									</li>
 
 									<?php
@@ -98,45 +91,42 @@
 									if ($cart == '0') {
 									?>
 										<li>
-											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Cart</a>
+											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Keranjang</a>
 										</li>
-									<?php
-									} else {
-									?>
+									<?php } else { ?>
 										<li>
-											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Cart<span class="badge badge-success"><?= $cart ?></span></a>
+											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Keranjang<span class="badge badge-success"><?= $cart ?></span></a>
 										</li>
-									<?php
-									}
-									?>
-								<?php
-								}
-								?>
-								<?php
-								if ($this->session->userdata('id_pelanggan') == '') {
-								?>
+									<?php } ?>
+								<?php } ?>
+								<?php if ($this->session->userdata('id_pelanggan') == '') { ?>
 									<li>
 										<a href="<?= base_url('pelanggan/clogin') ?>"><?= $this->session->userdata('nama_pelanggan'); ?>Login</a>
 									</li>
 									<li>
 										<a href="<?= base_url('pelanggan/clogin/registrasi') ?>">Daftar</a>
 									</li>
-								<?php
-								} else {
-								?>
-									<li>
-										<a href="<?= base_url('pelanggan/cprofil') ?>"><?= $this->session->userdata('nama_pelanggan'); ?></a>
+								<?php } else { ?>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Profil
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="<?= base_url('pelanggan/cprofil') ?>"><?= $this->session->userdata('nama_pelanggan'); ?></a>
+											<a class="dropdown-item" href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="<?= base_url('pelanggan/clogin/Logout') ?>">Logout</a>
+										</div>
 									</li>
-									<li>
-										<a href="<?= base_url('pelanggan/clogin/Logout') ?>">Logout</a>
-									</li>
-								<?php
-								}
-								?>
-
-
+								<?php } ?>
+								<li>
+									<a href="https://api.whatsapp.com/send?phone=">Customer Service</a>
+								</li>
 							</ul>
 						</nav>
+					</div>
+					<div class="social flex-w flex-l-m p-r-20">
+						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
 					</div>
 
 				</div>

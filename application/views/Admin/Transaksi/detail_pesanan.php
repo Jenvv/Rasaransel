@@ -59,7 +59,7 @@
 							</thead>
 							<tbody>
 								<?php
-								foreach ($detail['pesanan'] as $key => $value) {
+								foreach ($detail['pesanan'] as $key => $value) { 
 								?>
 									<tr>
 										<td><?= $value->qty ?></td>

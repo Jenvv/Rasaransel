@@ -25,9 +25,9 @@ class cProduk extends CI_Controller
 		$data = array(
 			'produk' => $this->mProduk->select()
 		);
-		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/Layouts/headers');
 		$this->load->view('Admin/produk/produk', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('Admin/Layouts/footers');
 	}
 	public function create()
 	{
@@ -38,9 +38,9 @@ class cProduk extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 
-			$this->load->view('Admin/Layouts/head');
+			$this->load->view('Admin/Layouts/headers');
 			$this->load->view('Admin/produk/create');
-			$this->load->view('Admin/Layouts/footer');
+			$this->load->view('Admin/Layouts/footers');
 		} else {
 			$config['upload_path']          = './asset/foto-produk';
 			$config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -53,9 +53,9 @@ class cProduk extends CI_Controller
 					'error' => $this->upload->display_errors()
 				);
 
-				$this->load->view('Admin/Layouts/head');
+				$this->load->view('Admin/Layouts/headers');
 				$this->load->view('Admin/produk/create', $data);
-				$this->load->view('Admin/Layouts/footer');
+				$this->load->view('Admin/Layouts/footers');
 			} else {
 				$upload_data = $this->upload->data();
 				$id_user = $this->session->userdata('id');
@@ -91,9 +91,9 @@ class cProduk extends CI_Controller
 					'error' => $this->upload->display_errors()
 				);
 
-				$this->load->view('Admin/Layouts/head');
+				$this->load->view('Admin/Layouts/headers');
 				$this->load->view('Admin/produk/update', $data);
-				$this->load->view('Admin/Layouts/footer');
+				$this->load->view('Admin/Layouts/footers');
 			} else {
 				$produk = $this->mProduk->select();
 				if ($produk->foto !== "") {
@@ -125,9 +125,9 @@ class cProduk extends CI_Controller
 		$data = array(
 			'produk' => $this->mProduk->edit($id)
 		);
-		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/Layouts/headers');
 		$this->load->view('Admin/produk/update', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('Admin/Layouts/footers');
 	}
 	public function delete($id)
 	{

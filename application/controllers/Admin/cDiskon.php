@@ -32,9 +32,9 @@ class cDiskon extends CI_Controller
 				'diskon' => $this->mDiskon->select(),
 				'produk' => $this->mProduk->select()
 			);
-			$this->load->view('Admin/Layouts/head');
+			$this->load->view('Admin/Layouts/headers');
 			$this->load->view('Admin/diskon/diskon', $data);
-			$this->load->view('Admin/Layouts/footer');
+			$this->load->view('Admin/Layouts/footers');
 		} else {
 			$data = array(
 				'id_produk' => $this->input->post('menu'),

@@ -4,9 +4,6 @@
 		<div class="row mb-2 mb-xl-3">
 			<div class="col-auto d-none d-sm-block">
 				<h3><strong>Analisis</strong> Dashboard</h3>
-				<?= $this->session->userdata('level_user'); ?>
-				<p>jnck</p>
-				
 			</div>
 
 			<div class="col-auto ml-auto text-right mt-n1">
