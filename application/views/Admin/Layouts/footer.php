@@ -3,7 +3,7 @@
 		<div class="row text-muted">
 			<div class="col-6 text-left">
 				<p class="mb-0">
-					RUMAH MAKAN KEDUNG ROSO | Repost by <a href='' title='' target='_blank'></a>
+					RASA RANSEL | <a href='' title='' target='_blank'></a>
 
 				</p>
 			</div>

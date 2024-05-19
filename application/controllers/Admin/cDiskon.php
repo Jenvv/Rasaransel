@@ -8,14 +8,15 @@ class cDiskon extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('mProfil_admin', 'mProfil');
 		$this->load->model('mDiskon');
 		$this->load->model('mProduk');
 		$this->getsecurity();
 	}
 	function getsecurity($value = '')
 	{
-		$is_admin = $this->session->userdata('level_user') == 2;
-		if (empty($is_admin)) {
+		$id = $this->session->userdata('id');
+		if (empty($id)) {
 			$this->session->sess_destroy();
 			redirect('admin/clogin');
 		}
@@ -32,9 +33,9 @@ class cDiskon extends CI_Controller
 				'diskon' => $this->mDiskon->select(),
 				'produk' => $this->mProduk->select()
 			);
-			$this->load->view('Admin/Layouts/headers');
+			$this->load->view('Admin/Layouts/head');
 			$this->load->view('Admin/diskon/diskon', $data);
-			$this->load->view('Admin/Layouts/footers');
+			$this->load->view('Admin/Layouts/footer');
 		} else {
 			$data = array(
 				'id_produk' => $this->input->post('menu'),

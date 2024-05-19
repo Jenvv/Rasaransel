@@ -11,7 +11,7 @@
 
 	<link rel="shortcut icon" href="<?= base_url('asset/adminkit/examples/') ?>img/icons/icon-48x48.png" />
 
-	<title>RUMAH MAKAN KEDUNG ROSO</title>
+	<title>RASA RANSEL</title>
 
 	<link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">

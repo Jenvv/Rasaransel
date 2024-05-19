@@ -8,12 +8,13 @@ class cTransaksi extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mTransaksi');
+		$this->load->model('mProfil_admin', 'mProfil');
 		$this->getsecurity();
 	}
 	function getsecurity($value = '')
 	{
-		$is_admin = $this->session->userdata('level_user') == 2;
-		if (empty($is_admin)) {
+		$id = $this->session->userdata('id');
+		if (empty($id)) {
 			$this->session->sess_destroy();
 			redirect('admin/clogin');
 		}
@@ -27,9 +28,9 @@ class cTransaksi extends CI_Controller
 			'notif' => $this->mTransaksi->notif_admin($id_user)
 		);
 		// $this->protect->protect_admin();
-		$this->load->view('Admin/Layouts/headers');
+		$this->load->view('Admin/Layouts/head');
 		$this->load->view('Admin/transaksi/status_order', $data);
-		$this->load->view('Admin/Layouts/footers');
+		$this->load->view('Admin/Layouts/footer');
 	}
 	public function detail_pesanan($id)
 	{
@@ -37,9 +38,9 @@ class cTransaksi extends CI_Controller
 		$data = array(
 			'detail' => $this->mTransaksi->detail_pesanan($id)
 		);
-		$this->load->view('Admin/Layouts/headers');
+		$this->load->view('Admin/Layouts/head');
 		$this->load->view('Admin/transaksi/detail_pesanan', $data);
-		$this->load->view('Admin/Layouts/footers');
+		$this->load->view('Admin/Layouts/footer');
 	}
 
 

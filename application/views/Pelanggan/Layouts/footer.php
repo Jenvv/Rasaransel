@@ -12,7 +12,7 @@
 				</div>
 
 				<div class="txt17 p-r-20 p-t-5 p-b-5">
-					RUMAH MAKAN KEDUNG ROSO</div>
+					RASA RANSEL</div>
 			</div>
 		</div>
 	</div>

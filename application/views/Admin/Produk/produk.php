@@ -1,7 +1,7 @@
 <main class="content">
 	<div class="container-fluid p-0">
 
-		<h1 class="h3 mb-3">Menu Makanan Rumah Makan Kedung Roso</h1>
+		<h1 class="h3 mb-3">Menu Makanan RASA RANSEL</h1>
 
 		<a class="btn btn-primary mb-3" href="<?= base_url('admin/cproduk/create') ?>">Create produk</a>
 		<?php

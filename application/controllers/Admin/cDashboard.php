@@ -7,6 +7,7 @@ class cDashboard extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('mProfil_admin', 'mProfil');
 		$this->load->model('mLaporan');
 		$this->load->model('mDashboard');
 		$this->getsecurity();
@@ -15,8 +16,8 @@ class cDashboard extends CI_Controller
 	}
 	function getsecurity($value = '')
 	{
-		$is_admin = $this->session->userdata('level_user') == 2;
-		if (empty($is_admin)) {
+		$id = $this->session->userdata('id');
+		if (empty($id)) {
 			$this->session->sess_destroy();
 			redirect('admin/clogin');
 		}
@@ -29,9 +30,9 @@ class cDashboard extends CI_Controller
 		$data = array(
 			'ulasan' => $this->mDashboard->ulasan_pelanggan()
 		);
-		$this->load->view('Admin/Layouts/headers');
-		$this->load->view('Admin/dashboard/dash', $data);
-		$this->load->view('Admin/Layouts/footers');
+		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/dashboard/dashboard', $data);
+		$this->load->view('Admin/Layouts/footer');
 	}
 
 	public function balas_ulasan($id)

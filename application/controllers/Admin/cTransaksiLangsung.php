@@ -16,8 +16,8 @@ class cTransaksiLangsung extends CI_Controller
 	}
 	function getsecurity($value = '')
 	{
-		$is_admin = $this->session->userdata('level_user') == 2;
-		if (empty($is_admin)) {
+		$id = $this->session->userdata('id');
+		if (empty($id)) {
 			$this->session->sess_destroy();
 			redirect('admin/clogin');
 		}

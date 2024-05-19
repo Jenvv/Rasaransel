@@ -13,7 +13,7 @@
 			<div class="col-lg-12">
 				<div class="t-center">
 					<span class="tit2 t-center">
-						RUMAH MAKAN KEDUNG ROSO
+						RASA RANSEL
 					</span>
 					<h3 class="tit3 t-center m-b-35 m-t-2">
 						Cart

@@ -154,7 +154,7 @@
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
+        <aside class="menu-sidebar d-none d-lg-block collapse">
             <div class="logo">
                 <a href="#">
                     <img src="images/icon/logo.png" alt="Cool Admin" />

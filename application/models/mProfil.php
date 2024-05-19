@@ -7,7 +7,7 @@ class mProfil extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('pelanggan');
-		$this->db->where('id_pelanggan', $this->session->userdata('id'));
+		$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
 		return $this->db->get()->row();
 	}
 	function getData($table = null, $where = null)
