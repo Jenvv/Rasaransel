@@ -3,7 +3,7 @@
 
 		<h1 class="h3 mb-3">Menu Makanan RASA RANSEL</h1>
 
-		<a class="btn btn-primary mb-3" href="<?= base_url('admin/cproduk/create') ?>">Create produk</a>
+		<a class="btn btn-warning mb-3" href="<?= base_url('admin/cproduk/create') ?>">Create produk</a>
 		<?php
 		if ($this->session->userdata('success')) {
 		?>

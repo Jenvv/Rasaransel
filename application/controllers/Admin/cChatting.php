@@ -9,6 +9,7 @@ class cChatting extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mChatting');
+		$this->load->model('mProfil_admin','mProfil');
 	}
 
 	public function index()

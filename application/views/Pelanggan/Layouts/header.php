@@ -73,7 +73,7 @@
 						<nav class="menu">
 							<ul class="main_menu">
 								<li>
-									<a href="<?= base_url('pelanggan/chome') ?>">Home</a>
+									<a href="<?= base_url('pelanggan/chome') ?>">Beranda</a>
 								</li>
 								<li>
 									<a href="https://api.whatsapp.com/send?phone=">Menu</a>
@@ -115,12 +115,12 @@
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cprofil') ?>"><?= $this->session->userdata('nama_pelanggan'); ?></a>
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
 											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="<?= base_url('pelanggan/clogin/Logout') ?>">Logout</a>
+											<a class="dropdown-item" href="<?= base_url('pelanggan/clogin/Logout') ?>">Keluar</a>
 										</div>
 									</li>
 								<?php } ?>
 								<li>
-									<a href="https://api.whatsapp.com/send?phone=">Customer Service</a>
+									<a href="https://api.whatsapp.com/send?phone=">Pelayanan Pelanggan</a>
 								</li>
 							</ul>
 						</nav>

@@ -15,7 +15,7 @@
         <?php } else { ?>
 
             <li class="t-center m-b-30">
-                <a href="index.html" class="txt19">Home</a>
+                <a href="index.html" class="txt19">Beranda</a>
             </li>
             <li class="t-center m-b-30">
                 <a href="blog.html" class="txt19">Profil</a>
@@ -33,10 +33,10 @@
                 <a href="blog.html" class="txt19">Chat</a>
             </li>
             <li class="t-center m-b-30">
-                <a href="blog.html" class="txt19">Costumer Service</a>
+                <a href="blog.html" class="txt19">Pelayanan Pelanggan</a>
             </li>
             <li class="t-center m-b-30">
-                <a href="blog.html" class="btn btn-danger text-white txt19" style="border-radius: 20px;">Logout</a>
+                <a href="blog.html" class="btn btn-danger text-white txt19" style="border-radius: 20px;">Keluar</a>
             </li>
         <?php } ?>
 

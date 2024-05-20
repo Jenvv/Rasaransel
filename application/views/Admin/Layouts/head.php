@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
+	<link href="<?= base_url('asset/admintoko/vendors/') ?>mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">
 	<script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -97,6 +98,131 @@
 		.border-top {
 			border-top: 1px solid #dee2e6 !important;
 		}
+
+		/* css dashboard */
+		.overview-chart {
+			height: 115px;
+			position: relative;
+		}
+
+		.overview-chart canvas {
+			width: 100%;
+		}
+
+		.overview-box .icon {
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 15px;
+		}
+
+		.overview-box .icon i {
+			font-size: 60px;
+			color: #fff;
+		}
+
+		@media (min-width: 992px) and (max-width: 1199px) {
+			.overview-box .icon {
+				margin-right: 3px;
+			}
+
+			.overview-box .icon i {
+				font-size: 30px;
+			}
+		}
+
+		@media (max-width: 991px) {
+			.overview-box .icon {
+				font-size: 46px;
+			}
+		}
+
+		.overview-box .text {
+			font-weight: 300;
+			display: inline-block;
+		}
+
+		.overview-box .text h2 {
+			font-weight: 300;
+			color: #fff;
+			font-size: 36px;
+			line-height: 1;
+			margin-bottom: 5px;
+		}
+
+		.overview-box .text span {
+			font-size: 18px;
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		@media (min-width: 992px) and (max-width: 1199px) {
+			.overview-box .text {
+				display: inline-block;
+			}
+
+			.overview-box .text h2 {
+				font-size: 20px;
+				margin-bottom: 0;
+			}
+
+			.overview-box .text span {
+				font-size: 14px;
+			}
+		}
+
+		@media (max-width: 991px) {
+			.overview-box .text h2 {
+				font-size: 26px;
+			}
+
+			.overview-box .text span {
+				font-size: 15px;
+			}
+		}
+
+		.overview-item {
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			padding: 30px;
+			padding-bottom: 0;
+			-webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+			-moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+			margin-bottom: 40px;
+		}
+
+		@media (min-width: 992px) and (max-width: 1519px) {
+			.overview-item {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+
+		.overview-item--c1 {
+			background-image: -moz-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+			background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+			background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+		}
+
+		.overview-item--c2 {
+			background-image: -moz-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+			background-image: -webkit-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+			background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+		}
+
+		.overview-item--c3 {
+			background-image: -moz-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+			background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+			background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+		}
+
+		.overview-item--c4 {
+			background-image: -moz-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+			background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+			background-image: -ms-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+		}
+
+		/* end */
 	</style>
 
 </head>
@@ -131,6 +257,13 @@
 											}  ?>">
 						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;">
 							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Pelanggan</span>
+						</a>
+					</li>
+					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan') {
+												echo 'active';
+											}  ?>">
+						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;">
+							<i class="align-middle" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
 						</a>
 					</li>
 

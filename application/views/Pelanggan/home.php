@@ -1,8 +1,30 @@
 <!-- Slide1 -->
+<style>
+    .item-slick1 {
+        position: relative;
+    }
+
+    .item-slick1 .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        /* Sesuaikan nilai alpha untuk kegelapan yang diinginkan */
+        z-index: 1;
+    }
+
+    .wrap-content-slide1 {
+        position: relative;
+        z-index: 2;
+    }
+</style>
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
             <div class="item-slick1 item1-slick1" style="background-image: url(<?= base_url('asset/foto3.jpg') ?>);">
+                <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-150">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
                         Selamat Datang
@@ -22,14 +44,15 @@
             </div>
 
             <div class="item-slick1 item2-slick1" style="background-image: url(<?= base_url('asset/foto3.jpg') ?>);">
+                <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rollIn">
+                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeIn">
                         Selamat Datang di
                     </span>
 
-                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-                        MENERIMA PESAN ANTAR UNTUK WILAYAH KABUPATEN BREBES
-                    </h2>
+                    <h3 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
+                        MENERIMA PESAN ANTAR UNTUK WILAYAH PONTIANAK
+                    </h3>
                     <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
                         <!-- Button1 -->
 
@@ -41,12 +64,13 @@
             </div>
 
             <div class="item-slick1 item3-slick1" style="background-image: url(<?= base_url('asset/foto3.jpg') ?>);">
+                <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeIn">
                         Selamat Datang di
                     </span>
 
-                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
+                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
                         RASA RANSEL
                     </h2>
                     <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
@@ -85,7 +109,7 @@
                         dipisahkan sejak awal." - Anthony Bourdain</p>
 
                     <a href="about.html" class="txt4">
-                        Our Story
+                        Tentang Kami
                         <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
                     </a>
                 </div>

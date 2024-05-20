@@ -41,14 +41,14 @@
 						</div>
 						<div class="text-blo4 p-t-33">
 							<div class="d-flex align-items-center">
+								<?php foreach ($users as $user) : ?>
 								<div class="rounded-circle overflow-hidden mr-3 mb-5" style="width: 50px; height: 50px;">
-									<img src="<?= base_url('asset/foto-produk/' . $produk->foto) ?>" alt="Foto Produk" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+									<img src="<?= base_url('asset/merchant/' . $user->photo) ?>" alt="Foto Produk" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 								</div>
 								<div>
 									<div class="p-b-16">
 										<a href="blog-detail.html" class="tit9">
-											<?php foreach ($users as $user) : ?>
-												<h5><?= $user->username ?></h5>
+												<h5><?= $user->nama ?></h5>
 										</a>
 										<h6 class="mt-2"><i class="fa fa-map-marker" aria-hidden="true"></i> <?= $user->alamat ?></h6>
 									<?php endforeach ?>
