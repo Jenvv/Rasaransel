@@ -68,7 +68,7 @@ class cLogin extends CI_Controller
 				);
 				$this->session->set_userdata($sess);
 				$this->session->set_flashdata('success', '<div class="alert alert-success alert-pesan">Selamat Datang, ' . $this->session->userdata('username') . '</div>');
-				redirect('admin/cDashboard');
+				redirect('Admin/cDashboard');
 			}
 		} else {
 			$this->session->set_flashdata('error', 'Username dan Password Salah!');

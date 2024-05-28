@@ -8,33 +8,70 @@ class cHome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mKatalog');
+		$this->load->model('mkategori');
 	}
 	public function index()
 	{
+		$kategori = $this->mkategori->getKategori();
 		$data = array(
 			'menu' => $this->mKatalog->menu(),
-			// 'kritik' => $this->mKatalog->ulasan()
+			// 'kategori_col1' => array_slice($kategori, 0, 4),
+			// 'kategori_col2' => array_slice($kategori,  4),
+			'kategori' => $kategori,
 		);
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
 		$this->load->view('Pelanggan/home', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
+	public function menu()
+	{
+		$data = array(
+			'menu' => $this->mKatalog->menu(),
+		);
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/menu', $data);
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
+	public function kategori($id)
+	{
+		$kategori = $this->mkategori->getKategori();
+		$getData = $this->mkategori->getData('kategori_menu', ['id_kategori' => $id]);
+		$data = array(
+			'menu_kategori' => $this->mKatalog->menu_kategori($id),
+			'title' => $getData->row(),
+			// 'kategori_col1' => array_slice($kategori, 0, 4),
+			// 'kategori_col2' => array_slice($kategori,  4),
+			'kategori' => $kategori,
+		);
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/kategori', $data);
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
+
 	public function detail_produk($id)
 	{
-		// $data = array(
-		// 	'detail_produk' => $this->mKatalog->detail_produk($id)
-		// );
-		// var_dump($detail);
 		$data['ulasan'] = $this->mKatalog->detail_produk($id)['ulasan'];
 		$data['produk'] = $this->mKatalog->detail_produk($id)['produk'];
 		$data['users'] = $this->mKatalog->getNamaPengguna($data['produk']->id_user);
+		$data['menu'] = $this->mKatalog->menu_detail($data['produk']->id_user, $id);
+		$data['menus'] = $this->mKatalog->menu();
+		$data['diskon'] = $this->mKatalog->menu_detail_diskon($data['produk']->id_user, $id);
+
+		// Debugging data
+		// echo '<pre>';
+		// print_r($data['menu']);
+		// echo '</pre>';
+		// exit;
 
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
 		$this->load->view('Pelanggan/detail_produk', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
+
 	public function cart()
 	{
 		// $this->protect->protect();
@@ -47,7 +84,7 @@ class cHome extends CI_Controller
 			'picture' => $this->input->post('picture')
 		);
 		$this->cart->insert($data);
-		redirect('pelanggan/chome');
+		redirect('pelanggan/chome/view_cart');
 	}
 	public function update_cart()
 	{

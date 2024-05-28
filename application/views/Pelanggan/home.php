@@ -1,4 +1,5 @@
 <!-- Slide1 -->
+<link href="<?= base_url('asset/admintoko/') ?>css/styles.css" rel="stylesheet" />
 <style>
     .item-slick1 {
         position: relative;
@@ -124,6 +125,7 @@
     </div>
 </section>
 
+
 <!-- Intro -->
 <section class="section-intro">
     <div class="header-intro parallax100 t-center p-t-135 p-b-158" style="background-image: url(<?= base_url('asset/foto2.jpg') ?>);">
@@ -135,111 +137,121 @@
             RASA RANSEL
         </h3>
     </div>
+</section>
+<!-- Kategori -->
+<div class="section-signup bg1-pattern p-t-55 p-b-50">
 
-    <div class="content-intro bg-white p-t-77 p-b-133">
-        <div class="container">
-            <div class="row">
+    <div class="container d-flex justify-content-between pl-5" style="text-align: center;">
+        <div class="row">
+            <?php foreach ($kategori as $key => $value) {
+            ?>
+                <div class="col-6 col-md-3 mb-4">
+                    <a class=" wrap-pic-w" href="<?= base_url('pelanggan/chome/kategori/' . $value->id_kategori) ?>">
+                        <img src="<?= base_url('asset/Icon/' . $value->photo) ?>" style="width: 50px;" alt="GALLERY">
+                        <div class="txt26 trans-0-4" data-filter="*">
+                            <?= $value->kategori ?>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
 
-                <?php
-                foreach ($menu as $key => $value) {
-                ?>
+<section class="py-4">
+    <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+        <!-- <button class="btn btn-dark">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+        </button> -->
+        <div class="wrap-input-search size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
+            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="cari" placeholder="Cari Menu Makanan">
+            <i class="fa fa-search ab-r-m m-r-18" aria-hidden="true"></i>
+        </div>
 
-                    <div class="col-md-4 p-t-30">
+        <!-- Button3 -->
+        <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+            Cari
+        </button>
+    </form>
+    <div class="container px-4 px-lg-5 mt-5">
+
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <?php
+            foreach ($menu as $key => $value) {
+            ?>
+
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Sale badge-->
+                        <?php
+                        if ($value->diskon != NULL) {
+                        ?>
+                            <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?= $value->nama_promo ?>
+                                <?= $value->diskon ?>%</div>
+                        <?php } ?>
+                        <!-- Product image-->
+                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+                            <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
+                        </div>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder"><?= $value->nama_produk ?></h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                                <h6>
+
+                                    <?php
+                                    if ($value->diskon != NULL) {
+                                    ?>
+                                        <span class="text-muted text-decoration-line-through">Rp. <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
+                                    <?php
+                                    }
+                                    ?>
+                                    Rp. <?= number_format($value->harga, 0) ?>
+                                </h6>
+                            </div>
+                        </div>
                         <?php
                         if ($this->session->userdata('id_pelanggan') != '') {
                         ?>
+                            <!-- Product actions-->
                             <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
                                 <input type="hidden" name="id" value="<?= $value->id_produk ?>">
                                 <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
-
                                 <input type="hidden" name="qty" value="1">
                                 <input type="hidden" name="picture" value="<?= $value->foto ?>">
                                 <input type="hidden" name="user" value="<?= $value->id_user ?>">
-                                <!-- Block1 -->
-                                <div class="blo1">
-                                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                                        <a href="#"><img style="width: 350px; height: 350px;" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="IMG-INTRO"></a>
-                                    </div>
-
-                                    <div class="wrap-text-blo1 p-t-35">
-
-                                        <h4 class="txt5 color0-hov trans-0-4 m-b-10">
-                                            <?= $value->nama_produk ?>
-                                        </h4>
-                                        <?php
-                                        if ($value->diskon != NULL) {
-                                        ?>
-                                            <small class="badge badge-success"><?= $value->nama_promo ?>
-                                                <?= $value->diskon ?>%</small>
-                                        <?php
-                                        }
-                                        ?>
-
-                                        <p><?= $value->deskripsi ?></p><br>
-
-                                        <h5>Rp.
-                                            <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?>
-                                            <?php
-                                            if ($value->diskon != NULL) {
-                                            ?>
-                                                <del>Rp. <?= number_format($value->harga, 0)  ?></del>
-                                            <?php
-                                            }
-                                            ?>
-                                        </h5>
-
-                                        <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
-
-
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-lg-6"><?php
-                                                                    if ($this->session->userdata('id_pelanggan') != ' ') {
-                                                                    ?>
-                                                    <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To
-                                                        Cart</button>
-
-                                                <?php
-                                                                    }
-                                                ?>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <a href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Detail Produk</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
+                                </div>
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
                                 </div>
                             </form>
-                        <?php
-                        } else {
+                        <?php } else {
                         ?>
-                            <form action="<?= base_url('pelanggan/cLogin') ?>">
-                                <!-- Block1 -->
-                                <div class="blo1">
-                                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                                        <a href="#"><img style="width: 350px; height: 350px;" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="IMG-INTRO"></a>
-                                    </div>
-                                    <div class="wrap-text-blo1 p-t-35">
-                                        <h4 class="txt5 color0-hov trans-0-4 m-b-10">
-                                            <?= $value->nama_produk ?>
-                                        </h4>
-                                        <p><?= $value->deskripsi ?></p><br>
-                                        <h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
-                                        <br>
-                                        <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To
-                                            Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        <?php
-                        }
-                        ?>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                                <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                            </div>
+
+                        <?php } ?>
                     </div>
-                <?php
-                }
-                ?>
-            </div>
+                </div>
+
+            <?php } ?>
         </div>
     </div>
 </section>

@@ -1,7 +1,7 @@
 <!-- Title Page -->
 <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(<?= base_url('asset/foto2.jpg') ?>);">
 	<h2 class="tit6 t-center">
-		CART
+		Keranjang
 	</h2>
 </section>
 
@@ -16,7 +16,7 @@
 						RASA RANSEL
 					</span>
 					<h3 class="tit3 t-center m-b-35 m-t-2">
-						Cart
+						Keranjang
 					</h3>
 				</div>
 			</div>

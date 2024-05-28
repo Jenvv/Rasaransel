@@ -10,6 +10,36 @@ class mKatalog extends CI_Model
 		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
 		return $this->db->get()->result();
 	}
+	public function menu_kategori($id)
+	{
+		$this->db->select('*');
+		$this->db->from('menu_makanan');
+		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
+		$this->db->join('kategori_menu', 'menu_makanan.id_kategori = kategori_menu.id_kategori', 'left');
+		$this->db->where('menu_makanan.id_kategori', $id);
+		return $this->db->get()->result();
+	}
+
+	public function menu_detail_diskon($id_user, $id)
+	{
+		$this->db->select('nama_produk, id_user, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, tgl_diskon');
+		$this->db->from('menu_makanan');
+		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
+		$this->db->where([
+			'menu_makanan.id_user' => $id_user,
+			'menu_makanan.id_produk' => $id
+		]);
+		return $this->db->get()->result();
+	}
+	public function menu_detail($id_user)
+	{
+		$this->db->select('nama_produk, id_user, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, tgl_diskon');
+		$this->db->from('menu_makanan');
+		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
+		$this->db->where('id_user', $id_user);
+		return $this->db->get()->result();
+	}
+
 	public function checkout($data)
 	{
 		$this->db->insert('pesanan', $data);

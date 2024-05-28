@@ -29,8 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>vendor/lightbox2/css/lightbox.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/util.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/main.css">
 	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/main.css">
 	<!-- StyleSheet -->
 	<style>
 		.checked {
@@ -76,7 +76,7 @@
 									<a href="<?= base_url('pelanggan/chome') ?>">Beranda</a>
 								</li>
 								<li>
-									<a href="https://api.whatsapp.com/send?phone=">Menu</a>
+									<a href="<?= base_url('pelanggan/chome/menu') ?>">Menu</a>
 								</li>
 								<?php if ($this->session->userdata('id_pelanggan') != '') { ?>
 									<li>
@@ -95,7 +95,7 @@
 										</li>
 									<?php } else { ?>
 										<li>
-											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Keranjang<span class="badge badge-success"><?= $cart ?></span></a>
+											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Keranjang <span class="badge badge-success"> <?= $cart ?></span></a>
 										</li>
 									<?php } ?>
 								<?php } ?>

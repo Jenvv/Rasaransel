@@ -1,7 +1,7 @@
 <!-- Title Page -->
 <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(<?= base_url('asset/pato-master/') ?>images/bg-title-page-02.jpg);">
 	<h2 class="tit6 t-center">
-		Checkout
+		Pengiriman
 	</h2>
 </section>
 
@@ -60,13 +60,13 @@
 							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
 								<select id="ongkir" name="kecamatan" class="bo-rad-10 sizefull txt10 p-l-20">
 									<option value="">---Pilih Kecamatan---</option>
-									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Ciawigebang">Brebes</option>
-									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cibeureum">Wanasari</option>
-									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Cibingbin">Bulakamba</option>
-									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Cidahu">Tanjung</option>
-									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Cigandamekar">Losari</option>
-									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cilebak">Banjarharjo</option>
-									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Cilimus">Kersana</option>
+									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Pontianak Barat">Pontianak Barat</option>
+									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Pontianak Kota">Pontianak Kota</option>
+									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Pontianak Selatan">Pontianak Selatan</option>
+									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Pontianak Tenggara">Pontianak Tenggara</option>
+									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Pontianak Utara">Pontianak Utara</option>
+									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Pontianak Timur">Pontianak Timur</option>
+									<!-- <option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Cilimus">Kersana</option>
 									<option data-vongkir="Rp. <?= number_format(5000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 5000) ?>" data-total="<?= $this->cart->total() +  5000 ?>" data-ongkir="5000" value="Cimahi">Ketanggungan</option>
 									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Ciniru">Larangan</option>
 									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cipicung">Jatibarang</option>
@@ -76,7 +76,7 @@
 									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cipicung">Bumiayu</option>
 									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cipicung">Paguyangan</option>
 									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cipicung">Bantarkawung</option>
-									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cipicung">Salem</option>
+									<option data-vongkir="Rp. <?= number_format(10000) ?>" data-vtotal="Rp. <?= number_format($this->cart->total() + 10000) ?>" data-total="<?= $this->cart->total() +  10000 ?>" data-ongkir="10000" value="Cipicung">Salem</option> -->
 
 								</select>
 								<?= form_error('kecamatan', '<small class="form-text text-danger">', '</small>'); ?>
