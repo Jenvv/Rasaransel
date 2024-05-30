@@ -69,9 +69,10 @@
 										Tambahkan ke Keranjang
 									</button>
 								</form>
+							<?php } else { ?>
+								<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('pelanggan/clogin') ?>"><i class="bi-cart-fill me-1"></i>
+										Tambahkan ke Keranjang</a></div>
 							<?php } ?>
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('pelanggan/clogin') ?>"><i class="bi-cart-fill me-1"></i>
-									Tambahkan ke Keranjang</a></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -204,4 +205,4 @@
 				showLessBtn.style.display = 'none';
 			});
 		});
-	</script>	
+	</script>

@@ -8,8 +8,16 @@ class cChatting extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mChatting');
+		$this->getsecurity();
 	}
-
+	function getsecurity($value = '')
+	{
+		$id = $this->session->userdata('id_pelanggan');
+		if (empty($id)) {
+			$this->session->sess_destroy();
+			redirect('pelanggan/clogin');
+		}
+	}
 	public function index()
 	{
 		$data = array(

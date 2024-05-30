@@ -15,8 +15,6 @@ class cHome extends CI_Controller
 		$kategori = $this->mkategori->getKategori();
 		$data = array(
 			'menu' => $this->mKatalog->menu(),
-			// 'kategori_col1' => array_slice($kategori, 0, 4),
-			// 'kategori_col2' => array_slice($kategori,  4),
 			'kategori' => $kategori,
 		);
 		$this->load->view('Pelanggan/layouts/header');
@@ -72,9 +70,19 @@ class cHome extends CI_Controller
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
 
+	function getsecurity($value = '')
+	{
+		$id = $this->session->userdata('id_pelanggan');
+		if (empty($id)) {
+			$this->session->sess_destroy();
+			redirect('pelanggan/clogin');
+		}
+	}
 	public function cart()
 	{
+
 		// $this->protect->protect();
+		$this->getsecurity();
 		$data = array(
 			'id' => $this->input->post('id'),
 			'name' => $this->input->post('name'),
@@ -88,6 +96,8 @@ class cHome extends CI_Controller
 	}
 	public function update_cart()
 	{
+		$this->getsecurity();
+
 		$i = 1;
 		foreach ($this->cart->contents() as $items) {
 			$data = array(
@@ -101,11 +111,15 @@ class cHome extends CI_Controller
 	}
 	public function delete($rowid)
 	{
+		$this->getsecurity();
+
 		$this->cart->remove($rowid);
 		redirect('pelanggan/chome/view_cart');
 	}
 	public function view_cart()
 	{
+		$this->getsecurity();
+
 		// $this->protect->protect();
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
@@ -116,6 +130,8 @@ class cHome extends CI_Controller
 
 	public function pengiriman()
 	{
+		$this->getsecurity();
+
 		$data = array(
 			'pelanggan' => $this->mKatalog->data_pelanggan()
 		);
@@ -127,6 +143,8 @@ class cHome extends CI_Controller
 
 	public function checkout()
 	{
+		$this->getsecurity();
+
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
 		$this->form_validation->set_rules('metode', 'Metode Pembayaran', 'required');
 

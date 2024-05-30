@@ -237,8 +237,9 @@
                         <input type="hidden" name="price"
                             value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto"
-                                    href="#">Add to cart</button></div>
+                            <div class="text-center "><a class="btn3 size18 txt11 trans-0-4"
+                                style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
+                                cart</a></div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto"

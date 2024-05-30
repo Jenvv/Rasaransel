@@ -5,7 +5,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class cOngkir extends CI_Controller
 {
 
-
     private $api_key = '88037649aa27379c80ead6f61316a0a5';
 
     public function kota()

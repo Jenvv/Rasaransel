@@ -8,8 +8,16 @@ class cPesananSaya extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mPesanan_Saya');
+		$this->getsecurity();
 	}
-
+	function getsecurity($value = '')
+	{
+		$id = $this->session->userdata('id_pelanggan');
+		if (empty($id)) {
+			$this->session->sess_destroy();
+			redirect('pelanggan/clogin');
+		}
+	}
 	public function index()
 	{
 		// $this->protect->protect();

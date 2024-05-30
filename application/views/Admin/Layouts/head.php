@@ -227,6 +227,7 @@
 			background-image: -ms-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
 		}
 
+
 		/* end */
 	</style>
 
@@ -244,8 +245,8 @@
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDashboard') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cDashboard') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="compass"></i> <span class="align-middle">Dashboard</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cDashboard') ?>" style="background-color: #A92828; color:white;">
+							<i class="align-middle" style="color:white;" data-feather="compass"></i> <span class="align-middle">Dashboard</span>
 						</a>
 					</li>
 
@@ -260,51 +261,44 @@
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Pelanggan</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="users"></i> <span class="align-middle">Pelanggan</span>
 						</a>
 					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan') {
+					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan_transaksi') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProduk') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cProduk') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="upload"></i> <span class="align-middle">Produk</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cProduk') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="upload"></i> <span class="align-middle">Produk</span>
 						</a>
 					</li>
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDiskon') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="percent"></i> <span class="align-middle">Promo</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="percent"></i> <span class="align-middle">Promo</span>
 						</a>
 					</li>
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cTransaksi') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="truck"></i> <span class="align-middle">Transaksi</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksiLangsung') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cTransaksiLangsung') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Transaksi Langsung</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cTransaksi') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="truck"></i> <span class="align-middle">Transaksi</span>
 						</a>
 					</li>
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cChatting') ?>" style="background-color: #A92828;">
-							<i class="align-middle" data-feather="phone"></i> <span class="align-middle">Chatting</span>
+						<a class="sidebar-link" href="<?= base_url('Admin/cChatting') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="phone"></i> <span class="align-middle">Chatting</span>
 						</a>
 					</li>
 			</div>
