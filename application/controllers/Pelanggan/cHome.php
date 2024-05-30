@@ -176,6 +176,14 @@ class cHome extends CI_Controller
 			redirect('Pelanggan/cHome');
 		}
 	}
+
+	public function kontak()
+	{
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/kontak');
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
 }
 
 /* End of file cHome.php */

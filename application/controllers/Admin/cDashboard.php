@@ -11,8 +11,6 @@ class cDashboard extends CI_Controller
 		$this->load->model('mLaporan');
 		$this->load->model('mDashboard');
 		$this->getsecurity();
-		
-		
 	}
 	function getsecurity($value = '')
 	{
@@ -27,8 +25,11 @@ class cDashboard extends CI_Controller
 	{
 
 		// $this->protect->protect_admin();
+		$id = $this->session->userdata('id');
+		$getData = $this->mDashboard->transaksi($id);
 		$data = array(
-			'ulasan' => $this->mDashboard->ulasan_pelanggan()
+			'ulasan' => $this->mDashboard->ulasan_pelanggan($id),
+			'total' => $getData
 		);
 		$this->load->view('Admin/Layouts/head');
 		$this->load->view('Admin/dashboard/dashboard', $data);

@@ -12,6 +12,8 @@
 	<link rel="shortcut icon" href="<?= base_url('asset/adminkit/examples/') ?>img/icons/icon-48x48.png" />
 
 	<title>RASA RANSEL</title>
+
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
@@ -19,7 +21,10 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">
 	<script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+	<link href="<?= base_url('asset/admintoko/') ?>vendors/animsition/animsition.min.css" rel="stylesheet" media="all">
+
 	<link rel="stylesheet" href="/resources/demos/style.css">
+
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<style>
@@ -262,7 +267,7 @@
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;">
+						<a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>" style="background-color: #A92828;">
 							<i class="align-middle" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
 						</a>
 					</li>

@@ -120,7 +120,7 @@
 									</li>
 								<?php } ?>
 								<li>
-									<a href="https://api.whatsapp.com/send?phone=">Pelayanan Pelanggan</a>
+									<a href="<?= base_url('pelanggan/chome/kontak') ?>">Pelayanan Pelanggan</a>
 								</li>
 							</ul>
 						</nav>

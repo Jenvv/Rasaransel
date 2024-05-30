@@ -15,14 +15,16 @@
 </footer>
 </div>
 </div>
-<script src="<?= base_url('asset/adminkit/examples/') ?>js/vendor.js"></script>
+
+<script script script src="<?= base_url('asset/adminkit/examples/') ?>js/vendor.js">
+</script>
 <script src="<?= base_url('asset/adminkit/examples/') ?>js/app.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <link href="<?= base_url('asset/') ?>DataTables/datatables.min.css" rel="stylesheet">
 <script src="<?= base_url('asset/') ?>DataTables/datatables.min.js"></script>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<!-- <script src="https://ajax.googleapibs.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
@@ -54,7 +56,12 @@
 </script>
 <script>
 	<?php
-	$transaksi = $this->db->query("SELECT SUM(total_bayar) as total, tgl_transaksi FROM `pesanan` GROUP BY tgl_transaksi")->result();
+	$id_user = $this->session->userdata('id');
+	$transaksi = $this->db->query("SELECT SUM(total_bayar) as total, tgl_transaksi FROM `pesanan` WHERE `id_user` = $id_user GROUP BY tgl_transaksi")->result();
+
+	$tgl = [];
+	$total = [];
+
 	foreach ($transaksi as $key => $value) {
 		$tgl[] = $value->tgl_transaksi;
 		$total[] = $value->total;
@@ -68,14 +75,8 @@
 			datasets: [{
 				label: 'Grafik Analisis Transaksi',
 				data: <?= json_encode($total) ?>,
-				backgroundColor: 'rgba(255, 99, 132, 0.80)',
-
-
-				borderColor:
-
-					'rgba(54, 162, 235, 1)',
-
-
+				backgroundColor: 'rgba(25, 136, 255, 1)',
+				borderColor: 'rgba(54, 162, 235, 1)',
 				fill: false,
 				borderWidth: 1
 			}]
@@ -93,7 +94,8 @@
 </script>
 <script>
 	<?php
-	$produk = $this->db->query("SELECT SUM(qty) as qty, nama_produk FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk GROUP BY menu_makanan.id_produk")->result();
+	$id_user = $this->session->userdata('id');
+	$produk = $this->db->query("SELECT SUM(qty) as qty, nama_produk FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk WHERE menu_makanan.id_user = $id_user GROUP BY menu_makanan.id_produk")->result();
 	foreach ($produk as $key => $data) {
 		$menu[] = $data->nama_produk;
 		$qty[] = $data->qty;
@@ -272,7 +274,8 @@
 </script>
 <script>
 	<?php
-	$pelanggan = $this->db->query("SELECT SUM(total_bayar) as total, nama_plggn FROM `pesanan` JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pelanggan GROUP BY pelanggan.id_pelanggan")->result();
+	$id_user = $this->session->userdata('id');
+	$pelanggan = $this->db->query("SELECT SUM(total_bayar) as total, nama_plggn FROM `pesanan` JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pelanggan WHERE pesanan.id_user = $id_user GROUP BY pelanggan.id_pelanggan")->result();
 	foreach ($pelanggan as $key => $data) {
 		$nama_pelanggan[] = $data->nama_plggn;
 		$total_belanja[] = $data->total;
@@ -379,7 +382,8 @@
 </script>
 <script>
 	<?php
-	$ulasan = $this->db->query("SELECT COUNT(id_ulasan) as jml_rating, rating FROM `ulasan` GROUP BY rating")->result();
+	$id_user = $this->session->userdata('id');
+	$ulasan = $this->db->query("SELECT COUNT(id_ulasan) as jml_rating, rating FROM `ulasan` JOIN detail_pesanan ON detail_pesanan.id_detail=ulasan.id_ulasan JOIN pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan WHERE pesanan.id_user=$id_user GROUP BY rating")->result();
 	foreach ($ulasan as $key => $data) {
 		$rating[] = 'Rating ' . $data->rating;
 		$jml_rating[] = $data->jml_rating;
@@ -550,17 +554,31 @@
 	}
 </script>
 <script>
+	<?php
+	$id_user = $this->session->userdata('id');
+	$produk = $this->db->query(" SELECT SUM(qty) as qty, MONTH(pesanan.tgl_transaksi) as bulan FROM `detail_pesanan` JOIN pesanan ON pesanan.id_pesanan = detail_pesanan.id_pesanan WHERE pesanan.id_user = $id_user GROUP BY MONTH(pesanan.tgl_transaksi)")->result();
+	$qty = [];
+	$bulan = [];
+	foreach ($produk as $data) {
+		$qty[] = $data->qty;
+		$bulan[] = $data->bulan;
+	}
+
+	$bulan_nama = array_map(function ($num) {
+		return date('F', mktime(0, 0, 0, $num, 10));
+	}, $bulan);
+	?>
 	var ctx = document.getElementById("widgetChart2");
 	if (ctx) {
 		ctx.height = 130;
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+				labels: <?= json_encode($bulan_nama) ?>,
 				type: 'line',
 				datasets: [{
-					data: [1, 18, 9, 17, 34, 22],
-					label: 'Dataset',
+					data: <?= json_encode($qty) ?>,
+					label: 'Terjual',
 					backgroundColor: 'transparent',
 					borderColor: 'rgba(255,255,255,.55)',
 				}, ]
@@ -689,16 +707,37 @@
 	}
 </script>
 <script>
+	<?php
+	$id_user = $this->session->userdata('id');
+	$produk = $this->db->query("
+		SELECT SUM(total_bayar) as total, MONTH(pesanan.tgl_transaksi) as bulan 
+		FROM `detail_pesanan` 
+		JOIN pesanan ON pesanan.id_pesanan = detail_pesanan.id_pesanan  
+		WHERE pesanan.id_user = $id_user 
+		GROUP BY MONTH(pesanan.tgl_transaksi)
+	")->result();
+
+	$total = [];
+	$bulan = [];
+	foreach ($produk as $data) {
+		$total[] = $data->total;
+		$bulan[] = $data->bulan;
+	}
+
+	$bulan_nama = array_map(function ($num) {
+		return date('F', mktime(0, 0, 0, $num, 10));
+	}, $bulan);
+	?>
 	var ctx = document.getElementById("widgetChart4");
 	if (ctx) {
 		ctx.height = 115;
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+				labels: <?= json_encode($bulan_nama) ?>,
 				datasets: [{
-					label: "My First dataset",
-					data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
+					label: "Pendapatan",
+					data: <?= json_encode($total) ?>,
 					borderColor: "transparent",
 					borderWidth: "0",
 					backgroundColor: "rgba(255,255,255,.3)"

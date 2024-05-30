@@ -2,19 +2,16 @@
 <html lang="en">
 
 <head>
-	<title>RASA RANSEL</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="<?= base_url('asset/pato-master/') ?>images/icons/favicon.png" />
-	<!--===============================================================================================-->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-	<!--===============================================================================================-->
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rasa Ransel | Chat</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<!--===============================================================================================-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>fonts/themify/themify-icons.css">
 	<!--===============================================================================================-->
@@ -35,319 +32,178 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/util.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/main.css">
-	<!------ Include the above in your HEAD tag ---------->
+	<!--===============================================================================================-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<!--===============================================================================================-->
+
 </head>
 <style>
-	/* .container {
-		max-width: 110px;
-		margin: auto;
-	} */
+	body {
+		margin-top: 20px;
 
-	img {
-		max-width: 100%;
 	}
 
-	.inbox_people {
-		background: #f8f8f8 none repeat scroll 0 0;
-		float: left;
-		overflow: hidden;
-		width: 40%;
-		border-right: 1px solid #c4c4c4;
+	.chat-online {
+		color: #34ce57
 	}
 
-	.inbox_msg {
-		border: 1px solid #c4c4c4;
-		clear: both;
-		overflow: hidden;
+	.chat-offline {
+		color: #e4606d
 	}
 
-	.top_spac {
-		margin: 20px 0 0;
+	.chat-messages {
+		display: flex;
+		flex-direction: column;
+		max-height: 800px;
+		overflow-y: scroll
 	}
 
-	.recent_heading {
-		float: left;
-		width: 40%;
+	.chat-message-left,
+	.chat-message-right {
+		display: flex;
+		flex-shrink: 0
 	}
 
-	.srch_bar {
-		display: inline-block;
-		text-align: right;
-		width: 60%;
+	.chat-message-left {
+		margin-right: auto
 	}
 
-	.headind_srch {
-		padding: 10px 29px 10px 20px;
-		overflow: hidden;
-		border-bottom: 1px solid #c4c4c4;
+	.chat-message-right {
+		flex-direction: row-reverse;
+		margin-left: auto
 	}
 
-	.recent_heading h4 {
-		color: #05728f;
-		font-size: 21px;
-		margin: auto;
+	.py-3 {
+		padding-top: 1rem !important;
+		padding-bottom: 1rem !important;
 	}
 
-	.srch_bar input {
-		border: 1px solid #cdcdcd;
-		border-width: 0 0 1px 0;
-		width: 80%;
-		padding: 2px 0 4px 6px;
-		background: none;
+	.px-4 {
+		padding-right: 1.5rem !important;
+		padding-left: 1.5rem !important;
 	}
 
-	.srch_bar .input-group-addon button {
-		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-		border: medium none;
-		padding: 0;
-		color: #707070;
-		font-size: 18px;
+	.flex-grow-0 {
+		flex-grow: 0 !important;
 	}
 
-	.srch_bar .input-group-addon {
-		margin: 0 0 0 -27px;
-	}
-
-	.chat_ib h5 {
-		font-size: 15px;
-		color: #464646;
-		margin: 0 0 8px 0;
-	}
-
-	.chat_ib h5 span {
-		font-size: 13px;
-		float: right;
-	}
-
-	.chat_ib p {
-		font-size: 14px;
-		color: #989898;
-		margin: auto;
-	}
-
-	.chat_img {
-		float: left;
-		width: 11%;
-	}
-
-	.chat_ib {
-		float: left;
-		padding: 0 0 0 15px;
-		width: 88%;
-	}
-
-	.chat_people {
-		overflow: hidden;
-		clear: both;
-	}
-
-	.chat_list {
-		border-bottom: 1px solid #c4c4c4;
-		margin: 0;
-		padding: 18px 16px 10px;
-	}
-
-	.inbox_chat {
-		background-color: white;
-		height: 550px;
-		overflow-y: scroll;
-	}
-
-	.active_chat {
-		background: #ebebeb;
-	}
-
-	.incoming_msg_img {
-		display: inline-block;
-		width: 6%;
-	}
-
-	.received_msg {
-		display: inline-block;
-		padding: 0 0 0 10px;
-		vertical-align: top;
-		width: 92%;
-	}
-
-	.received_withd_msg p {
-		background: #ebebeb none repeat scroll 0 0;
-		border-radius: 3px;
-		color: #646464;
-		font-size: 14px;
-		margin: 0;
-		padding: 5px 10px 5px 12px;
-		width: 100%;
-	}
-
-	.time_date {
-		color: #747474;
-		display: block;
-		font-size: 12px;
-		margin: 8px 0 0;
-	}
-
-	.received_withd_msg {
-		width: 57%;
-	}
-
-	.mesgs {
-		background-color: white;
-		float: left;
-		padding: 30px 15px 0 25px;
-		width: 60%;
-	}
-
-	.sent_msg p {
-		background: #05728f none repeat scroll 0 0;
-		border-radius: 3px;
-		font-size: 14px;
-		margin: 0;
-		color: #fff;
-		padding: 5px 10px 5px 12px;
-		width: 100%;
-	}
-
-	.outgoing_msg {
-		overflow: hidden;
-		margin: 26px 0 26px;
-	}
-
-	.sent_msg {
-		float: right;
-		width: 46%;
-	}
-
-	.input_msg_write input {
-		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-		border: medium none;
-		color: #4c4c4c;
-		font-size: 15px;
-		min-height: 48px;
-		width: 100%;
-	}
-
-	.type_msg {
-		border-top: 1px solid #c4c4c4;
-		position: relative;
-	}
-
-	.msg_send_btn {
-		background: #05728f none repeat scroll 0 0;
-		border: medium none;
-		border-radius: 50%;
-		color: #fff;
-		cursor: pointer;
-		font-size: 17px;
-		height: 33px;
-		position: absolute;
-		right: 0;
-		top: 11px;
-		width: 33px;
-	}
-
-	.messaging {
-		padding: 0 0 40px 0;
-	}
-
-	.msg_history {
-		height: 516px;
-		overflow-y: auto;
+	.border-top {
+		border-top: 1px solid #dee2e6 !important;
 	}
 </style>
 
-<!-- <body class="animsition" style="background-color: #f4f4f4;"> -->
-
-<body style="background-color: #f4f4f4;">
-	<!-- Content page -->
-
-	<div class="bread-crumb bo5-b p-t-17 p-b-17">
+<body>
+	<div class="bread-crumb bo5-b p-b-17">
 		<div class="container">
 			<a href="<?= base_url('pelanggan/chome') ?>" class="txt27">
 				Home
 			</a>
-
-
 			<span class="txt29 m-l-10 m-r-10">/</span>
-
+			<a href="<?= base_url('pelanggan/cChatting') ?>" class="txt27">
+				Menu
+			</a>
+			<span class="txt29 m-l-10 m-r-10">/</span>
 			<span class="txt29">
-				Chatting
+				Chat
 			</span>
 		</div>
 	</div>
+	<main class="content" style="background-color:#f1f1f1">
+		<div class="container p-0 pt-3 pb-3">
+			<div class="card">
+				<div class="row g-0">
+					<div class="col-12 col-lg-5 col-xl-3 border-right">
 
-
-	<div class="container">
-		<div class="messaging mt-3">
-			<div class="inbox_msg">
-				<div class="inbox_people">
-					<div class="headind_srch">
-						<div class="recent_heading">
-							<h4>Recent</h4>
+						<div class="px-4 d-none d-md-block">
+							<div class="d-flex align-items-center">
+								<div class="flex-grow-1">
+									<input type="text" class="form-control my-3" placeholder="Search... " style="background-color: #f1f1f1;">
+								</div>
+							</div>
 						</div>
-						<div class="srch_bar">
-							<div class="stylish-input-group">
-								<input type="text" class="search-bar" placeholder="Search" style="background-color: white; border-radius:8px;" />
-								<span class="input-group-addon">
-									<button type="button">
-										<i class="fa fa-search" aria-hidden="true"></i>
-									</button>
-								</span>
+						<div id="yangAktif"></div>
+
+						<hr class="d-block d-lg-none mt-1 mb-0">
+					</div>
+					<div class="col-12 col-lg-7 col-xl-9">
+						<div class="py-2 px-4 border-bottom d-none d-lg-block">
+							<div class="d-flex align-items-center py-1">
+								<a href="" style="text-decoration: none; color: black;">
+
+									<div class="position-relative">
+										<img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+									</div>
+									<div class="flex-grow-1 pl-3">
+										<strong><?= $data->nama ?></strong>
+										<div class="text-muted small"><em>
+												Ngepur...
+											</em></div>
+								</a>
+							</div>
+							<div>
+								<button class="btn-lg px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal feather-lg">
+										<circle cx="12" cy="12" r="1"></circle>
+										<circle cx="19" cy="12" r="1"></circle>
+										<circle cx="5" cy="12" r="1"></circle>
+									</svg>
+								</button>
+
+
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="javascript:void(0);" style="color: blue;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat Profil</a>
+									<!-- <a class="dropdown-item" href="#">Block</a> -->
+									<a class="dropdown-item yakin" href="javascript:void(0);" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus Chat</a>
+								</div>
+
 							</div>
 						</div>
 					</div>
 
-					<div class="inbox_chat" id="yangAktif">
+					<div class="position-relative">
+						<div class="chat-messages p-4" id="letakpesan" style="height: 350px; font-size:14px; scrollbar-width:none;">
 
-						<!--  -->
+							<!-- <div class="chat-message-right pb-4">
+                                    <div>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                        <div class="text-muted small text-nowrap mt-2">2:33 am</div>
+                                    </div>
+                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                        <div class="font-weight-bold mb-1">You</div>
+                                        Lorem ipsum dolor sit amet, vis erat denique in, dicunt prodesset te vix.
+                                    </div>
+                                </div>
 
-					</div>
-				</div>
-				<div class="mesgs">
-					<!-- <div class="incoming_msg">
-						<div class="incoming_msg_img">
-							<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-						</div>
-						<div class="received_msg">
-							<p></p>
-							<div class="received_withd_msg">
-								<p></p>
-								<span class="time_date"></span>
-							</div>
-						</div>
-					</div> -->
-					<!--  -->
-					<!-- <div class="outgoing_msg">
-						<div class="sent_msg">
-							<p></p>
-							<span class="time_date"></span>
-						</div>
-					</div> -->
-					<div class="container">
-						<div class="dropdown">
-							<button class="hamburger" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-								<button class="dropdown-item" type="button">Action</button>
-								<button class="dropdown-item" type="button">Another action</button>
-								<button class="dropdown-item" type="button">Something else here</button>
-							</div>
+                                <div class="chat-message-left pb-4">
+                                    <div>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                        <div class="text-muted small text-nowrap mt-2">2:34 am</div>
+                                    </div>
+                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                        <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                                        Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
+
+                                    </div>
+                                </div> -->
 						</div>
 					</div>
-					<div class="msg_history" id="letakpesan">
-					</div>
-					<div class="type_msg">
-						<div class="input_msg_write">
-							<input type="text" class="write_msg pesan" placeholder="Type a message" />
-							<button class="msg_send_btn send_btn" type="button">
-								<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-							</button>
+					<div class="flex-grow-0 py-3 px-4 border-top">
+						<div class="input-group">
+							<input type="text" class="form-control pesan" placeholder="Ketik Pesan" style="background-color: #f1f1f1;">
+							<button class="btn btn-primary ml-2 send_btn"><i class="bi bi-send"></i></button>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="<?= base_url('asset/pato-master/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!--===============================================================================================-->
 	<script>
 		$(document).ready(function() {
 			$('#action_menu_btn').click(function() {
@@ -362,7 +218,7 @@
 					type: "post",
 					url: "<?= base_url() ?>Pelanggan/cChatting/loadChat",
 					data: {
-						id_user: '<?= $this->session->userdata('id') ?>',
+						id_user: '<?= $this->session->userdata('id_pelanggan') ?>',
 						id_toko: id_toko
 					},
 					dataType: "json",
@@ -376,7 +232,7 @@
 							var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 							var yyyy = today.getFullYear();
 							today = dd + '-' + mm + '-' + yyyy;
-							var times = new Date(d.waktu)
+							var times = new Date(d.time)
 							var time = times.toLocaleTimeString()
 							var tanggal = String(times.getDate()).padStart(2, '0');
 							var bulan = String(times.getMonth() + 1).padStart(2, '0');
@@ -385,29 +241,33 @@
 							var kapan = "Today"
 							var tanggal_bulan = tanggal + "-" + bulan
 							var userList = $("#letakpesan");
+							var toko = '<?= $data->nama ?>'
 							if (lengkapDB != today) {
 								kapan = tanggal_bulan
 							}
 							if (d.toko_send == 0) {
-								html += `<div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>${d.pelanggan_send}</p>
-                            <span class="time_date">${d.time}</span>
-                        </div>
-                    </div>`;
+								html += `<div class="chat-message-right pb-4">
+                                    <div>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                        <div class="text-muted small text-nowrap mt-2">${time}</div>
+                                    </div>
+                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                        <div class="font-weight-bold mb-1">You</div>
+                                        ${d.pelanggan_send}
+                                    </div>
+                                </div>`
+								'';
 							} else {
-								html += `<div class="incoming_msg">
-                        <div class="incoming_msg_img">
-                            <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-                        </div>
-                        <div class="received_msg">
-                            <p></p>
-                            <div class="received_withd_msg">
-                                <p>${d.toko_send}</p>
-                                <span class="time_date">${d.time}</span>
-                            </div>
-                        </div>
-                    </div>`;
+								html += `<div class="chat-message-left pb-4">
+                                    <div>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                        <div class="text-muted small text-nowrap mt-2">${time}</div>
+                                    </div>
+                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                        <div class="font-weight-bold mb-1">${toko}</div>
+                                       ${d.toko_send}
+                                    </div>
+                                </div>`;
 							}
 
 						});
@@ -420,69 +280,67 @@
 				pesan()
 			}, 1000);
 
-			$('.send_btn').click(function(e) {
-				var pesan = $('.pesan').val();
-				var id_pelanggan = '<?= $this->session->userdata("id") ?>'
-				var id_user = '<?= $data->id_user ?>';
-				if (pesan != "") {
-					$.ajax({
-						type: "post",
-						url: "<?= base_url() ?>pelanggan/cChatting/KirimPesan",
-						data: {
-							id_pelanggan,
-							id_user,
-							pesan
-						},
-						dataType: "json",
-						success: function(r) {
-							if (r.status) {
-								$('.search_btn').trigger('click');
-								$('.pesan').val('');
-								scrollToBottom()
-
+			$('.pesan').keypress(function(e) {
+				if (e.which == 13) { // Deteksi tombol "Enter" (kode 13)
+					e.preventDefault(); // Mencegah default action dari tombol "Enter"
+					var pesan = $('.pesan').val();
+					var id_pelanggan = '<?= $this->session->userdata("id_pelanggan") ?>';
+					var id_user = '<?= $data->id_user ?>';
+					if (pesan != "") {
+						$.ajax({
+							type: "post",
+							url: "<?= base_url() ?>pelanggan/cChatting/KirimPesan",
+							data: {
+								id_pelanggan,
+								id_user,
+								pesan
+							},
+							dataType: "json",
+							success: function(r) {
+								if (r.status) {
+									$('.search_btn').trigger('click');
+									$('.pesan').val('');
+									scrollToBottom();
+								}
 							}
+						});
+					}
+					scrollToBottom();
+					orang();
 
-						}
-					});
+					function scrollToBottom() {
+						$("#letakpesan").animate({
+							scrollTop: 200000000000000000000000000000000
+						}, "slow");
+					}
 				}
-				scrollToBottom()
-
-				function scrollToBottom() {
-					$("#letakpesan").animate({
-						scrollTop: 200000000000000000000000000000000
-					}, "slow");
-				}
-
 			});
+
 
 			function orang() {
 				$.ajax({
 					type: "post",
 					url: "<?= base_url() ?>Pelanggan/cChatting/GetAllOrang",
 					data: {
-						id_pelanggan: '<?= $this->session->userdata("id"); ?>'
+						id_pelanggan: '<?= $this->session->userdata("id_pelanggan"); ?>'
 					},
 					dataType: "json",
 					success: function(r) {
 						console.log(r);
 						var html = "";
 						$.each(r.data, function(index, d) {
-							html += `<div class="chat_list coba" data-id="${d.id_user}">
-                        <div class="chat_people">
-                            <div class="chat_img">
-                                <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
+							html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_user}">
+                            <div class="badge bg-success float-right">5</div>
+                            <div class="d-flex align-items-start">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                <div class="flex-grow-1 ml-3">
+                                    ${d.nama}
+                                    <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> Online</div>
+                                </div>
                             </div>
-                            <div class="chat_ib">
-                                <h5>${d.username}<span class="chat_date">Dec 25</span></h5>
-                                <p>
-                                    Test, which is a new approach to have all solutions
-                                    astrology under one roof.
-                                </p>
-                            </div>
-                        </div>
-                    </div>`;
+                        </div>`;
 						});
-						$('#yangAktif').append(html);
+						$('#yangAktif').html(html);
 					},
 					error: function(xhr, status, error) {
 						console.log(xhr.responseText);
@@ -490,55 +348,51 @@
 				});
 			}
 			orang();
-		});
+
+			$('body').on('click', '.coba', function() {
+				var id = $(this).data('id');
+				window.location.href = "<?= base_url() ?>pelanggan/cChatting/pesan/" + id;
+			});
 
 
-		$('body').on('click', '.coba', function() {
-			var id = $(this).data('id');
-			window.location.replace("<?= base_url() ?>pelanggan/cChatting/pesan/" + id);
-		});
-	</script>
-	<!-- <script>
-		$(document).ready(function() {
-			$.ajax({
-				url: "<?= base_url() ?>Pelanggan/cChatting/getData",
-				type: "GET",
-				dataType: "json",
-				success: function(data) {
-					console.log(data.users);
-					var userList = $("#letakpesan");
-					var html = "";
-					$.each(data.users, function(index, user) {
-						if (user.toko_send == 0) {
-							html += `<div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>${user.pelanggan_send}</p>
-                            <span class="time_date">${user.time}</span>
-                        </div>
-                    </div>`;
-						} else {
-							html += `<div class="incoming_msg">
-                        <div class="incoming_msg_img">
-                            <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
-                        </div>
-                        <div class="received_msg">
-                            <p></p>
-                            <div class="received_withd_msg">
-                                <p>${user.toko_send}</p>
-                                <span class="time_date">${user.time}</span>
-                            </div>
-                        </div>
-                    </div>`;
-						}
-					});
-					userList.append(html);
-				},
-				error: function(xhr, status, error) {
-					console.log(xhr.responseText); // Menampilkan pesan error jika terjadi
-				}
+			$('.yakin').click(function(e) {
+				e.preventDefault();
+				Swal.fire({
+					title: "Yakin Menghapus Chat?",
+					// text: "Chat Tidak Bisa dikembalikan!",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Hapus"
+				}).then((result) => {
+					if (result.isConfirmed) {
+						var id_pelanggan = '<?= $this->session->userdata("id_pelanggan") ?>';
+						var id_user = '<?= $data->id_user ?>';
+						$.ajax({
+							type: "post",
+							url: "<?= base_url() ?>pelanggan/cChatting/hapusChat",
+							data: {
+								id_pelanggan: id_pelanggan,
+								id_user: id_user,
+							},
+							dataType: "json",
+							success: function(response) {
+								console.log(response);
+							}
+						});
+						Swal.fire({
+							title: "Berhasil!",
+							text: "Chat Berhasil Terhapus.",
+							icon: "success"
+						});
+					}
+
+					orang();
+				});
 			});
 		});
-	</script> -->
+	</script>
 </body>
 
 </html>
