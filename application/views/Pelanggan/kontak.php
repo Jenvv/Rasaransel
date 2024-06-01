@@ -1,4 +1,5 @@
-<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(<?= base_url('asset/foto2.jpg') ?>);">
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
+    style="background-image: url(<?= base_url('asset/foto2.jpg') ?>);">
     <h2 class="tit6 t-center">
         Pelayanan Pelanggan
     </h2>
@@ -53,7 +54,8 @@
                     <span class="txt9">
                         Pesan
                     </span>
-                    <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Message"></textarea>
+                    <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message"
+                        placeholder="Message"></textarea>
                 </div>
             </div>
 
@@ -73,12 +75,14 @@
                     </div>
 
                     <div class="flex-col-l">
-                        <span class="txt5 p-b-10">
+                        <span class="txt5
+                            p-b-10">
                             Lokasi
                         </span>
 
                         <span class="txt23 size38">
-                            8th floor, 379 Hudson St, New York, NY 10018
+                            <a href="https://maps.app.goo.gl/GWw4vQpEJB95Ku2y7" class="txt19">Jalan Rajawali No.
+                                10 Kota Pontianak</a>
                         </span>
                     </div>
                 </div>
@@ -97,7 +101,7 @@
                         </span>
 
                         <span class="txt23 size38">
-                            (+1) 96 716 6879
+                            <a href="https://wa.me/085849686498" class="txt19">(+62)858-4968-6498</a>
                         </span>
                     </div>
                 </div>
