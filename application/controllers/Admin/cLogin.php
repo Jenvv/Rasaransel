@@ -67,7 +67,7 @@ class cLogin extends CI_Controller
 					'level_user' => $row->level_user
 				);
 				$this->session->set_userdata($sess);
-				$this->session->set_flashdata('success', '<div class="alert alert-success alert-pesan">Selamat Datang, ' . $this->session->userdata('username') . '</div>');
+				$this->session->set_flashdata('success', 'Selamat Datang, ' . '<strong>' . $this->session->userdata('nama') . '</strong>');
 				redirect('Admin/cDashboard');
 			}
 		} else {

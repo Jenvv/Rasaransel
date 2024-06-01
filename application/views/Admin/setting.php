@@ -58,6 +58,10 @@
 														<input type="text" name="nama" class="form-control" value="<?= $users->nama ?>" placeholder="Nama Toko">
 													</div>
 													<div class="form-group">
+														<label for="inputUsername">Deskripsi Toko</label>
+														<textarea class="form-control" name="deskripsi" ><?= $users->deskripsi?></textarea>
+													</div>
+													<div class="form-group">
 														<label for="inputUsername">Username</label>
 														<input type="text" name="username" class="form-control" value="<?= $users->username ?>" placeholder="Username">
 													</div>

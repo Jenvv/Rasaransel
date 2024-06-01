@@ -9,9 +9,17 @@ class cChatting extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mChatting');
-		$this->load->model('mProfil_admin','mProfil');
+		$this->load->model('mProfil_admin', 'mProfil');
+		$this->getsecurity();
 	}
-
+	function getsecurity($value = '')
+	{
+		$id = $this->session->userdata('id');
+		if (empty($id)) {
+			$this->session->sess_destroy();
+			redirect('admin/clogin');
+		}
+	}
 	public function index()
 	{
 		$data = array(
@@ -36,7 +44,6 @@ class cChatting extends CI_Controller
 		if ($data == null) {
 			die("User Tidak Ditemukan!");
 		} else {
-			// var_dump($data);die;	
 			$this->load->view('Admin/Layouts/head');
 			$this->load->view('Admin/Chatting/vDetailChatting', $data);
 			// $this->load->view('Admin/Layouts/footer');
@@ -47,8 +54,6 @@ class cChatting extends CI_Controller
 	{
 		$id_user = 	$this->input->post('id_user');
 		$id_toko = 	$this->input->post('id_toko');
-		// $id_user = 1;
-		// $id_toko = 	3;
 		$data = $this->mChatting->getPesan($id_user, $id_toko);
 
 		echo json_encode(array(
@@ -59,7 +64,6 @@ class cChatting extends CI_Controller
 	public function KirimPesan()
 	{
 		$now = date("Y-m-d H:i:s");
-		// var_dump($now);die;
 		$pesan = $this->input->post('pesan');
 		$id_pelanggan = $this->input->post('id_pelanggan');
 		$id_user = $this->input->post('id_user');
@@ -81,14 +85,11 @@ class cChatting extends CI_Controller
 	{
 		$id_pelanggan = $this->input->post('id_pelanggan');
 		$id_user = $this->input->post('id_user');
-
-		// Tambahkan operator logika 'AND' pada where
 		$this->db->where('id_pelanggan', $id_pelanggan);
 		$this->db->where('id_user', $id_user);
 
 		$this->db->delete('chatting');
-		// $this->session->set_flashdata('success', '<div class="alert alert-success alert-pesan">Data Lamaran berhasil dihapus.</div>');
-		redirect('pelanggan/cChatting');
+		redirect('Admin/cChatting');
 	}
 
 	public function detail_chatting($id)

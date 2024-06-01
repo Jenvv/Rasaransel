@@ -16,6 +16,7 @@
 </div>
 </div>
 
+
 <script script script src="<?= base_url('asset/adminkit/examples/') ?>js/vendor.js">
 </script>
 <script src="<?= base_url('asset/adminkit/examples/') ?>js/app.js"></script>
@@ -27,6 +28,26 @@
 <!-- <script src="https://ajax.googleapibs.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+	async function showAlert(event) {
+		event.preventDefault(); // Mencegah tindakan default dari tautan
+
+		const result = await new window.Swal({
+			icon: 'warning',
+			title: 'Apakah Anda Yakin?',
+			text: "Ingin Menghapus Produk Ini?",
+			showCancelButton: true,
+			confirmButtonText: 'Hapus',
+		});
+
+		if (result.value) {
+			// Arahkan pengguna ke URL penghapusan setelah konfirmasi diterima
+			window.location.href = event.target.getAttribute('href');
+
+		}
+	}
+</script>
+
 <script>
 	$('#myTable').DataTable({
 		select: true
@@ -709,13 +730,7 @@
 <script>
 	<?php
 	$id_user = $this->session->userdata('id');
-	$produk = $this->db->query("
-		SELECT SUM(total_bayar) as total, MONTH(pesanan.tgl_transaksi) as bulan 
-		FROM `detail_pesanan` 
-		JOIN pesanan ON pesanan.id_pesanan = detail_pesanan.id_pesanan  
-		WHERE pesanan.id_user = $id_user 
-		GROUP BY MONTH(pesanan.tgl_transaksi)
-	")->result();
+	$produk = $this->db->query("SELECT SUM(total_bayar) as total, MONTH(pesanan.tgl_transaksi) as bulan FROM `detail_pesanan` JOIN pesanan ON pesanan.id_pesanan = detail_pesanan.id_pesanan WHERE pesanan.id_user = $id_user AND pesanan.status_order='4' GROUP BY MONTH(pesanan.tgl_transaksi)")->result();
 
 	$total = [];
 	$bulan = [];

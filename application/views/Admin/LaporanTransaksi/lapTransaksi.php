@@ -24,7 +24,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<div class="alert-icon">
-						<i class="far fa-fw fa-bell"></i>
+						<i class="align-middle" data-feather="bell"></i>
 					</div>
 					<div class="alert-message">
 						<strong>Gagal!</strong> <?= $this->session->userdata('error') ?>

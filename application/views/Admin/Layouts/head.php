@@ -24,6 +24,7 @@
 	<link href="<?= base_url('asset/admintoko/') ?>vendors/animsition/animsition.min.css" rel="stylesheet" media="all">
 
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<link href="<?= base_url('asset/admintoko/') ?>vendors/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -235,9 +236,9 @@
 
 <body>
 	<div class="wrapper">
-		<nav id="sidebar" class="sidebar">
+		<nav id="sidebar" class="sidebar" style="background-color: #A92828;">
 			<div class="sidebar-content js-simplebar" style="background-color: #A92828;">
-				<a class="sidebar-brand" href="index.html">
+				<a class="sidebar-brand" href="<?= base_url('Admin/cDashboard') ?>">
 					<span class="align-middle">MERCHANT</span>
 				</a>
 
@@ -291,7 +292,7 @@
 												echo 'active';
 											}  ?>">
 						<a class="sidebar-link" href="<?= base_url('Admin/cTransaksi') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="truck"></i> <span class="align-middle">Transaksi</span>
+							<i class="align-middle" style="color:white;" data-feather="truck"></i> <span class="align-middle">Transaksi <span class="badge badge-warning"></span></span>
 						</a>
 					</li>
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {

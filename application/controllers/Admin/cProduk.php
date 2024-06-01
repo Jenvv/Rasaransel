@@ -8,6 +8,7 @@ class cProduk extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mProduk');
+		$this->load->model('mKategori');
 		$this->load->model('mProfil_admin', 'mProfil');
 		$this->getsecurity();
 	}
@@ -24,7 +25,8 @@ class cProduk extends CI_Controller
 	{
 		// $this->protect->protect_admin();
 		$data = array(
-			'produk' => $this->mProduk->select()
+			'produk' => $this->mProduk->select(),
+
 		);
 		$this->load->view('Admin/Layouts/head');
 		$this->load->view('Admin/produk/produk', $data);
@@ -38,9 +40,9 @@ class cProduk extends CI_Controller
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi Produk', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-
+			$data['kategori'] = $this->mKategori->getKategori();
 			$this->load->view('Admin/Layouts/head');
-			$this->load->view('Admin/produk/create');
+			$this->load->view('Admin/produk/create', $data);
 			$this->load->view('Admin/Layouts/footer');
 		} else {
 			$config['upload_path']          = './asset/foto-produk';
@@ -52,8 +54,9 @@ class cProduk extends CI_Controller
 			if (!$this->upload->do_upload('gambar')) {
 				$data = array(
 					'error' => $this->upload->display_errors()
-				);
 
+				);
+				$data['kategori'] = $this->mKategori->getKategori();
 				$this->load->view('Admin/Layouts/head');
 				$this->load->view('Admin/produk/create', $data);
 				$this->load->view('Admin/Layouts/footer');
@@ -64,6 +67,7 @@ class cProduk extends CI_Controller
 					'nama_produk' => $this->input->post('nama'),
 					'id_user' => $id_user,
 					'harga' => $this->input->post('harga'),
+					'id_kategori' => $this->input->post('kategori'),
 					'deskripsi' => $this->input->post('deskripsi'),
 					'foto' => $upload_data['file_name']
 				);
@@ -91,7 +95,7 @@ class cProduk extends CI_Controller
 
 					'error' => $this->upload->display_errors()
 				);
-
+				$data['kategori'] = $this->mKategori->getKategori();
 				$this->load->view('Admin/Layouts/head');
 				$this->load->view('Admin/produk/update', $data);
 				$this->load->view('Admin/Layouts/footer');
@@ -106,6 +110,7 @@ class cProduk extends CI_Controller
 					'nama_produk' => $this->input->post('nama'),
 					'id_user' => $id_user,
 					'harga' => $this->input->post('harga'),
+					'id_kategori' => $this->input->post('kategori'),
 					'deskripsi' => $this->input->post('deskripsi'),
 					'foto' => $upload_data['file_name']
 				);
@@ -113,10 +118,12 @@ class cProduk extends CI_Controller
 				$this->session->set_flashdata('success', 'Data Produk Berhasil Diperbaharui !!!');
 				redirect('Admin/cproduk');
 			} //tanpa ganti gambar
+			$id_user = $this->session->userdata('id');
 			$data = array(
 				'nama_produk' => $this->input->post('nama'),
 				'id_user' => $id_user,
 				'harga' => $this->input->post('harga'),
+				'id_kategori' => $this->input->post('kategori'),
 				'deskripsi' => $this->input->post('deskripsi')
 			);
 			$this->mProduk->update($id, $data);
@@ -124,6 +131,7 @@ class cProduk extends CI_Controller
 			redirect('Admin/cproduk');
 		}
 		$data = array(
+			'kategori' => $this->mKategori->getKategori(),
 			'produk' => $this->mProduk->edit($id)
 		);
 		$this->load->view('Admin/Layouts/head');
@@ -132,9 +140,12 @@ class cProduk extends CI_Controller
 	}
 	public function delete($id)
 	{
-		$this->mProduk->delete($id);
+
+		$delete_success = $this->mProduk->delete($id);
 		$this->session->set_flashdata('success', 'Data Produk Berhasil Dihapus !!!');
 		redirect('Admin/cproduk');
+		// Send JSON response
+		echo json_encode(['success' => $delete_success]);
 	}
 }
 

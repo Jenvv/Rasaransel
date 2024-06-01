@@ -1,5 +1,5 @@
 	<main class="content" style="background-color:#f1f1f1">
-		<div class="container p-0 pt-3 pb-3">
+		<div class="container p-0 pt-3">
 			<div class="card">
 				<div class="row g-0">
 					<div class="col-12 col-lg-5 col-xl-3 border-right">
@@ -90,11 +90,31 @@
 		</div>
 		</div>
 	</main>
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row text-muted">
+				<div class="col-6 text-left">
+					<p class="mb-0">
+						RASA RANSEL | <a href='' title='' target='_blank'></a>
+
+					</p>
+				</div>
+				<div class="col-6 text-right">
+
+				</div>
+			</div>
+		</div>
+	</footer>
+	</div>
+	</div>
+	<script script script src="<?= base_url('asset/adminkit/examples/') ?>js/vendor.js">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="<?= base_url('asset/adminkit/examples/') ?>js/app.js"></script>
 
 	<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
-	<script type="text/javascript" src="<?= base_url('asset/pato-master/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!-- <script type="text/javascript" src="<?= base_url('asset/pato-master/') ?>vendor/jquery/jquery-3.2.1.min.js"></script> -->
 	<!--===============================================================================================-->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<!--===============================================================================================-->
 	<script>
 		$(document).ready(function() {
@@ -273,11 +293,11 @@
 							text: "Chat Berhasil Terhapus.",
 							icon: "success",
 						});
+						setInterval(() => {
+							window.location.href = "<?= base_url() ?>Admin/cChatting/"
+						}, 1300);
+						orang();
 					}
-					setInterval(() => {
-						window.location.href = "<?= base_url() ?>admin/cChatting/"
-					}, 1300);
-					orang();
 				});
 			});
 		});

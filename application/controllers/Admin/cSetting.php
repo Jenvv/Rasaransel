@@ -72,6 +72,7 @@ class cSetting extends CI_Controller
                 $update = [
                     'username' => $this->security->xss_clean($this->input->post('username')),
                     'nama' => $this->security->xss_clean($this->input->post('nama', TRUE)),
+                    'deskripsi' => $this->security->xss_clean($this->input->post('deskripsi', TRUE)),
                     'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
                     'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
                     'alamat' => $this->security->xss_clean($this->input->post('alamat', TRUE)),

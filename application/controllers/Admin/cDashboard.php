@@ -24,7 +24,6 @@ class cDashboard extends CI_Controller
 	public function index()
 	{
 
-		// $this->protect->protect_admin();
 		$id = $this->session->userdata('id');
 		$getData = $this->mDashboard->transaksi($id);
 		$data = array(

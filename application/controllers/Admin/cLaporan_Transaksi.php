@@ -32,9 +32,9 @@ class cLaporan_Transaksi extends CI_Controller
 		$tanggal = $this->input->post('tanggal');
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');
-		$id = $this->session->userdata('id');
 
-		$data = $this->mLaporan->lap_harian_transaksi($tanggal, $bulan, $tahun, $id);
+
+		$data = $this->mLaporan->lap_harian_transaksi($tanggal, $bulan, $tahun);
 		if ($data == NULL) {
 			$this->session->set_flashdata('error', 'Laporan Pada Tanggal ' . $tanggal . '-' . $bulan . '-' . $tahun . ' Tidak Ada!');
 			redirect('admin/cLaporan_Transaksi');
@@ -62,7 +62,7 @@ class cLaporan_Transaksi extends CI_Controller
 			$pdf->SetFont('Times', '', 10);
 			$no = 1;
 
-			$data = $this->mLaporan->lap_harian_transaksi($tanggal, $bulan, $tahun, $id);
+			$data = $this->mLaporan->lap_harian_transaksi($tanggal, $bulan, $tahun);
 			foreach ($data as $key => $value) {
 				if ($value->alamat_detail == '0') {
 					$nama = 'Pesanan Langsung';
@@ -93,45 +93,51 @@ class cLaporan_Transaksi extends CI_Controller
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');
 
-		// memanggil library FPDF
-		require('asset/fpdf/fpdf.php');
-
-		// intance object dan memberikan pengaturan halaman PDF
-		$pdf = new FPDF('P', 'mm', 'A4');
-		$pdf->AddPage();
-
-		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Image('asset/logo.jpg', 3, 3, 50);
-		$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI BULANAN', 0, 0, 'C');
-		$pdf->SetLineWidth(0);
-		$pdf->Cell(10, 30, '', 0, 1);
-		$pdf->SetFont('Times', 'B', 9);
-		$pdf->Cell(30, 7, 'Id Transaksi', 1, 0, 'C');
-		$pdf->Cell(50, 7, 'Tanggal Transaksi', 1, 0, 'C');
-		$pdf->Cell(50, 7, '	Atas Nama', 1, 0, 'C');
-		$pdf->Cell(40, 7, 'Total Bayar', 1, 0, 'C');
-
-
-		$pdf->Cell(10, 7, '', 0, 1);
-		$pdf->SetFont('Times', '', 10);
-		$no = 1;
-
 
 		$data = $this->mLaporan->lap_bulanan_transaksi($bulan, $tahun);
-		foreach ($data as $key => $value) {
-			if ($value->alamat_detail == '0') {
-				$nama = 'Pesanan Langsung';
-			} else {
-				$nama = $value->nama_plggn;
+		if ($data == NULL) {
+			$this->session->set_flashdata('error', 'Laporan Pada Tanggal ' . $bulan . '-' . $tahun . ' Tidak Ada!');
+			redirect('admin/cLaporan_Transaksi');
+		} else {
+			// memanggil library FPDF
+			require('asset/fpdf/fpdf.php');
+
+			// intance object dan memberikan pengaturan halaman PDF
+			$pdf = new FPDF('P', 'mm', 'A4');
+			$pdf->AddPage();
+
+			$pdf->SetFont('Times', 'B', 14);
+			$pdf->Image('asset/logo.jpg', 3, 3, 50);
+			$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI BULANAN', 0, 0, 'C');
+			$pdf->SetLineWidth(0);
+			$pdf->Cell(10, 30, '', 0, 1);
+			$pdf->SetFont('Times', 'B', 9);
+			$pdf->Cell(30, 7, 'Id Transaksi', 1, 0, 'C');
+			$pdf->Cell(50, 7, 'Tanggal Transaksi', 1, 0, 'C');
+			$pdf->Cell(50, 7, '	Atas Nama', 1, 0, 'C');
+			$pdf->Cell(40, 7, 'Total Bayar', 1, 0, 'C');
+
+
+			$pdf->Cell(10, 7, '', 0, 1);
+			$pdf->SetFont('Times', '', 10);
+			$no = 1;
+
+
+			$data = $this->mLaporan->lap_bulanan_transaksi($bulan, $tahun);
+			foreach ($data as $key => $value) {
+				if ($value->alamat_detail == '0') {
+					$nama = 'Pesanan Langsung';
+				} else {
+					$nama = $value->nama_plggn;
+				}
+
+				$pdf->Cell(30, 6, $value->id_pesanan, 1, 0, 'C');
+				$pdf->Cell(50, 6, $value->tgl_transaksi, 1, 0);
+				$pdf->Cell(50, 6, $nama, 1, 0);
+				$pdf->Cell(40, 6, 'Rp.' . number_format($value->total_bayar), 1, 1);
 			}
-
-			$pdf->Cell(30, 6, $value->id_pesanan, 1, 0, 'C');
-			$pdf->Cell(50, 6, $value->tgl_transaksi, 1, 0);
-			$pdf->Cell(50, 6, $nama, 1, 0);
-			$pdf->Cell(40, 6, 'Rp.' . number_format($value->total_bayar), 1, 1);
+			$pdf->Output();
 		}
-		$pdf->Output();
-
 		// $data = array(
 		// 	'bulan' => $bulan,
 		// 	'tahun' => $tahun,
@@ -145,45 +151,50 @@ class cLaporan_Transaksi extends CI_Controller
 	{
 		$tahun = $this->input->post('tahun');
 
-		// memanggil library FPDF
-		require('asset/fpdf/fpdf.php');
-
-		// intance object dan memberikan pengaturan halaman PDF
-		$pdf = new FPDF('P', 'mm', 'A4');
-		$pdf->AddPage();
-
-		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Image('asset/logo.jpg', 3, 3, 50);
-		$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI TAHUNAN', 0, 0, 'C');
-		$pdf->SetLineWidth(0);
-		$pdf->Cell(10, 30, '', 0, 1);
-		$pdf->SetFont('Times', 'B', 9);
-		$pdf->Cell(30, 7, 'Id Transaksi', 1, 0, 'C');
-		$pdf->Cell(50, 7, 'Tanggal Transaksi', 1, 0, 'C');
-		$pdf->Cell(50, 7, '	Atas Nama', 1, 0, 'C');
-		$pdf->Cell(40, 7, 'Total Bayar', 1, 0, 'C');
-
-
-		$pdf->Cell(10, 7, '', 0, 1);
-		$pdf->SetFont('Times', '', 10);
-		$no = 1;
-
-
 		$data = $this->mLaporan->lap_tahunan_transaksi($tahun);
-		foreach ($data as $key => $value) {
-			if ($value->alamat_detail == '0') {
-				$nama = 'Pesanan Langsung';
-			} else {
-				$nama = $value->nama_plggn;
+		if ($data == NULL) {
+			$this->session->set_flashdata('error', 'Laporan Pada Tanggal ' . $tahun . ' Tidak Ada!');
+			redirect('admin/cLaporan_Transaksi');
+		} else {
+			// memanggil library FPDF
+			require('asset/fpdf/fpdf.php');
+
+			// intance object dan memberikan pengaturan halaman PDF
+			$pdf = new FPDF('P', 'mm', 'A4');
+			$pdf->AddPage();
+
+			$pdf->SetFont('Times', 'B', 14);
+			$pdf->Image('asset/logo.jpg', 3, 3, 50);
+			$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI TAHUNAN', 0, 0, 'C');
+			$pdf->SetLineWidth(0);
+			$pdf->Cell(10, 30, '', 0, 1);
+			$pdf->SetFont('Times', 'B', 9);
+			$pdf->Cell(30, 7, 'Id Transaksi', 1, 0, 'C');
+			$pdf->Cell(50, 7, 'Tanggal Transaksi', 1, 0, 'C');
+			$pdf->Cell(50, 7, '	Atas Nama', 1, 0, 'C');
+			$pdf->Cell(40, 7, 'Total Bayar', 1, 0, 'C');
+
+
+			$pdf->Cell(10, 7, '', 0, 1);
+			$pdf->SetFont('Times', '', 10);
+			$no = 1;
+
+
+			$data = $this->mLaporan->lap_tahunan_transaksi($tahun);
+			foreach ($data as $key => $value) {
+				if ($value->alamat_detail == '0') {
+					$nama = 'Pesanan Langsung';
+				} else {
+					$nama = $value->nama_plggn;
+				}
+
+				$pdf->Cell(30, 6, $value->id_pesanan, 1, 0, 'C');
+				$pdf->Cell(50, 6, $value->tgl_transaksi, 1, 0);
+				$pdf->Cell(50, 6, $nama, 1, 0);
+				$pdf->Cell(40, 6, 'Rp.' . number_format($value->total_bayar), 1, 1);
 			}
-
-			$pdf->Cell(30, 6, $value->id_pesanan, 1, 0, 'C');
-			$pdf->Cell(50, 6, $value->tgl_transaksi, 1, 0);
-			$pdf->Cell(50, 6, $nama, 1, 0);
-			$pdf->Cell(40, 6, 'Rp.' . number_format($value->total_bayar), 1, 1);
+			$pdf->Output();
 		}
-		$pdf->Output();
-
 		// $data = array(
 		// 	'tahun' => $tahun,
 		// 	'laporan' => $this->mLaporan->lap_tahunan_transaksi($tahun)

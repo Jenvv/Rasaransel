@@ -10,10 +10,10 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<div class="alert-icon">
-					<i class="far fa-fw fa-bell"></i>
+					<i class="align-middle" data-feather="bell"></i>
 				</div>
 				<div class="alert-message">
-					<strong>Hallo!!!</strong> <?= $this->session->userdata('success') ?>
+					<?= $this->session->userdata('success') ?>
 				</div>
 			</div>
 		<?php
@@ -190,7 +190,6 @@ foreach ($diskon as $key => $value) {
 <?php
 foreach ($diskon as $key => $value) {
 ?>
-
 	<div class="modal fade" id="hapus<?= $value->kode_promo ?>" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<form action="<?= base_url('admin/cDiskon/delete/' . $value->kode_promo) ?>" method="POST">
