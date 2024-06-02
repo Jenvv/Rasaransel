@@ -2,117 +2,131 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Web UI Kit &amp; Dashboard Template based on Bootstrap">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, web ui kit, dashboard template, admin template">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Web UI Kit &amp; Dashboard Template based on Bootstrap">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords" content="adminkit, bootstrap, web ui kit, dashboard template, admin template">
 
-	<link rel="shortcut icon" href="<?= base_url('asset/adminkit/examples/') ?>img/icons/icon-48x48.png" />
+    <link rel="shortcut icon" href="<?= base_url('asset/adminkit/examples/') ?>img/icons/icon-48x48.png" />
 
-	<title>RASA RANSEL</title>
+    <title>RASA RANSEL</title>
 
-	<link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">
-	<script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
+    <link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">
+    <script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 
 
 </head>
 
 <body>
-	<div class="wrapper">
-		<nav id="sidebar" class="sidebar" style="background-color: #A92828;">
-			<div class="sidebar-content js-simplebar" style="background-color: #A92828;">
-				<a class="sidebar-brand" href="index.html">
-					<span class="align-middle">Pemilik</span>
-				</a>
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar" style="background-color: #A92828;">
+            <div class="sidebar-content js-simplebar" style="background-color: #A92828;">
+                <a class="sidebar-brand" href="index.html">
+                    <span class="align-middle">ADMIN</span>
+                </a>
 
-				<ul class="sidebar-nav">
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cDashboard') {
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cDashboard') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cDashboard') ?>" style="background-color: #A92828;color:white;">
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cDashboard') ?>"
+                            style="background-color: #A92828;color:white;">
 
-							<i class="align-middle" style="color:white;" data-feather="compass"></i> <span class="align-middle">Dashboard</span>
-						</a>
-					</li>
+                            <i class="align-middle" style="color:white;" data-feather="compass"></i> <span
+                                class="align-middle">Dashboard</span>
+                        </a>
+                    </li>
 
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cUser') ?>" style="background-color: #A92828;color:white;">
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cUser') ?>"
+                            style="background-color: #A92828;color:white;">
 
 
-							<i class="align-middle" style="color:white;" data-feather="user"></i> <span class="align-middle">User</span>
-						</a>
-					</li>
+                            <i class="align-middle" style="color:white;" data-feather="user"></i> <span
+                                class="align-middle">User</span>
+                        </a>
+                    </li>
 
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cLaporan_Transaksi') {
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cLaporan_Transaksi') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="tag"></i> <span class="align-middle">Laporan Transaksi</span>
-						</a>
-					</li>
-					<!-- NEXK KAJO -->
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cMonitoring') {
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="tag"></i> <span
+                                class="align-middle">Laporan Transaksi</span>
+                        </a>
+                    </li>
+                    <!-- NEXK KAJO -->
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cMonitoring') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cTransaksi') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="monitor"></i> <span class="align-middle">Monitoring</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cUlasan') {
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cTransaksi') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="monitor"></i> <span
+                                class="align-middle">Monitoring</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cUlasan') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cChatting') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="message-circle"></i> <span class="align-middle">Ulasan</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cJadwal') {
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cChatting') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="message-circle"></i> <span
+                                class="align-middle">Ulasan</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cJadwal') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="calendar"></i> <span class="align-middle">Atur Jadwal</span>
-						</a>
-					</li>
-					<!-- END NEXT KAJO -->
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="calendar"></i> <span
+                                class="align-middle">Atur Jadwal</span>
+                        </a>
+                    </li>
+                    <!-- END NEXT KAJO -->
 
 
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<?= base_url('pemilik/clogin/logout') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="log-out"></i> <span class="align-middle">LogOut</span>
-						</a>
-					</li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('pemilik/clogin/logout') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="log-out"></i> <span
+                                class="align-middle">LogOut</span>
+                        </a>
+                    </li>
 
-			</div>
-		</nav>
+            </div>
+        </nav>
 
-		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle d-flex">
-					<i class="hamburger align-self-center"></i>
-				</a>
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle d-flex">
+                    <i class="hamburger align-self-center"></i>
+                </a>
 
-				<form class="form-inline d-none d-sm-inline-block">
-					<div class="input-group input-group-navbar">
-						<input type="text" class="form-control" placeholder="Search…" aria-label="Search">
-						<div class="input-group-append">
-							<button class="btn" type="button">
-								<i class="align-middle" data-feather="search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
+                <form class="form-inline d-none d-sm-inline-block">
+                    <div class="input-group input-group-navbar">
+                        <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn" type="button">
+                                <i class="align-middle" data-feather="search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav navbar-align">
 
 
-					</ul>
-				</div>
-			</nav>
+                    </ul>
+                </div>
+            </nav>
