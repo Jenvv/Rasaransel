@@ -28,9 +28,12 @@
                 <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-150">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-                        Selamat Datang
+                        Selamat Datang Di
                     </span>
 
+                    <h3 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
+                        Catering Rasa Ransel
+                    </h3>
                     <!-- <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
 						
 					</h2> -->
@@ -48,11 +51,11 @@
                 <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeIn">
-                        Catering
+
                     </span>
 
                     <h3 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
-                        Rasa Ransel
+                        Temukan dan pesan hidangan favorit Anda dengan mudah
                     </h3>
                     <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
                         <!-- Button1 -->
@@ -72,7 +75,7 @@
 
                     <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
 
-                        Rasakan Kemudahan berbelanja dengan aplikasi m-commerce Catering
+                        Nikmati kemudahan pemesanan dan kualitas layanan terbaik
                     </h2>
                     <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
                         <!-- Button1 -->
@@ -238,8 +241,9 @@
                             value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center "><a class="btn3 size18 txt11 trans-0-4"
-                                style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
-                                cart</a></div>
+                                    style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add
+                                    to
+                                    cart</a></div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto"
