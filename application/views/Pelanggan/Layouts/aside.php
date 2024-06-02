@@ -32,10 +32,23 @@
             <li class="t-center m-b-30">
                 <a href="<?= base_url('pelanggan/cchatting') ?>" class="txt19">Chat</a>
             </li>
-            <li class="t-center m-b-30">
-                <a href="<?= base_url('pelanggan/chome/kontak') ?>" style="color: #A92828;" class="txt19"><strong>Daftar Merchant</strong></a>
-            </li>
-            
+
+            <?php
+            // Load model in view
+            $CI = &get_instance();
+            $CI->load->model('mMerchant');
+            $merchants = $CI->mMerchant->select();
+            foreach ($merchants as $merchant) : ?>
+            <?php endforeach; ?>
+            <?php if ($this->session->userdata('email') == $merchant->email) { ?>
+                <li class="t-center m-b-30">
+                    <a href="<?= base_url('pelanggan/cProfil/aktivitas') ?>" style="color: #A92828;" class="txt19"><strong>Cek Status</strong></a>
+                </li>
+            <?php } else { ?>
+                <li class="t-center m-b-30">
+                    <a href="<?= base_url('pelanggan/cProfil/merchant') ?>" style="color: #A92828;" class="txt19"><strong>Daftar Merchant</strong></a>
+                </li>
+            <?php } ?>
             <li class="t-center m-b-30">
                 <a href="blog.html" class="btn btn-danger text-white txt19" style="border-radius: 20px; " href="<?= base_url('pelanggan/clogin/Logout') ?> ">Keluar</a>
             </li>

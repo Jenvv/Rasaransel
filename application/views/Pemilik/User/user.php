@@ -50,21 +50,7 @@
 											<?= form_error('no_hp', '<small class="form-text text-danger">', '</small>'); ?>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label class="form-label">Level User</label>
-											<select class="form-control" name="level">
-												<option value="">---Pilih Level User---</option>
-												<option value="1" <?php if (set_value('level') == '1') {
-																		echo 'selected';
-																	} ?>>Pemilik</option>
-												<option value="2" <?php if (set_value('level') == '2') {
-																		echo 'selected';
-																	} ?>>Admin</option>
-											</select>
-											<?= form_error('level', '<small class="form-text text-danger">', '</small>'); ?>
-										</div>
-									</div>
+
 								</div>
 							</div>
 					</div>
@@ -111,7 +97,6 @@
 									<th>No Telepon</th>
 									<th>Alamat</th>
 									<th>Status</th>
-									<th>Level User</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -128,30 +113,34 @@
 										<td><?php
 											if ($value->is_active == '1') {
 											?>
-												<span class="bage badge-success">Aktif</span>
+												<span class="badge badge-success">Aktif</span>
 											<?php
 											} else {
 											?>
-												<span class="bage badge-danger">Belum Aktif</span>
+												<span class="badge badge-danger">Belum Aktif</span>
 											<?php
 											}
 											?>
 										</td>
-										<td><?php
-											if ($value->level_user == '1') {
-											?>
+										<!-- <td><?php
+													if ($value->level_user == '1') {
+													?>
 												<span class="bage badge-danger">Pemilik</span>
 											<?php
-											} else {
+													} else {
 											?>
 												<span class="bage badge-success">Admin</span>
 											<?php
-											}
+													}
 											?>
-										</td>
+										</td> -->
+
 										<td class="table-action">
-											<button class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $value->id_user ?>"><i class="align-middle" data-feather="edit-2"></i></button>
-											<button class="btn btn-danger" data-toggle="modal" data-target="#hapus<?= $value->id_user ?>"><i class="align-middle" data-feather="trash"></i></button>
+											<div class="d-flex">
+
+												<button class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $value->id_user ?>"><i class="align-middle" data-feather="edit-2"></i></button>
+												<button class="btn btn-danger ml-2" data-toggle="modal" data-target="#hapus<?= $value->id_user ?>"><i class="align-middle" data-feather="trash"></i></button>
+											</div>
 										</td>
 									</tr>
 								<?php
@@ -203,11 +192,27 @@ foreach ($user as $key => $value) {
 							</div>
 						</div>
 						<div class="row">
-
-							<div class="col-lg-12">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-label">Nama Toko</label>
+									<input type="text" value="<?= $value->nama ?>" name="nama" class="form-control" placeholder="Masukkan Alamat User" required>
+									<?= form_error('alamat', '<small class="form-text text-danger">', '</small>'); ?>
+								</div>
+							</div>
+							<div class="col-lg-6">
 								<div class="form-group">
 									<label class="form-label">Alamat</label>
 									<input type="text" value="<?= $value->alamat ?>" name="alamat" class="form-control" placeholder="Masukkan Alamat User" required>
+									<?= form_error('alamat', '<small class="form-text text-danger">', '</small>'); ?>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="form-group">
+									<label class="form-label">deskripsi</label>
+									<!-- <input type="text" value="<?= $value->alamat ?>" name="alamat" class="form-control" placeholder="Masukkan Alamat User" required> -->
+									<textarea class="form-control" name="deskripsi" id=""><?= $value->deskripsi ?></textarea>
 									<?= form_error('alamat', '<small class="form-text text-danger">', '</small>'); ?>
 								</div>
 							</div>
@@ -218,21 +223,6 @@ foreach ($user as $key => $value) {
 									<label class="form-label">No Telepon</label>
 									<input type="number" value="<?= $value->no_hp ?>" name="no_hp" class="form-control" placeholder="Masukkan No Telepon" required>
 									<?= form_error('no_hp', '<small class="form-text text-danger">', '</small>'); ?>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label class="form-label">Level User</label>
-									<select class="form-control" name="level" required>
-										<option value="">---Pilih Level User---</option>
-										<option value="1" <?php if ($value->level_user == '1') {
-																echo 'selected';
-															} ?>>Admin</option>
-										<option value="2" <?php if ($value->level_user == '2') {
-																echo 'selected';
-															} ?>>Pemilik</option>
-									</select>
-									<?= form_error('level', '<small class="form-text text-danger">', '</small>'); ?>
 								</div>
 							</div>
 							<div class="col-lg-6">
@@ -248,6 +238,12 @@ foreach ($user as $key => $value) {
 															} ?>>Aktif</option>
 									</select>
 									<?= form_error('level', '<small class="form-text text-danger">', '</small>'); ?>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-label">Tanggal Daftar</label>
+									<h6><?= time_since($value->created_at) ?></h6>
 								</div>
 							</div>
 						</div>
@@ -275,7 +271,7 @@ foreach ($user as $key => $value) {
 			<form action="<?= base_url('admin/cuser/delete/' . $value->id_user) ?>" method="POST">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Default modal</h5>
+						<h5 class="modal-title">Hapus User</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>

@@ -8,10 +8,12 @@ class cProfil extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mProfil');
+		$this->load->model('mMerchant');
 		$this->load->library('form_validation');
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->helper("file");
+		$this->load->helper("tglindo_helper");
 		$this->getsecurity();
 	}
 
@@ -107,6 +109,7 @@ class cProfil extends CI_Controller
 		$data = [
 			'title' => 'Profil',
 			'users' => $getData->row()
+
 		];
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
@@ -173,6 +176,187 @@ class cProfil extends CI_Controller
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
 		$this->load->view('Pelanggan/auth/password', $data);
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
+	public function merchantt()
+	{
+		$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+		$getData_M = $this->mProfil->getData('user', ['id_user' => $this->session->userdata('id')]);
+		if ($this->security->xss_clean($this->input->post('submit', TRUE)) == 'submit') {
+			$p = $getData->row();
+			$this->form_validation->set_rules(
+				'no_hp',
+				'Nomor HP',
+				"required|min_length[8]|max_length[15]|regex_match[/^[0-9]+$/]",
+				array(
+					'required' => '{field} wajib diisi',
+					'min_length' => '{field} minimal 8 karakter',
+					'max_length' => '{field} maksimal 15 karakter',
+					'regex_match' => '{field} hanya boleh angka'
+				)
+			);
+			$this->form_validation->set_rules(
+				'alamat',
+				'Alamat',
+				"required|min_length[10]|max_length[255]|regex_match[/^[A-Z a-z.0-9-,']+$/]",
+				array(
+					'required' => '{field} wajib diisi',
+					'min_length' => '{field} minimal 10 karakter',
+					'max_length' => '{field} maksimal 255 karakter',
+					'regex_match' => 'Data {field} yang anda masukkan tidak valid'
+				)
+			);
+			$this->form_validation->set_rules(
+				'nama',
+				'Nama',
+				"required|min_length[5]|max_length[15]|is_unique[user.nama]",
+				array(
+					'required' => '{field} wajib diisi',
+					'min_length' => '{field} minimal 5 karakter',
+					'max_length' => '{field} maksimal 15 karakter',
+					'is_unique' => 'Nama {field} Tidak Tersedia.'
+				)
+			);
+			$this->form_validation->set_rules(
+				'syarat',
+				'Syarat & Ketentuan Rasa Ransel',
+				"required",
+				array(
+					'required' => '{field} wajib diisi',
+				)
+			);
+
+			if ($this->form_validation->run() == TRUE) {
+				$datam = [
+					'nama' => $this->security->xss_clean($this->input->post('nama', TRUE)),
+					'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
+					'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
+					'alamat' => $this->security->xss_clean($this->input->post('alamat', TRUE)),
+					'deskripsi' => $this->security->xss_clean($this->input->post('deskripsi', TRUE)),
+					'photo' => $this->security->xss_clean($this->input->post('photo', TRUE)),
+					'is_active' => 0
+				];
+
+				if ($this->db->insert('user', $datam)) {
+					$this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
+					redirect('admin/cdashboard', 'refresh');
+				} else {
+					$this->session->set_flashdata('error', 'Data Gagal diperbarui..');
+				}
+			}
+		}
+		$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+		$data = [
+			'title' => 'Profil',
+			'users' => $getData->row()
+		];
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/auth/merchant', $data);
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
+	public function syarat()
+	{
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/auth/syarat');
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
+	public function merchant()
+	{
+
+		$rules = [
+
+			[
+				'field' => 'nama',
+				'label' => 'Nama Toko',
+				'rules' => 'required|is_unique[user.nama]',
+				'errors' => [
+					'required' => 'Nama Harus Di Isi!',
+					'is_unique' => 'Nama {field} Tidak Tersedia.'
+				]
+			],
+			[
+				'field' => 'no_hp',
+				'label' => 'No Telepon',
+				'rules' => 'required|min_length[11]|max_length[13]',
+				'errors' => [
+					'required' => 'No Telepon Harus Di Isi!'
+				]
+			],
+			[
+				'field' => 'alamat',
+				'label' => 'Alamat',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Alamat Harus Di Isi!'
+				]
+			],
+			[
+				'field' => 'email',
+				'label' => 'Email',
+				'rules' => 'trim|required|min_length[5]|is_unique[user.email]',
+				'errors' => [
+					'is_unique' => 'Email sudah digunakan, silakan pilih username lain.',
+					'required' => 'Email Harus Di Isi!'
+				]
+			],
+			[
+				'field' => 'syarat',
+				'label' => 'Syarat & Ketentuan Rasa Ransel',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Mohon Konfirmasi Syarat & Ketentuan Rasa Ransel!'
+				]
+			],
+
+		];
+		$this->form_validation->set_rules($rules);
+		if ($this->form_validation->run() == FALSE) {
+			$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+			$data = [
+				'title' => 'Profil',
+				'users' => $getData->row()
+			];
+			$this->load->view('Pelanggan/layouts/header');
+			$this->load->view('Pelanggan/layouts/aside');
+			$this->load->view('Pelanggan/auth/merchant', $data);
+			$this->load->view('Pelanggan/Layouts/footer');
+		} else {
+			$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+			$d = $getData->row();
+			$data = [
+				'nama' => $this->security->xss_clean($this->input->post('nama', TRUE)),
+				'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
+				'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
+				'alamat' => $this->security->xss_clean($this->input->post('alamat', TRUE)),
+				'deskripsi' => $this->security->xss_clean($this->input->post('deskripsi', TRUE)),
+				'photo' => $this->security->xss_clean($this->input->post('photo', TRUE)),
+				'username' => $d->username,
+				'password' => $d->password,
+				'is_active' => 0
+			];
+			if ($this->db->insert('user', $data)) {
+				$this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
+				redirect('pelanggan/cprofil');
+			} else {
+				$this->session->set_flashdata('error', 'Registrasi Gagal!');
+				redirect('pelanggan/chome/');
+			}
+		}
+	}
+	public function aktivitas()
+	{
+		$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+		$aktivitas = $this->mMerchant->waktu();
+		$data = [
+			'title' => 'Profil',
+			'users' => $getData->row(),
+			'aktivitas' => $aktivitas->row(),
+		];
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/pesan', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
 }

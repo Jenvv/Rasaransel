@@ -24,8 +24,8 @@
 
 <body>
 	<div class="wrapper">
-		<nav id="sidebar" class="sidebar">
-			<div class="sidebar-content js-simplebar">
+		<nav id="sidebar" class="sidebar" style="background-color: #A92828;">
+			<div class="sidebar-content js-simplebar" style="background-color: #A92828;">
 				<a class="sidebar-brand" href="index.html">
 					<span class="align-middle">Pemilik</span>
 				</a>
@@ -34,46 +34,49 @@
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cDashboard') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cDashboard') ?>">
-							<i class="align-middle" data-feather="compass"></i> <span class="align-middle">Dashboard</span>
+						<a class="sidebar-link" href="<?= base_url('Pemilik/cDashboard') ?>" style="background-color: #A92828;color:white;">
+
+							<i class="align-middle" style="color:white;" data-feather="compass"></i> <span class="align-middle">Dashboard</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cUser') ?>">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
+						<a class="sidebar-link" href="<?= base_url('Pemilik/cUser') ?>" style="background-color: #A92828;color:white;">
+
+
+							<i class="align-middle" style="color:white;" data-feather="user"></i> <span class="align-middle">User</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cLaporan_Transaksi') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>">
-							<i class="align-middle" data-feather="tag"></i> <span class="align-middle">Laporan Transaksi</span>
+						<a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="tag"></i> <span class="align-middle">Laporan Transaksi</span>
 						</a>
 					</li>
 					<!-- NEXK KAJO -->
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cMonitoring') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cTransaksi') ?>">
-							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Monitoring</span>
+						<a class="sidebar-link" href="<?= base_url('Pemilik/cTransaksi') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="monitor"></i> <span class="align-middle">Monitoring</span>
 						</a>
 					</li>
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cUlasan') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cChatting') ?>">
-							<i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Ulasan</span>
+						<a class="sidebar-link" href="<?= base_url('Pemilik/cChatting') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="message-circle"></i> <span class="align-middle">Ulasan</span>
 						</a>
 					</li>
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cJadwal') {
 												echo 'active';
 											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>">
-							<i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Atur Jadwal</span>
+						<a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="calendar"></i> <span class="align-middle">Atur Jadwal</span>
 						</a>
 					</li>
 					<!-- END NEXT KAJO -->
@@ -81,8 +84,8 @@
 
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="<?= base_url('pemilik/clogin/logout') ?>">
-							<i class="align-middle" data-feather="log-out"></i> <span class="align-middle">LogOut</span>
+						<a class="sidebar-link" href="<?= base_url('pemilik/clogin/logout') ?>" style="background-color: #A92828;color:white;">
+							<i class="align-middle" style="color:white;" data-feather="log-out"></i> <span class="align-middle">LogOut</span>
 						</a>
 					</li>
 

@@ -113,6 +113,7 @@
 										</a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cprofil') ?>"><?= $this->session->userdata('nama_pelanggan'); ?></a>
+											<a class="dropdown-item" href="<?= base_url('pelanggan/cprofil/aktivitas') ?>">Aktivitas</a>
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item" href="<?= base_url('pelanggan/clogin/Logout') ?>">Keluar</a>
