@@ -145,7 +145,7 @@
 <!-- Kategori -->
 <div class="section-signup bg1-pattern p-t-55 p-b-50">
 
-    <div class="container d-flex justify-content-between pl-5" style="text-align: center;">
+    <div class="container  justify-content-between pl-1" style="text-align: center;">
         <div class="row">
             <?php foreach ($kategori as $key => $value) {
             ?>
