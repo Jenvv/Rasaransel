@@ -10,21 +10,6 @@
 <!-- Kategori -->
 
 <div class="container px-4 px-lg-5 mt-5">
-    <div class="container  justify-content-between pl-1" style="text-align: center;">
-        <div class="row">
-            <?php foreach ($kategori as $key => $value) {
-            ?>
-                <div class="col-6 col-md-3 mb-4">
-                    <a class=" wrap-pic-w" href="<?= base_url('pelanggan/chome/kategori/' . $value->id_kategori) ?>">
-                        <img src="<?= base_url('asset/Icon/' . $value->photo) ?>" style="width: 50px;" alt="GALLERY">
-                        <div class="txt26 trans-0-4" data-filter="*">
-                            <?= $value->kategori ?>
-                        </div>
-                    </a>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
     <?php if ($this->session->userdata('success')) {
         echo $this->session->userdata('success');
     } ?>

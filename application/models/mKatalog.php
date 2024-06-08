@@ -12,7 +12,7 @@ class mKatalog extends CI_Model
 	}
 	public function menu_kategori($id)
 	{
-		$this->db->select('*');
+		$this->db->select('nama_produk , id_user, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, tgl_diskon');
 		$this->db->from('menu_makanan');
 		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
 		$this->db->join('kategori_menu', 'menu_makanan.id_kategori = kategori_menu.id_kategori', 'left');
@@ -47,6 +47,18 @@ class mKatalog extends CI_Model
 	public function detail_transaksi($data)
 	{
 		$this->db->insert('detail_pesanan', $data);
+	}
+	public function search($fquery)
+	{
+		$this->db->group_start();
+		$this->db->like('nama_produk', $fquery, 'both');
+		$this->db->group_end();
+
+		$this->db->order_by('menu_makanan.id_produk', 'ASC');
+		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
+		$this->db->limit(100);
+
+		return $this->db->get('menu_makanan')->result();
 	}
 
 

@@ -24,13 +24,33 @@ class cHome extends CI_Controller
 	}
 	public function menu()
 	{
+		$kategori = $this->mkategori->getKategori();
 		$data = array(
 			'menu' => $this->mKatalog->menu(),
+			'kategori' => $kategori,
 		);
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
 		$this->load->view('Pelanggan/menu', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
+	}
+	public function search()
+	{
+		if (isset($_GET['fr'])) {
+			$result = $this->mKatalog->search($_GET['fr']);
+			if (count($result) > 0) {
+				$data = array(
+					'menu' => $result,
+				);
+				$this->load->view('Pelanggan/layouts/header');
+				$this->load->view('Pelanggan/layouts/aside');
+				$this->load->view('Pelanggan/search_view', $data);
+				$this->load->view('Pelanggan/Layouts/footer');
+			} else {
+				$this->session->set_flashdata('error', '<div class="alert alert-danger alert-pesan">Menu tidak Ditemukan</div>');
+				redirect('pelanggan/chome/menu');
+			}
+		}
 	}
 	public function kategori($id)
 	{

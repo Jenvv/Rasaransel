@@ -141,11 +141,6 @@
                                     </em></div>
                                 </a>
                             </div>
-
-
-
-
-
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="javascript:void(0);" style="color: blue;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat Profil</a>
                                 <!-- <a class="dropdown-item" href="#">Block</a> -->
@@ -322,12 +317,11 @@
                     },
                     dataType: "json",
                     success: function(r) {
-                        console.log(r);
                         var html = "";
                         $.each(r.data, function(index, d) {
                             html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_user}">
                             <div class="d-flex align-items-start">
-                                <img src="<?= base_url('asset/merchant/' . $data->photo) ?>" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                <img src="<?= base_url('asset/merchant/${d.photo}') ?>" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
                                 <div class="flex-grow-1 ml-3">
                                     ${d.nama}
                                     <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> Online</div>
