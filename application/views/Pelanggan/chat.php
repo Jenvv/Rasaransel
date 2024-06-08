@@ -131,12 +131,12 @@
 								<a href="" style="text-decoration: none; color: black;">
 
 									<div class="position-relative">
-										<img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+										<img src="<?= base_url('asset/merchant/' . $data->photo) ?>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
 									</div>
 									<div class="flex-grow-1 pl-3">
 										<strong><?= $data->nama ?></strong>
 										<div class="text-muted small"><em>
-												Ngepur...
+												
 											</em></div>
 								</a>
 							</div>
@@ -199,6 +199,7 @@
 		</div>
 		</div>
 	</main>
+	<!-- <div class="badge bg-success float-right">5</div> -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="<?= base_url('asset/pato-master/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
@@ -242,13 +243,14 @@
 							var tanggal_bulan = tanggal + "-" + bulan
 							var userList = $("#letakpesan");
 							var toko = '<?= $data->nama ?>'
+							var photo = '<?= $this->session->userdata('photo'); ?>'
 							if (lengkapDB != today) {
 								kapan = tanggal_bulan
 							}
 							if (d.toko_send == 0) {
 								html += `<div class="chat-message-right pb-4">
                                     <div>
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                        <img src="<?= base_url('asset/pelanggan/' . $users->photo) ?>" class="rounded-circle mr-1" alt="<?= $users->nama_plggn ?>" width="40" height="40">
                                         <div class="text-muted small text-nowrap mt-2">${time}</div>
                                     </div>
                                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
@@ -260,7 +262,7 @@
 							} else {
 								html += `<div class="chat-message-left pb-4">
                                     <div>
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                        <img src="<?= base_url('asset/merchant/' . $data->photo) ?>" class="rounded-circle mr-1" alt="<?= $data->nama ?>" width="40" height="40">
                                         <div class="text-muted small text-nowrap mt-2">${time}</div>
                                     </div>
                                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
@@ -330,9 +332,8 @@
 						var html = "";
 						$.each(r.data, function(index, d) {
 							html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_user}">
-                            <div class="badge bg-success float-right">5</div>
                             <div class="d-flex align-items-start">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                <img src="<?= base_url('asset/merchant/' . $data->photo) ?>" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
                                 <div class="flex-grow-1 ml-3">
                                     ${d.nama}
                                     <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> Online</div>

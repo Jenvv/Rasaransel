@@ -19,7 +19,14 @@
                                         <img src="<?= base_url('asset/pelanggan/' . $users->photo) ?>" width="36" height="36" class="rounded-circle mr-2" alt="Vanessa Tucker">
                                         <div class="media-body">
                                             <small class="float-right text-navy"><?= time_since($aktivitas->created_at) ?></small>
-                                            <strong><?= $users->nama_plggn ?></strong> Daftar Merchant <br> <strong><a href="#" class="badge badge-warning">Dalam Proses</a></strong><br />
+                                            <?php if ($aktivitas->is_active == 0) { ?>
+                                                <strong><?= $users->nama_plggn ?></strong> Daftar Merchant <br> <strong><a href="#" class="badge badge-warning">Dalam Proses</a></strong><br />
+                                            <?php } else { ?>
+                                                <strong><?= $users->nama_plggn ?></strong> Daftar Merchant <br> <strong><button class="badge badge-success">Telah Verifikasi</button></strong><br />
+                                                <hr>
+                                                <small class="text-navy"><a href="<?= base_url('Admin/cDashboard/') ?>">Login Sebagai Merchant</a></small>
+                                            <?php } ?>
+
                                             <!-- <small class="text-muted">Today 7:51 pm</small><br /> -->
 
                                         </div>

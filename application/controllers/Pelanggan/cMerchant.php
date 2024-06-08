@@ -8,6 +8,10 @@ class cMerchant extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mProfil');
+        $this->load->helper('tglindo_helper');
+        $this->load->model('mProduk');
+        $this->load->model('mMerchant');
+        $this->load->model('mKategori');
         $this->load->library('form_validation');
         $this->load->helper('form');
         $this->load->library('session');
@@ -114,5 +118,19 @@ class cMerchant extends CI_Controller
         $this->load->view('Pelanggan/layouts/aside');
         $this->load->view('Pelanggan/pesan', $data);
         $this->load->view('Pelanggan/Layouts/footer');
+    }
+    public function merchant_detail($id)
+    {
+
+        $getData = $this->mProfil->getData('user', ['id_user' => $id]);
+        $data = [
+            'title' => 'Profil',
+            'produk' => $this->mMerchant->select_produk($id),
+            'kategori' => $this->mKategori->getKategori(),
+            'users' => $getData->row(),
+        ];
+        $this->load->view('pelanggan/Layouts/header');
+        $this->load->view('pelanggan/merchant_detail', $data);
+        $this->load->view('pelanggan/Layouts/footer');
     }
 }

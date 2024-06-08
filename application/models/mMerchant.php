@@ -5,17 +5,24 @@ class mMerchant extends CI_Model
 {
     public function select()
     {
-        $this->db->select('email');
+        $this->db->select('username,email,is_active');
         $this->db->from('user');
         return $this->db->get()->result();
     }
     public function waktu()
     {
-        $email = $this->session->userdata('email');
-        $this->db->select('created_at,updated_at');
+        $email = $this->session->userdata('username');
+        $this->db->select('is_active,created_at,updated_at');
         $this->db->from('user');
-        $this->db->where('email', $email);
+        $this->db->where('username', $email);
         return $this->db->get();
+    }
+    public function select_produk($id)
+    {
+        $this->db->select('*');
+        $this->db->from('menu_makanan');
+        $this->db->where('id_user', $id); // Filter berdasarkan id_user
+        return $this->db->get()->result();
     }
 }
 

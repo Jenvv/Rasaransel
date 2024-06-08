@@ -10,10 +10,15 @@ class mProduk extends CI_Model
 
 	public function select()
 	{
+		// $this->db->select('*');
+		// $this->db->from('menu_makanan');
+		// return $this->db->get()->result();
 		$id_user = $this->session->userdata('id');
+
+		// Filter kueri berdasarkan id_user
 		$this->db->select('*');
 		$this->db->from('menu_makanan');
-		$this->db->where('id_user', $id_user); 
+		$this->db->where('id_user', $id_user); // Filter berdasarkan id_user
 		return $this->db->get()->result();
 	}
 

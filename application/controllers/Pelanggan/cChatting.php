@@ -8,6 +8,7 @@ class cChatting extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mChatting');
+		$this->load->model('mProfil');
 		$this->getsecurity();
 	}
 	function getsecurity($value = '')
@@ -31,8 +32,11 @@ class cChatting extends CI_Controller
 
 	public function pesan()
 	{
+		$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+		$d = $getData->row();
 		$no =  $this->uri->segment(4);
 		$data['data'] = $this->mChatting->getDataById($no);
+		$data['users'] = $d;
 		if ($data == null) {
 			die("user tidak ada nih");
 		} else {

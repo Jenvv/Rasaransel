@@ -34,24 +34,39 @@
             </li>
 
             <?php
-            // Load model in view
             $CI = &get_instance();
             $CI->load->model('mMerchant');
+            $username = $this->session->userdata('username');
             $merchants = $CI->mMerchant->select();
-            foreach ($merchants as $merchant) : ?>
-            <?php endforeach; ?>
-            <?php if ($this->session->userdata('email') == $merchant->email) { ?>
-                <li class="t-center m-b-30">
-                    <a href="<?= base_url('pelanggan/cProfil/aktivitas') ?>" style="color: #A92828;" class="txt19"><strong>Cek Status</strong></a>
-                </li>
-            <?php } else { ?>
-                <li class="t-center m-b-30">
-                    <a href="<?= base_url('pelanggan/cProfil/merchant') ?>" style="color: #A92828;" class="txt19"><strong>Daftar Merchant</strong></a>
-                </li>
-            <?php } ?>
+
+            $is_merchant = false;
+            $merchant_active = false;
+
+            foreach ($merchants as $merchant) {
+                if ($username == $merchant->username) {
+                    $is_merchant = true;
+                    $merchant_active = ($merchant->is_active == 1);
+                    break;
+                }
+            }
+            ?>
+
             <li class="t-center m-b-30">
-                <a href="blog.html" class="btn btn-danger text-white txt19" style="border-radius: 20px; " href="<?= base_url('pelanggan/clogin/Logout') ?> ">Keluar</a>
+                <?php if ($is_merchant) : ?>
+                    <?php if ($merchant_active) : ?>
+                        <a href="<?= base_url('pelanggan/cProfil/aktivitas') ?>" style="color: #A92828;" class="txt19"><strong>Login Merchant</strong></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('pelanggan/cProfil/aktivitas') ?>" style="color: #A92828;" class="txt19"><strong>Cek Status</strong></a>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <a href="<?= base_url('pelanggan/cProfil/merchant') ?>" style="color: #A92828;" class="txt19"><strong>Daftar Merchant</strong></a>
+                <?php endif; ?>
             </li>
+
+            <li class="t-center m-b-30">
+                <a class="btn btn-danger text-white txt19" style="border-radius: 20px;" href="<?= base_url('pelanggan/clogin/Logout') ?>">Keluar</a>
+            </li>
+
         <?php } ?>
 
     </ul>

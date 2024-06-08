@@ -15,8 +15,9 @@ class cDiskon extends CI_Controller
 	}
 	function getsecurity($value = '')
 	{
-		$id = $this->session->userdata('id');
-		if (empty($id)) {
+		$id_merchant = $this->session->userdata('id');
+		$is_active = $this->session->userdata('is_active');
+		if (empty($id_merchant) || $is_active != '1') {
 			$this->session->sess_destroy();
 			redirect('admin/clogin');
 		}
