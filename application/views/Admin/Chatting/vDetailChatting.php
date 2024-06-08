@@ -139,7 +139,6 @@
 						var d = r.data;
 						id_user = '<?= $data->id_pelanggan ?>';
 						$.each(r.data, function(index, d) {
-							console.log(d);
 							var today = new Date();
 							var dd = String(today.getDate()).padStart(2, '0');
 							var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -235,10 +234,9 @@
 					},
 					dataType: "json",
 					success: function(r) {
-						console.log(r);
 						var html = "";
 						$.each(r.data, function(index, d) {
-							html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_user}">
+							html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_pelanggan}">
                             <div class="badge bg-success float-right">5</div>
                             <div class="d-flex align-items-start">
                                 <img src="<?= base_url('asset/pelanggan/') ?>${d.photo}" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
@@ -260,7 +258,7 @@
 
 			$('body').on('click', '.coba', function() {
 				var id = $(this).data('id');
-				window.location.href = "<?= base_url() ?>pelanggan/cChatting/pesan/" + id;
+				window.location.href = "<?= base_url() ?>admin/cChatting/pesan/" + id;
 			});
 
 

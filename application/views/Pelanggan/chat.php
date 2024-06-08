@@ -130,8 +130,9 @@
                             <div class="d-flex align-items-center py-1">
                                 <a href="" style="text-decoration: none; color: black;">
 
-                                   <div class="position-relative">
+                                    <div class="position-relative">
                                         <img src="<?= base_url('asset/merchant/' . $data->photo) ?>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                </a>
                             </div>
                             <div class="flex-grow-1 pl-3">
                                 <strong><?= $data->nama ?></strong>
@@ -140,44 +141,17 @@
                                     </em></div>
                                 </a>
                             </div>
-                            <div>
-                                <button class="btn-lg px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal feather-lg">
-                                        <circle cx="12" cy="12" r="1"></circle>
-                                        <circle cx="19" cy="12" r="1"></circle>
-                                        <circle cx="5" cy="12" r="1"></circle>
-                                    </svg>
-                                </button>
-                            
-                                <div class="position-relative">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-                                </div>
-                                <div class="flex-grow-1 pl-3">
-                                    <strong><?= $data->nama ?></strong>
-                                    <div class="text-muted small"><em>
-                                            Mengetik...
-                                        </em></div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <button class="btn-lg px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal feather-lg">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="19" cy="12" r="1"></circle>
-                                            <circle cx="5" cy="12" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                   
 
 
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="javascript:void(0);" style="color: blue;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat Profil</a>
-                                        <!-- <a class="dropdown-item" href="#">Block</a> -->
-                                        <a class="dropdown-item yakin" href="javascript:void(0);" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus Chat</a>
-                                    </div>
 
-                                </div>
+
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="javascript:void(0);" style="color: blue;"><i class="fa fa-eye" aria-hidden="true"></i> Lihat Profil</a>
+                                <!-- <a class="dropdown-item" href="#">Block</a> -->
+                                <a class="dropdown-item yakin" href="javascript:void(0);" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus Chat</a>
                             </div>
+
                         </div>
 
                         <div class="position-relative">
