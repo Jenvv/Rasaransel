@@ -19,7 +19,7 @@
     }
 
     .icon-text {
-        display: flex;
+        /* display: flex; */
         align-items: center;
         margin-bottom: 30px;
     }
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="sec-text">
-                            <div class="row d-flex mt-3">
+                            <div class="row d-flex justify-content-around mt-3">
                                 <div class="col-md-4">
                                     <p class="icon-text">
                                         <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" stroke-width="0">
@@ -93,7 +93,7 @@
                                         </a>
                                     </p>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <p class="icon-text">
                                         <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" style="stroke:#666666;">
                                             <g>
@@ -132,80 +132,165 @@
                         <hr />
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row mt-1">
-                                            <?php foreach ($produk as $key => $value) { ?>
-                                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+
+                                <section class="py-4">
+                                    <div class="container px-4 px-lg-5 ">
+                                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                            <?php
+                                            foreach ($produk as $key => $value) {
+                                            ?>
+
+                                                <div class="col mb-5">
                                                     <div class="card h-100">
-                                                        <img src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" class="card-img-top" style="height: 150px; object-fit: cover; object-position: center center;" alt="Produk">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title"><?= $value->nama_produk ?></h5>
-                                                            <p class="card-text">Rp.<?= number_format($value->harga, 0) ?></p>
+                                                        <!-- Sale badge-->
+                                                        <?php
+                                                        if ($value->diskon != NULL) {
+                                                        ?>
+                                                            <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?= $value->nama_promo ?>
+                                                                <?= $value->diskon ?>%</div>
+                                                        <?php } ?>
+                                                        <!-- Product image-->
+                                                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+                                                            <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
                                                         </div>
-                                                        <div class="card-footer">
-                                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-<?= $value->id_produk ?>">
-                                                                Detail
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="modal-<?= $value->id_produk ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-<?= $value->id_produk ?>" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel-<?= $value->id_produk ?>">Detail Produk</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="card">
-                                                                    <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" style="width: 100%;" alt="Produk">
-                                                                    <div class="card-header">
-                                                                        <h4 class="card-title mb-0"><strong><?= $value->nama_produk ?></strong></h4>
-                                                                        <p class="card-text">Rp.<?= number_format($value->harga, 0) ?></p>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <p class="card-text"><?= $value->deskripsi ?></p>
-                                                                    </div>
+                                                        <!-- Product details-->
+                                                        <div class="card-body p-3 justify-content-around">
+                                                            <div class="text-center">
+                                                                <!-- Product name-->
+
+                                                                <h5 class="fw-bolder"><?= $value->nama_produk ?> </h5>
+                                                                <!-- Product reviews-->
+                                                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                                                    <div class="bi-star-fill"></div>
+                                                                    <div class="bi-star-fill"></div>
+                                                                    <div class="bi-star-fill"></div>
+                                                                    <div class="bi-star-fill"></div>
+                                                                    <div class="bi-star-fill"></div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <a href="<?= base_url('admin/cproduk/update/' . $value->id_produk) ?>" class="btn btn-warning">Edit Produk</a>
+                                                                <!-- Product price-->
+                                                                <h6>
+
+                                                                    <?php
+                                                                    if ($value->diskon != NULL) {
+                                                                    ?>
+                                                                        <span class="text-muted text-decoration-line-through">Rp. <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                    Rp. <?= number_format($value->harga, 0) ?>
+                                                                </h6>
                                                             </div>
                                                         </div>
+                                                        <?php
+                                                        if ($this->session->userdata('id_pelanggan') != '') {
+                                                        ?>
+                                                            <!-- Product actions-->
+                                                            <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
+                                                                <input type="hidden" name="id" value="<?= $value->id_produk ?>">
+                                                                <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
+                                                                <input type="hidden" name="qty" value="1">
+                                                                <input type="hidden" name="picture" value="<?= $value->foto ?>">
+                                                                <input type="hidden" name="user" value="<?= $value->id_user ?>">
+                                                                <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
+                                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                    <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
+                                                                </div>
+                                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                                                                </div>
+                                                            </form>
+                                                        <?php } else {
+                                                        ?>
+                                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                                                                <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
+                                                            </div>
+                                                            <?= $value->id_produk ?>
+                                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                                                            </div>
+
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
+
                                             <?php } ?>
                                         </div>
                                     </div>
-                                </div>
+                                </section>
                             </div>
 
                             <?php foreach ($kategori as $kategori_key => $kategori_value) { ?>
                                 <div class="tab-pane fade" id="pills-<?= str_replace(' ', '_', $kategori_value->kategori) ?>" role="tabpanel" aria-labelledby="pills-<?= str_replace(' ', '_', $kategori_value->kategori) ?>-tab">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <div class="row mt-1">
-                                                <?php foreach ($produk as $key => $produk_value) { ?>
+
+                                    <section class="py-4">
+                                        <div class="container px-4 px-lg-5 ">
+                                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                                <?php
+                                                foreach ($produk as $key => $produk_value) {
+                                                ?>
                                                     <?php if ($produk_value->id_kategori == $kategori_value->id_kategori) { ?>
-                                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-
+                                                        <div class="col mb-5">
                                                             <div class="card h-100">
-                                                                <img src="<?= base_url('asset/foto-produk/' . $produk_value->foto) ?>" class="card-img-top" style=" object-fit: cover; object-position: center center;" alt="Produk">
 
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title"><?= $produk_value->nama_produk ?></h5>
-                                                                    <p class="card-text">Rp.<?= number_format($produk_value->harga, 0) ?></p>
+                                                                <!-- Product image-->
+                                                                <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+                                                                    <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $produk_value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
                                                                 </div>
-                                                                <div class="card-footer">
-                                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-<?= $produk_value->id_produk ?>">
-                                                                        Detail
-                                                                    </button>
+                                                                <!-- Product details-->
+                                                                <div class="card-body p-3 justify-content-around">
+                                                                    <div class="text-center">
+                                                                        <!-- Product name-->
+                                                                        <h5 class="fw-bolder"><?= $produk_value->nama_produk ?></h5>
+                                                                        <!-- Product reviews-->
+                                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                                            <div class="bi-star-fill"></div>
+                                                                            <div class="bi-star-fill"></div>
+                                                                            <div class="bi-star-fill"></div>
+                                                                            <div class="bi-star-fill"></div>
+                                                                            <div class="bi-star-fill"></div>
+                                                                        </div>
+                                                                        <!-- Product price-->
+                                                                        <h6>
+
+                                                                            <?php
+                                                                            if ($produk_value->diskon != NULL) {
+                                                                            ?>
+                                                                                <span class="text-muted text-decoration-line-through">Rp. <?= number_format($produk_value->harga - (($produk_value->diskon / 100) * $produk_value->harga), 0)  ?></span>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                            Rp. <?= number_format($produk_value->harga, 0) ?>
+                                                                        </h6>
+                                                                    </div>
                                                                 </div>
+                                                                <?php
+                                                                if ($this->session->userdata('id_pelanggan') != '') {
+                                                                ?>
+                                                                    <!-- Product actions-->
+                                                                    <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
+                                                                        <input type="hidden" name="id" value="<?= $produk_value->id_produk ?>">
+                                                                        <input type="hidden" name="name" value="<?= $produk_value->nama_produk ?>">
+                                                                        <input type="hidden" name="qty" value="1">
+                                                                        <input type="hidden" name="picture" value="<?= $produk_value->foto ?>">
+                                                                        <input type="hidden" name="user" value="<?= $produk_value->id_user ?>">
+                                                                        <input type="hidden" name="price" value="<?= $produk_value->harga - (($produk_value->diskon / 100)  * $produk_value->harga) ?>">
+                                                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                            <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
+                                                                        </div>
+                                                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $produk_value->id_produk) ?>">Detail</a></div>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } else {
+                                                                ?>
+                                                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                                                                        <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
+                                                                    </div>
+                                                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $produk_value->id_produk) ?>">Detail</a></div>
+                                                                    </div>
+
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
 
@@ -213,8 +298,9 @@
                                                 <?php } ?>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
                                 </div>
+
                             <?php } ?>
                         </div>
                         <hr />

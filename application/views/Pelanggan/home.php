@@ -159,24 +159,8 @@
         </div>
     </div>
 </div>
-
 <section class="py-4">
-    <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
-        <!-- <button class="btn btn-dark">
-            <i class="fa fa-filter" aria-hidden="true"></i>
-        </button> -->
-        <div class="wrap-input-search size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="cari" placeholder="Cari Menu Makanan">
-            <i class="fa fa-search ab-r-m m-r-18" aria-hidden="true"></i>
-        </div>
-
-        <!-- Button3 -->
-        <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-            Cari
-        </button>
-    </form>
     <div class="container px-4 px-lg-5 mt-5">
-
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <?php
             foreach ($menu as $key => $value) {
@@ -188,8 +172,7 @@
                         <?php
                         if ($value->diskon != NULL) {
                         ?>
-                            <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                <?= $value->nama_promo ?>
+                            <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?= $value->nama_promo ?>
                                 <?= $value->diskon ?>%</div>
                         <?php } ?>
                         <!-- Product image-->
@@ -215,15 +198,11 @@
                                     <?php
                                     if ($value->diskon != NULL) {
                                     ?>
-                                        <span class="text-muted text-decoration-line-through">Rp.
-                                            <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
+                                        <span class="text-muted text-decoration-line-through">Rp. <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
                                     <?php
                                     }
                                     ?>
                                     Rp. <?= number_format($value->harga, 0) ?>
-                                </h6>
-
-                                Rp. <?= number_format($value->harga, 0) ?>
                                 </h6>
                             </div>
                         </div>
@@ -239,47 +218,22 @@
                                 <input type="hidden" name="user" value="<?= $value->id_user ?>">
                                 <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add
-                                            to
-                                            cart</a></div>
+                                    <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
                                 </div>
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
-                                    </div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
                                 </div>
-                                <?php
-                                if ($this->session->userdata('id_pelanggan') != '') {
-                                ?>
-                                    <!-- Product actions-->
-                                    <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
-                                        <input type="hidden" name="id" value="<?= $value->id_produk ?>">
-                                        <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
-                                        <input type="hidden" name="qty" value="1">
-                                        <input type="hidden" name="picture" value="<?= $value->foto ?>">
-                                        <input type="hidden" name="user" value="<?= $value->id_user ?>">
-                                        <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
-                                                    cart</a></div>
-                                        </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                <?php } else {
-                                ?>
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
-                                        <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
-                                                cart</a></div>
-                                    </div>
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
-                                        </div>
-                                    </div>
+                            </form>
+                        <?php } else {
+                        ?>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                                <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                            </div>
 
-                                <?php } ?>
-                            <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
 

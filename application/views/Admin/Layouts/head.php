@@ -15,224 +15,221 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="<?= base_url('asset/adminkit/examples/') ?>css/app.css" rel="stylesheet">
-    <link href="<?= base_url('asset/admintoko/vendors/') ?>mdi-font/css/material-design-iconic-font.min.css"
-        rel="stylesheet">
+    <link href="<?= base_url('asset/admintoko/vendors/') ?>mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('asset/trix-main/dist/') ?>trix.css">
     <script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link href="<?= base_url('asset/admintoko/') ?>vendors/animsition/animsition.min.css" rel="stylesheet" media="all">
 
     <link rel="stylesheet" href="/resources/demos/style.css">
-    <link href="<?= base_url('asset/admintoko/') ?>vendors/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet"
-        media="all">
+    <link href="<?= base_url('asset/admintoko/') ?>vendors/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-    * {
-        font-family: poppins;
-    }
+        * {
+            font-family: poppins;
+        }
 
-    .checked {
-        color: orange;
-    }
+        .checked {
+            color: orange;
+        }
     </style>
     <style>
-    .star {
-        margin: 0;
-        padding: 0;
-    }
+        .star {
+            margin: 0;
+            padding: 0;
+        }
 
-    .select {
-        cursor: pointer;
-        list-style-type: none;
-        display: inline-block;
-        color: #F0F0F0;
-        text-shadow: 0 0 1px #666666;
-        font-size: 20px;
-    }
+        .select {
+            cursor: pointer;
+            list-style-type: none;
+            display: inline-block;
+            color: #F0F0F0;
+            text-shadow: 0 0 1px #666666;
+            font-size: 20px;
+        }
 
-    .highlight,
-    .selected {
-        color: #F4B30A;
-    }
+        .highlight,
+        .selected {
+            color: #F4B30A;
+        }
 
-    .chat-online {
-        color: #34ce57
-    }
+        .chat-online {
+            color: #34ce57
+        }
 
-    .chat-offline {
-        color: #e4606d
-    }
+        .chat-offline {
+            color: #e4606d
+        }
 
-    .chat-messages {
-        display: flex;
-        flex-direction: column;
-        max-height: 800px;
-        overflow-y: scroll
-    }
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            max-height: 800px;
+            overflow-y: scroll
+        }
 
-    .chat-message-left,
-    .chat-message-right {
-        display: flex;
-        flex-shrink: 0
-    }
+        .chat-message-left,
+        .chat-message-right {
+            display: flex;
+            flex-shrink: 0
+        }
 
-    .chat-message-left {
-        margin-right: auto
-    }
+        .chat-message-left {
+            margin-right: auto
+        }
 
-    .chat-message-right {
-        flex-direction: row-reverse;
-        margin-left: auto
-    }
+        .chat-message-right {
+            flex-direction: row-reverse;
+            margin-left: auto
+        }
 
-    .py-3 {
-        padding-top: 1rem !important;
-        padding-bottom: 1rem !important;
-    }
+        .py-3 {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
 
-    .px-4 {
-        padding-right: 1.5rem !important;
-        padding-left: 1.5rem !important;
-    }
+        .px-4 {
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+        }
 
-    .flex-grow-0 {
-        flex-grow: 0 !important;
-    }
+        .flex-grow-0 {
+            flex-grow: 0 !important;
+        }
 
-    .border-top {
-        border-top: 1px solid #dee2e6 !important;
-    }
+        .border-top {
+            border-top: 1px solid #dee2e6 !important;
+        }
 
-    /* css dashboard */
-    .overview-chart {
-        height: 115px;
-        position: relative;
-    }
+        /* css dashboard */
+        .overview-chart {
+            height: 115px;
+            position: relative;
+        }
 
-    .overview-chart canvas {
-        width: 100%;
-    }
+        .overview-chart canvas {
+            width: 100%;
+        }
 
-    .overview-box .icon {
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 15px;
-    }
-
-    .overview-box .icon i {
-        font-size: 60px;
-        color: #fff;
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
         .overview-box .icon {
-            margin-right: 3px;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 15px;
         }
 
         .overview-box .icon i {
-            font-size: 30px;
+            font-size: 60px;
+            color: #fff;
         }
-    }
 
-    @media (max-width: 991px) {
-        .overview-box .icon {
-            font-size: 46px;
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .overview-box .icon {
+                margin-right: 3px;
+            }
+
+            .overview-box .icon i {
+                font-size: 30px;
+            }
         }
-    }
 
-    .overview-box .text {
-        font-weight: 300;
-        display: inline-block;
-    }
+        @media (max-width: 991px) {
+            .overview-box .icon {
+                font-size: 46px;
+            }
+        }
 
-    .overview-box .text h2 {
-        font-weight: 300;
-        color: #fff;
-        font-size: 36px;
-        line-height: 1;
-        margin-bottom: 5px;
-    }
-
-    .overview-box .text span {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.6);
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
         .overview-box .text {
+            font-weight: 300;
             display: inline-block;
         }
 
         .overview-box .text h2 {
-            font-size: 20px;
-            margin-bottom: 0;
+            font-weight: 300;
+            color: #fff;
+            font-size: 36px;
+            line-height: 1;
+            margin-bottom: 5px;
         }
 
         .overview-box .text span {
-            font-size: 14px;
-        }
-    }
-
-    @media (max-width: 991px) {
-        .overview-box .text h2 {
-            font-size: 26px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .overview-box .text span {
-            font-size: 15px;
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .overview-box .text {
+                display: inline-block;
+            }
+
+            .overview-box .text h2 {
+                font-size: 20px;
+                margin-bottom: 0;
+            }
+
+            .overview-box .text span {
+                font-size: 14px;
+            }
         }
-    }
 
-    .overview-item {
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        padding: 30px;
-        padding-bottom: 0;
-        -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
-    }
+        @media (max-width: 991px) {
+            .overview-box .text h2 {
+                font-size: 26px;
+            }
 
-    @media (min-width: 992px) and (max-width: 1519px) {
+            .overview-box .text span {
+                font-size: 15px;
+            }
+        }
+
         .overview-item {
-            padding-left: 15px;
-            padding-right: 15px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            padding: 30px;
+            padding-bottom: 0;
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
-    }
 
-    .overview-item--c1 {
-        background-image: -moz-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-        background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-        background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-    }
+        @media (min-width: 992px) and (max-width: 1519px) {
+            .overview-item {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
 
-    .overview-item--c2 {
-        background-image: -moz-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-        background-image: -webkit-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-        background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-    }
+        .overview-item--c1 {
+            background-image: -moz-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+            background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+            background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+        }
 
-    .overview-item--c3 {
-        background-image: -moz-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-        background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-        background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-    }
+        .overview-item--c2 {
+            background-image: -moz-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            background-image: -webkit-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+        }
 
-    .overview-item--c4 {
-        background-image: -moz-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-        background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-        background-image: -ms-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-    }
+        .overview-item--c3 {
+            background-image: -moz-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+            background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+            background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+        }
+
+        .overview-item--c4 {
+            background-image: -moz-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+            background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+            background-image: -ms-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+        }
 
 
-    /* end */
+        /* end */
     </style>
 
 </head>
@@ -247,77 +244,71 @@
 
                 <ul class="sidebar-nav">
                     <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDashboard') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cDashboard') ?>"
-                            style="background-color: #A92828; color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="compass"></i> <span
-                                class="align-middle">Dashboard</span>
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cDashboard') ?>" style="background-color: #A92828; color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="compass"></i> <span class="align-middle">Dashboard</span>
                         </a>
                     </li>
 
 
                     <!-- <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
-														echo 'active';
-													}  ?>">
+                                                        echo 'active';
+                                                    }  ?>">
 						<a class="sidebar-link" href="<?= base_url('Admin/cUser') ?>">
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
 						</a>
 					</li> -->
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cChatting') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="phone"></i> <span class="align-middle">Chatting</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProduk') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cProduk') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="upload"></i> <span class="align-middle">Produk</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="users"></i> <span class="align-middle">Pelanggan</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cTransaksi') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="truck"></i> <span class="align-middle">Transaksi <span class="badge badge-warning"></span></span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDiskon') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="percent"></i> <span class="align-middle">Promo</span>
-						</a>
-					</li>
-					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan_transaksi') {
-												echo 'active';
-											}  ?>">
-						<a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<?= base_url('Admin/clogin/logout') ?>" style="background-color: #A92828;color:white;">
-							<i class="align-middle" style="color:white;" data-feather="log-out"></i> <span class="align-middle">Logout</span>
-						</a>
-					</li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cChatting') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="phone"></i> <span class="align-middle">Chatting</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProduk') {
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cProduk') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="upload"></i> <span class="align-middle">Produk</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="users"></i> <span class="align-middle">Pelanggan</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cTransaksi') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="truck"></i> <span class="align-middle">Transaksi <span class="badge badge-warning"></span></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDiskon') {
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="percent"></i> <span class="align-middle">Promo</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan_transaksi') {
+                                                echo 'active';
+                                            }  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('Admin/clogin/logout') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="log-out"></i> <span class="align-middle">Logout</span>
+                        </a>
+                    </li>
+            </div>
+        </nav>
 
-
-
-
-			</div>
-		</nav>
-		
         </nav>
         <div class="main">
             <nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -345,8 +336,7 @@
                                     <span class="indicator">4</span>
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
                                 <div class="dropdown-menu-header">
                                     4 New Notifications
                                 </div>
@@ -413,8 +403,7 @@
                                     <i class="align-middle" data-feather="message-square"></i>
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="messagesDropdown">
                                 <div class="dropdown-menu-header">
                                     <div class="position-relative">
                                         4 New Messages
@@ -424,8 +413,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-5.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+                                                <img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
                                             </div>
                                             <div class="col-10 pl-2">
                                                 <div class="text-dark">Vanessa Tucker</div>
@@ -438,8 +426,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-2.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="William Harris">
+                                                <img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
                                             </div>
                                             <div class="col-10 pl-2">
                                                 <div class="text-dark">William Harris</div>
@@ -452,8 +439,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-4.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Christina Mason">
+                                                <img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
                                             </div>
                                             <div class="col-10 pl-2">
                                                 <div class="text-dark">Christina Mason</div>
@@ -466,8 +452,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-3.jpg"
-                                                    class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+                                                <img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
                                             </div>
                                             <div class="col-10 pl-2">
                                                 <div class="text-dark">Sharon Lessman</div>
@@ -484,28 +469,21 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-                                data-toggle="dropdown">
+                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
                                 <i class="align-middle" data-feather="settings"></i>
                             </a>
 
-                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-                                data-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
                                 <?php
-								$getData = $this->mProfil->getData('user', ['id_user' => $this->session->userdata('id')]);
-								$d = $getData->row();
-								?>
-                                <img src="<?= base_url('asset/merchant/' . $d->photo) ?>"
-                                    class="avatar img-fluid rounded mr-1"
-                                    alt="<?= $this->session->userdata('nama') ?>" /> <span
-                                    class="text-dark"><?= $this->session->userdata('nama') ?></span>
+                                $getData = $this->mProfil->getData('user', ['id_user' => $this->session->userdata('id')]);
+                                $d = $getData->row();
+                                ?>
+                                <img src="<?= base_url('asset/merchant/' . $d->photo) ?>" class="avatar img-fluid rounded mr-1" alt="<?= $this->session->userdata('nama') ?>" /> <span class="text-dark"><?= $this->session->userdata('nama') ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="<?= base_url('admin/cProfil') ?>"><i
-                                        class="align-middle mr-1" data-feather="user"></i> Profile</a>
+                                <a class="dropdown-item" href="<?= base_url('admin/cProfil') ?>"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('admin/cSetting') ?>"><i
-                                        class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
+                                <a class="dropdown-item" href="<?= base_url('admin/cSetting') ?>"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?= base_url('admin/clogin/logout') ?>">Log out</a>
                             </div>

@@ -83,7 +83,7 @@
 						</div>
 						<div>
 							<hr>
-							<a href="<?= base_url('') ?>" style="text-decoration: none;color:black;">
+							<a href="<?= base_url('pelanggan/cmerchant/merchant_detail/' .$user->id_user) ?>" style="text-decoration: none;color:black;">
 								<h5 class="fw-bolder m-0"><?= $user->nama ?></h5>
 							</a>
 							<h6 class="mt-2"><i class="fa fa-map-marker" aria-hidden="true"></i> <?= $user->alamat ?></h6>
