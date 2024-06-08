@@ -42,27 +42,9 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Pemilik/cUser') ?>"
-                            style="background-color: #A92828;color:white;">
 
 
-                            <i class="align-middle" style="color:white;" data-feather="user"></i> <span
-                                class="align-middle">User</span>
-                        </a>
-                    </li>
 
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cLaporan_Transaksi') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="tag"></i> <span
-                                class="align-middle">Laporan Transaksi</span>
-                        </a>
-                    </li>
                     <!-- NEXK KAJO -->
                     <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cMonitoring') {
 												echo 'active';
@@ -82,15 +64,27 @@
                                 class="align-middle">Ulasan</span>
                         </a>
                     </li>
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cJadwal') {
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
+												echo 'active';
+											}  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Pemilik/cUser') ?>"
+                            style="background-color: #A92828;color:white;">
+
+
+                            <i class="align-middle" style="color:white;" data-feather="user"></i> <span
+                                class="align-middle">User</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Pemilik' && $this->uri->segment(2) == 'cLaporan_Transaksi') {
 												echo 'active';
 											}  ?>">
                         <a class="sidebar-link" href="<?= base_url('Pemilik/cLaporan_Transaksi') ?>"
                             style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="calendar"></i> <span
-                                class="align-middle">Atur Jadwal</span>
+                            <i class="align-middle" style="color:white;" data-feather="tag"></i> <span
+                                class="align-middle">Laporan Transaksi</span>
                         </a>
                     </li>
+
                     <!-- END NEXT KAJO -->
 
 

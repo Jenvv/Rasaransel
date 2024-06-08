@@ -282,15 +282,7 @@
                                 class="align-middle">Produk</span>
                         </a>
                     </li>
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="users"></i> <span
-                                class="align-middle">Pelanggan</span>
-                        </a>
-                    </li>
+
                     <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
 												echo 'active';
 											}  ?>">
@@ -309,6 +301,15 @@
                                 class="align-middle">Promo</span>
                         </a>
                     </li>
+                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
+												echo 'active';
+											}  ?>">
+                        <a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="users"></i> <span
+                                class="align-middle">Pelanggan</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan_transaksi') {
 												echo 'active';
 											}  ?>">
@@ -318,6 +319,15 @@
                                 class="align-middle">Laporan Transaksi</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('admin/clogin/logout') ?>"
+                            style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="log-out"></i> <span
+                                class="align-middle">LogOut</span>
+                        </a>
+                    </li>
+
+
 
 
 
