@@ -220,36 +220,11 @@
                                     <?php
                                     }
                                     ?>
-<<<<<<< HEAD
                                     Rp. <?= number_format($value->harga, 0) ?>
                                 </h6>
-=======
+
                                 Rp. <?= number_format($value->harga, 0) ?>
-                            </h6>
-                        </div>
-                    </div>
-                    <?php
-                        if ($this->session->userdata('id_pelanggan') != '') {
-                        ?>
-                    <!-- Product actions-->
-                    <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
-                        <input type="hidden" name="id" value="<?= $value->id_produk ?>">
-                        <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
-                        <input type="hidden" name="qty" value="1">
-                        <input type="hidden" name="picture" value="<?= $value->foto ?>">
-                        <input type="hidden" name="user" value="<?= $value->id_user ?>">
-                        <input type="hidden" name="price"
-                            value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center "><a class="btn3 size18 txt11 trans-0-4"
-                                    style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add
-                                    to
-                                    cart</a></div>
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
->>>>>>> 4aa63faf95de749e515a69796c6993d4f3617196
+                                </h6>
                             </div>
                         </div>
                         <?php
@@ -264,26 +239,47 @@
                                 <input type="hidden" name="user" value="<?= $value->id_user ?>">
                                 <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
+                                    <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add
+                                            to
                                             cart</a></div>
                                 </div>
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
                                     </div>
                                 </div>
-                            </form>
-                        <?php } else {
-                        ?>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
-                                <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
-                                        cart</a></div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
-                                </div>
-                            </div>
+                                <?php
+                                if ($this->session->userdata('id_pelanggan') != '') {
+                                ?>
+                                    <!-- Product actions-->
+                                    <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
+                                        <input type="hidden" name="id" value="<?= $value->id_produk ?>">
+                                        <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
+                                        <input type="hidden" name="qty" value="1">
+                                        <input type="hidden" name="picture" value="<?= $value->foto ?>">
+                                        <input type="hidden" name="user" value="<?= $value->id_user ?>">
+                                        <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
+                                                    cart</a></div>
+                                        </div>
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <?php } else {
+                                ?>
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                                        <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to
+                                                cart</a></div>
+                                    </div>
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
+                                        </div>
+                                    </div>
 
-                        <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
                     </div>
                 </div>
 

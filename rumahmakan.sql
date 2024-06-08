@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Bulan Mei 2024 pada 08.59
+-- Waktu pembuatan: 08 Jun 2024 pada 15.36
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.0.28
 
@@ -58,14 +58,6 @@ CREATE TABLE `balasan_ulasan` (
   `isi_balasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data untuk tabel `balasan_ulasan`
---
-
-INSERT INTO `balasan_ulasan` (`id_balasan`, `id_user`, `id_ulasan`, `time`, `isi_balasan`) VALUES
-(2, 1, 2, '2024-05-20 20:32:46', 'Menyalaa Abangkuhh'),
-(3, 1, 3, '2024-05-29 20:11:16', 'AOK');
-
 -- --------------------------------------------------------
 
 --
@@ -86,8 +78,58 @@ CREATE TABLE `chatting` (
 --
 
 INSERT INTO `chatting` (`id_chatting`, `id_pelanggan`, `pelanggan_send`, `id_user`, `toko_send`, `time`) VALUES
-(80, 38, 'Halo', 1, '0', '2024-05-20 01:56:34'),
-(81, 38, '0', 1, 'Halo Juga', '2024-05-20 01:56:46');
+(88, 1, 't', 1, '0', '2024-06-05 07:46:07'),
+(89, 1, '0', 1, 'to', '2024-06-05 08:29:22');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `data` text NOT NULL,
+  `user_agent` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data untuk tabel `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`, `user_agent`) VALUES
+('043o993t8c9rkm19ijmjd9adsepb4sna', '::1', 1717837691, '', ''),
+('1mc7tk601mknv3u1d14jcj4rcii15l70', '::1', 1717830294, '', ''),
+('1n7i6h9v9gakivttr2rs26ehb1shkjnt', '::1', 1717830293, '', ''),
+('2udds7nkg56gtu8odmq44f52gk1si2n6', '::1', 1717834511, '', ''),
+('3b3lqeasnc9emnb1h6qlg8ldjo1rfgjj', '::1', 1717840451, '', ''),
+('4otjp8kma3kiakfvaqtmkpn3k4hok75a', '::1', 1717843690, '', ''),
+('678tol65bg496fnd8a3qaiepg1rs87mm', '::1', 1717840811, '', ''),
+('84lvfr13qj4r3snig5e9sh9qi2vcuttf', '::1', 1717839791, '', ''),
+('8kscb3eka1bg265d7qhk409shpimif13', '::1', 1717630990, '', ''),
+('95nd73ei9kidq31eqiua7aes6qaatkcp', '::1', 1717830286, '', ''),
+('blqnavcamtrlbv8eu3660pv8l389ldbm', '::1', 1717834451, '', ''),
+('cc2nikpt6tdn040dlm98gocpdqt43en9', '::1', 1717834571, '', ''),
+('e56rcs7kmf1i0viajd8nr5g8d0178gsc', '::1', 1717843510, '', ''),
+('f9cir7mk8crdhlill4mcr63rre5v3uao', '::1', 1717830289, '', ''),
+('gva729218n7767phmhpuhpjr4dg1787o', '::1', 1717843810, '', ''),
+('h9sgbsfgd20mua82477fr2r3pu383t2l', '::1', 1717843570, '', ''),
+('i6h8f204u23tq3m8v9qol9bmiu2v7a4d', '::1', 1717826324, '__ci_last_regenerate|i:1717826315;', ''),
+('ipbkah7fi3f514n4e7cbm84ucndekrvu', '::1', 1717843750, '', ''),
+('is91je6g1cei5f0hkuo1lk0hhi9c6svu', '::1', 1717839731, '', ''),
+('j9etstqn7uf437hg55amnq2v4s6u3sb4', '::1', 1717830282, '', ''),
+('lqon11h6s6piv5s3u6mvgsskevoigcvn', '::1', 1717830273, '', ''),
+('nbi0j5l5s717emv5vlk6tk7gr3ps03oe', '::1', 1717834391, '', ''),
+('oljlvrm1easgpq2i4qdk10a0r2nkn08t', '::1', 1717830334, '', ''),
+('omutuflqmbhe9g1k328lh0ucfiqlafjs', '::1', 1717843990, '', ''),
+('puj18qnn5nc9v55ancbn1li7dbe6na7f', '::1', 1717613464, '__ci_last_regenerate|i:1717613343;', ''),
+('q721jfuglsnkj50fbdr5s24271hguo9r', '::1', 1717832043, '', ''),
+('ri2c5928a9jq3ngiph20h5ajnkv62d7h', '::1', 1717843930, '', ''),
+('sm38hlvu5au5tns0ututuf5rs91k04ls', '::1', 1717843870, '', ''),
+('tgf20fub8hon55rhu1vjavel2p1drksf', '::1', 1717849150, '', ''),
+('vsfuvqj32kq6re3p4479ebl5d5628k39', '::1', 1717834631, '', '');
 
 -- --------------------------------------------------------
 
@@ -126,13 +168,6 @@ CREATE TABLE `diskon` (
   `diskon` int(11) NOT NULL,
   `tgl_diskon` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data untuk tabel `diskon`
---
-
-INSERT INTO `diskon` (`kode_promo`, `id_produk`, `nama_promo`, `diskon`, `tgl_diskon`) VALUES
-(2, 1, 'Sale in the day!', 5, '2023-10-01');
 
 -- --------------------------------------------------------
 
@@ -181,46 +216,29 @@ CREATE TABLE `menu_makanan` (
 --
 
 INSERT INTO `menu_makanan` (`id_produk`, `id_user`, `id_kategori`, `nama_produk`, `harga`, `foto`, `deskripsi`) VALUES
-(1, 1, 1, 'Ayam Bakar', '10000', 'ayambakar.jpeg', 'Ayam bakar bumbu rahasia'),
+(1, 1, 7, 'Ayam Asin', '13000', '356796938_113173205160504_2616898259869867554_n_(1)1.jpg', '<div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum nemo odit non officiis, veniam repellendus doloribus? Qui, nihil! Animi, voluptatum.&nbsp;</div>'),
 (2, 3, 1, 'AYAM Goreng', '10000', 'ayamgoreng.jpeg', 'Ayam goreng ungkep'),
 (3, 2, 1, 'CAK IKAN Mujaer', '10000', 'cakikanjaer.jpeg', 'PECAK IKAN MUJAER '),
 (4, 2, 2, 'CAPCAY', '3000', 'capcay.jpeg', 'HARGA 2 kali centong'),
-(5, 1, 2, 'ES TEH MANIS', '4000', 'estehmanis.jpeg', 'ES TEH MANIS SEGER'),
-(6, 1, 2, 'Garang Asem AYAM', '15000', 'garangasemayam.jpg', 'INI MENU BESTSELLER KAMI'),
 (7, 2, 3, 'Ikan Garang ASEM', '20000', 'ikangarangasam.jpeg', 'IKAN laut dan ikan tambak'),
 (8, 2, 3, 'IKAN GORENG MUJAER', '7000', 'ikangoreng.jpeg', 'IKAN GORENG MUJAER'),
-(9, 1, 3, 'IKAN TONGKOL BALADO', '8000', 'ikantongkolbalado.jpeg', 'Ikan tongkol balado'),
-(10, 1, 4, 'KRUPUK UDANG', '2000', 'krupukudang.jpeg', 'KRUPUK UDANG'),
-(11, 1, 4, 'MIE GORENG', '2000', 'miegoreng.jpeg', 'SATU KALI CENTONG '),
-(12, 1, 4, 'OPOR AYAM', '10000', 'oporayam.jpeg', 'HARGA INI UNTUK 1 POTONG AYAM'),
 (13, 2, 4, 'OREG TEMPE', '2000', 'oregtempe.jpeg', 'SATU KALI CENTONG '),
 (14, 2, 5, 'PAKET BOX NASI 1', '25000', 'paketnasi1.jpeg', 'MENU CHATERING untuk ACARA'),
-(15, 1, 5, 'PAKET BOX NASI 2', '20000', 'paketnasi2.jpeg', 'MENU CHATERING untuk ACARA'),
 (16, 3, 5, 'PAKET BOX NASI 3', '15000', 'paketnasi3.jpeg', 'MENU CHATERING untuk ACARA'),
-(17, 3, 5, 'PAKET BOX NASI 4', '1200', 'paketnasi4.jpeg', 'MENU CHATERING untuk ACARA'),
 (18, 3, 6, 'PEPES AYAM', '10000', 'pepesayam.jpeg', 'PEPES AYAM'),
 (19, 3, 6, 'PEPS IKAN', '10000', 'pepesikan.jpeg', 'PEPES IKAN'),
 (20, 4, 6, 'PEPS TELUR ASIN', '8000', 'pepestelurasin.jpeg', 'PEPES TELUR ASIN+C[2]C:C[1]'),
 (21, 4, 7, 'PERKEDEL KENTANG', '2500', 'perkedel.jpeg', 'PERKEDEL KENTANG'),
 (22, 4, 7, 'RENDANG DANGING', '11000', 'rendangdaging.jpeg', 'HARGA INI UNTUK 1 POTONG DAGING'),
-(23, 1, 7, 'RENDANG JENGKOL', '5000', 'rendangjengkol.jpeg', 'HARGA INI UNTUK 4 POTONG JENGKOL'),
-(24, 1, 8, 'SAMBAL GORENG KENTANG', '4000', 'sambalgorengkentang.jpeg', 'SATU SETENGAH CENTONG'),
 (25, 3, 8, 'SAMBEL TERASI', '2000', 'sambelterasi.jpeg', 'SATU KALI SENDOK MAKAN'),
 (26, 4, 8, 'SATE ATI AMPELA', '4000', 'sateatiampela.jpeg', 'HARGA UNTUK 1 TUSUK'),
 (27, 4, 8, 'SATE USUS AYAM', '3000', 'sateusus.jpeg', 'HARGA UNTUK 1 TUSUK'),
 (28, 3, 8, 'SATE KAMBING', '60000', 'satekambing.jpeg', '10 TUSUK /SETENGAH KODI'),
 (29, 2, 7, 'SAYUR ASEM', '5000', 'sayurasem.jpeg', 'UNTUK 1 PORSI'),
 (30, 2, 7, 'SAYUR DAUN SINGKON', '5000', 'sayurdaunsingkong.jpeg', 'UNTUK 1 PORSI'),
-(31, 1, 7, 'SAYUR TELUR PUYUH', '5000', 'sayurtelurpuyuh.jpg', 'UNTUK 1 PORSI'),
-(32, 1, 7, 'SEMUR ATI AMPELA', '8000', 'semurhatiampela.jpeg', 'HARGA 1 PASANG HATI AMPELA'),
 (33, 2, 6, 'SUP AYAM', '10000', 'supayam.jpeg', 'UNTUK 1 PORSI'),
 (34, 3, 6, 'TAHU GORENG', '2000', 'tahu.jpeg ', '1 TAHU GORENG'),
 (35, 2, 6, 'TEH MANIS ANGET', '4000', 'tehmanisanget.jpeg', '1 GELAS TEH MANIS ANGET'),
-(36, 1, 5, 'TELUR ASIN', '4000', 'telurasin.jpg', '1 BUTIR TELUR ASIN'),
-(37, 1, 4, 'TELUR BALADO', '5000', 'telurbalado.jpeg', '1 BUTIR TELUR BALADO'),
-(38, 1, 5, 'TELUR DADAR', '5000', 'telurdadar.jpg', '1 LEMBAR TELUR DADAR'),
-(39, 1, 5, 'TEMPE GORENG', '2000', 'tempe.jpeg ', '1 TEMPE GORENG'),
-(40, 1, 3, 'TUMIS BUNCIS', '5000', 'tumisbuncis.jpeg', '1 PORSI TUMIS BUNCIS'),
 (41, 4, 3, 'TUMIS TAHU TOGE', '5000', 'tumistahutoge.jpeg', '1 TUMIS TAHU TOGE');
 
 -- --------------------------------------------------------
@@ -239,6 +257,20 @@ CREATE TABLE `nota` (
   `no_kartu_kredit` varchar(30) NOT NULL,
   `bukti_pembayaran` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `notif`
+--
+
+CREATE TABLE `notif` (
+  `id_notif` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `notif` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -263,7 +295,7 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `username`, `password`, `email`, `no_hp`, `ttl`, `alamat`, `photo`) VALUES
-(1, 'Uci Sunengasih', 'uci54', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 'Uci_Sunengasih@gmail.com', '88706686653', 'Brebes, 21 September 2001', 'jl.raya Kluwut Barat Klompeks Ponpes Al-ikhlas, Kluwut, Kec. Bulakamba, Kab. Brebes', ''),
+(1, 'Uci Sunengasih', 'uci54', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 'Uci_Sunengasih@gmail.com', '88706686653', 'Brebes, 21 September 2001', 'jl.raya Kluwut Barat Klompeks Ponpes Al-ikhlas, Kluwut, Kec. Bulakamba, Kab. Brebes', 'foto_38.jpg'),
 (38, 'Muhammad Ridho', 'jennvo', '$2y$10$LehRW1FUOh.fV00mnpC.OOKp69h/.AxgwvM9N4763eRG/mf4Lxqfa', 'rdofx91@gmail.com', '089832321221', 'Mempawahni, 01/29/2004', 'Mempawah Timur,Jln Bardan Nad', 'foto_38.jpg'),
 (39, 'Zandi', 'jancor', '$2y$10$EA/G8/lrkCBvBel38dMxXusro1SGg2fPKS8pZuU2Tl6d92hrtmLaG', 'readdpeola@gmail.com', '08964438221', 'Mempawah, 2024-05-13', 'Mempawah Ntah dimane', 'default.png');
 
@@ -311,14 +343,6 @@ CREATE TABLE `ulasan` (
   `time_ulasan` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data untuk tabel `ulasan`
---
-
-INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`, `time_ulasan`) VALUES
-(2, 3, 'Gacorr abiezzz', 5, '2024-05-20 20:32:01'),
-(3, 4, 'Mantap bek', 4, '2024-05-24 10:02:35');
-
 -- --------------------------------------------------------
 
 --
@@ -328,22 +352,27 @@ INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`, `time_ulas
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `alamat` text NOT NULL,
   `email` varchar(100) NOT NULL,
   `no_hp` varchar(15) NOT NULL,
-  `alamat` text NOT NULL,
+  `photo` varchar(150) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
-  `photo` varchar(150) NOT NULL
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `email`, `no_hp`, `alamat`, `is_active`, `photo`) VALUES
-(1, 'Toko Petir', 'admin', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 'petirnyabangkuh@gmail.com', '089887656545', 'Kuningan', 0, 'foto_1.jpg'),
-(3, 'ALAW', 'pemilik', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 'alawmenyala@gmail.com', '089987656543', 'Kuningan, Jawa Barat', 0, 'default.jpg');
+INSERT INTO `user` (`id_user`, `nama`, `alamat`, `email`, `no_hp`, `photo`, `deskripsi`, `username`, `password`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Toko Petir', 'Kuningan', 'petirnyabangkuh@gmail.com', '089887656545', 'foto_1.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur dignissimos assumenda tempora consequuntur temporibus quia, impedit nisi nobis qui, molestias expedita?\r\n', 'admin', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 1, '2024-05-31 16:02:47', '2024-06-05 13:28:56'),
+(3, 'ALAW', 'Kuningan, Jawa Barat', 'alawmenyala@gmail.com', '089987656543', 'default.jpg', '', 'pemilik', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 0, '2024-05-31 16:02:47', '2024-05-31 16:02:47'),
+(6, 'Muhammad Ridho', 'Mempawah Timur,Jln Bardan Nad', 'rdofx91@gmail.com', '089832321221', 'foto_38.jpg', '', 'jennvo', '$2y$10$LehRW1FUOh.fV00mnpC.OOKp69h/.AxgwvM9N4763eRG/mf4Lxqfa', 1, '2024-06-01 18:37:08', '2024-06-04 16:58:21'),
+(7, 'Uci Sunengasih', 'jl.raya Kluwut Barat Klompeks Ponpes Al-ikhlas, Kluwut, Kec. Bulakamba, Kab. Brebes', 'Uci_Sunengasih@gmail.com', '88706686653', '', 'Ntah Gabisa', 'uci54', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 1, '2024-06-04 11:38:10', '2024-06-04 11:39:14');
 
 --
 -- Indexes for dumped tables
@@ -366,6 +395,13 @@ ALTER TABLE `balasan_ulasan`
 --
 ALTER TABLE `chatting`
   ADD PRIMARY KEY (`id_chatting`);
+
+--
+-- Indeks untuk tabel `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Indeks untuk tabel `detail_pesanan`
@@ -396,6 +432,12 @@ ALTER TABLE `menu_makanan`
 --
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`id_nota`);
+
+--
+-- Indeks untuk tabel `notif`
+--
+ALTER TABLE `notif`
+  ADD PRIMARY KEY (`id_notif`);
 
 --
 -- Indeks untuk tabel `pelanggan`
@@ -435,7 +477,7 @@ ALTER TABLE `balasan_ulasan`
 -- AUTO_INCREMENT untuk tabel `chatting`
 --
 ALTER TABLE `chatting`
-  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_pesanan`
@@ -459,13 +501,19 @@ ALTER TABLE `kategori_menu`
 -- AUTO_INCREMENT untuk tabel `menu_makanan`
 --
 ALTER TABLE `menu_makanan`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT untuk tabel `nota`
 --
 ALTER TABLE `nota`
   MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `notif`
+--
+ALTER TABLE `notif`
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`
@@ -489,7 +537,7 @@ ALTER TABLE `ulasan`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

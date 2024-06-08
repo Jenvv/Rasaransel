@@ -177,8 +177,6 @@ class cHome extends CI_Controller
 			);
 			$this->mKatalog->checkout($data);
 
-
-
 			$cek_id_transaksi = $this->db->query("SELECT MAX(id_pesanan) as id FROM `pesanan`")->row();
 			//menyimpan pesanan ke detail transaksi
 			foreach ($this->cart->contents() as $item) {

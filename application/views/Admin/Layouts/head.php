@@ -264,7 +264,6 @@
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
 						</a>
 					</li> -->
-<<<<<<< HEAD
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {
 												echo 'active';
 											}  ?>">
@@ -318,83 +317,7 @@
 
 			</div>
 		</nav>
-		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle d-flex">
-					<i class="hamburger align-self-center"></i>
-				</a>
-=======
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cChatting') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="phone"></i> <span
-                                class="align-middle">Chatting</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProduk') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cProduk') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="upload"></i> <span
-                                class="align-middle">Produk</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cTransaksi') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="truck"></i> <span
-                                class="align-middle">Transaksi <span class="badge badge-warning"></span></span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDiskon') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="percent"></i> <span
-                                class="align-middle">Promo</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="users"></i> <span
-                                class="align-middle">Pelanggan</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cLaporan_transaksi') {
-												echo 'active';
-											}  ?>">
-                        <a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="activity"></i> <span
-                                class="align-middle">Laporan Transaksi</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="<?= base_url('admin/clogin/logout') ?>"
-                            style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="log-out"></i> <span
-                                class="align-middle">LogOut</span>
-                        </a>
-                    </li>
->>>>>>> 4aa63faf95de749e515a69796c6993d4f3617196
-
-
-
-
-
-
-
-            </div>
+		
         </nav>
         <div class="main">
             <nav class="navbar navbar-expand navbar-light navbar-bg">
