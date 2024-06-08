@@ -28,9 +28,12 @@
                 <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-150">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-                        Selamat Datang
+                        Selamat Datang Di
                     </span>
 
+                    <h3 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
+                        Catering Rasa Ransel
+                    </h3>
                     <!-- <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
 						
 					</h2> -->
@@ -48,11 +51,11 @@
                 <div class="overlay"></div>
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeIn">
-                        Catering
+
                     </span>
 
                     <h3 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
-                        Rasa Ransel
+                        Temukan dan pesan hidangan favorit Anda dengan mudah
                     </h3>
                     <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
                         <!-- Button1 -->
@@ -72,7 +75,7 @@
 
                     <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeIn">
 
-                        Rasakan Kemudahan berbelanja dengan aplikasi m-commerce Catering
+                        Nikmati kemudahan pemesanan dan kualitas layanan terbaik
                     </h2>
                     <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
                         <!-- Button1 -->
@@ -140,7 +143,7 @@
 <!-- Kategori -->
 <div class="section-signup bg1-pattern p-t-55 p-b-50">
 
-    <div class="container d-flex justify-content-between pl-5" style="text-align: center;">
+    <div class="container  justify-content-between pl-1" style="text-align: center;">
         <div class="row">
             <?php foreach ($kategori as $key => $value) {
             ?>
@@ -217,8 +220,36 @@
                                     <?php
                                     }
                                     ?>
+<<<<<<< HEAD
                                     Rp. <?= number_format($value->harga, 0) ?>
                                 </h6>
+=======
+                                Rp. <?= number_format($value->harga, 0) ?>
+                            </h6>
+                        </div>
+                    </div>
+                    <?php
+                        if ($this->session->userdata('id_pelanggan') != '') {
+                        ?>
+                    <!-- Product actions-->
+                    <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
+                        <input type="hidden" name="id" value="<?= $value->id_produk ?>">
+                        <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
+                        <input type="hidden" name="qty" value="1">
+                        <input type="hidden" name="picture" value="<?= $value->foto ?>">
+                        <input type="hidden" name="user" value="<?= $value->id_user ?>">
+                        <input type="hidden" name="price"
+                            value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center "><a class="btn3 size18 txt11 trans-0-4"
+                                    style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add
+                                    to
+                                    cart</a></div>
+                        </div>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                    href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a>
+>>>>>>> 4aa63faf95de749e515a69796c6993d4f3617196
                             </div>
                         </div>
                         <?php
