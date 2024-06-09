@@ -87,7 +87,7 @@ class cProduk extends CI_Controller
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi Produk', 'required');
 		if ($this->form_validation->run() == TRUE) {
 			$config['upload_path']          = './asset/foto-produk';
-			$config['allowed_types']        = 'gif|jpg|png';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
 			$config['max_size']             = 500000;
 
 			$this->load->library('upload', $config);
