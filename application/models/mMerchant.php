@@ -9,6 +9,7 @@ class mMerchant extends CI_Model
         $this->db->from('user');
         return $this->db->get()->result();
     }
+
     public function waktu()
     {
         $email = $this->session->userdata('username');
@@ -22,7 +23,7 @@ class mMerchant extends CI_Model
         $this->db->select('nama_produk , id_user, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, id_kategori,tgl_diskon');
 
         $this->db->from('menu_makanan');
-        $this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left'); 
+        $this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
         $this->db->where('id_user', $id); // Filter berdasarkan id_user
         return $this->db->get()->result();
     }

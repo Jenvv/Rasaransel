@@ -240,7 +240,7 @@ class cLogin extends CI_Controller
 				'password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
 				'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
 				'ttl' => $ttl,
-				'photo' => 'default.png',
+				'photo' => 'default.jpg',
 			];
 			if ($this->db->insert('pelanggan', $data)) {
 				$this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
