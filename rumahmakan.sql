@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jun 2024 pada 15.36
+-- Waktu pembuatan: 09 Jun 2024 pada 14.00
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.0.28
 
@@ -79,7 +79,18 @@ CREATE TABLE `chatting` (
 
 INSERT INTO `chatting` (`id_chatting`, `id_pelanggan`, `pelanggan_send`, `id_user`, `toko_send`, `time`) VALUES
 (88, 1, 't', 1, '0', '2024-06-05 07:46:07'),
-(89, 1, '0', 1, 'to', '2024-06-05 08:29:22');
+(89, 1, '0', 1, 'to', '2024-06-05 08:29:22'),
+(90, 38, 't', 1, '0', '2024-06-08 12:05:41'),
+(91, 38, 'loj', 1, '0', '2024-06-08 12:06:02'),
+(92, 38, 'as', 1, '0', '2024-06-08 12:06:03'),
+(93, 38, 'dnas', 1, '0', '2024-06-08 12:06:04'),
+(94, 38, '0', 1, 'ape', '2024-06-08 12:12:40'),
+(95, 38, 'sar', 3, '0', '2024-06-08 12:13:22'),
+(96, 38, 'ler', 1, '0', '2024-06-08 12:32:12'),
+(97, 38, 'tol', 1, '0', '2024-06-08 12:32:31'),
+(98, 38, '0', 1, 'cok', '2024-06-08 12:32:34'),
+(99, 38, 'mn u', 1, '0', '2024-06-08 12:33:33'),
+(100, 38, '0', 1, 'ah mnee', '2024-06-08 12:34:16');
 
 -- --------------------------------------------------------
 
@@ -100,36 +111,14 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`, `user_agent`) VALUES
-('043o993t8c9rkm19ijmjd9adsepb4sna', '::1', 1717837691, '', ''),
-('1mc7tk601mknv3u1d14jcj4rcii15l70', '::1', 1717830294, '', ''),
-('1n7i6h9v9gakivttr2rs26ehb1shkjnt', '::1', 1717830293, '', ''),
-('2udds7nkg56gtu8odmq44f52gk1si2n6', '::1', 1717834511, '', ''),
-('3b3lqeasnc9emnb1h6qlg8ldjo1rfgjj', '::1', 1717840451, '', ''),
-('4otjp8kma3kiakfvaqtmkpn3k4hok75a', '::1', 1717843690, '', ''),
-('678tol65bg496fnd8a3qaiepg1rs87mm', '::1', 1717840811, '', ''),
-('84lvfr13qj4r3snig5e9sh9qi2vcuttf', '::1', 1717839791, '', ''),
-('8kscb3eka1bg265d7qhk409shpimif13', '::1', 1717630990, '', ''),
-('95nd73ei9kidq31eqiua7aes6qaatkcp', '::1', 1717830286, '', ''),
-('blqnavcamtrlbv8eu3660pv8l389ldbm', '::1', 1717834451, '', ''),
-('cc2nikpt6tdn040dlm98gocpdqt43en9', '::1', 1717834571, '', ''),
-('e56rcs7kmf1i0viajd8nr5g8d0178gsc', '::1', 1717843510, '', ''),
-('f9cir7mk8crdhlill4mcr63rre5v3uao', '::1', 1717830289, '', ''),
-('gva729218n7767phmhpuhpjr4dg1787o', '::1', 1717843810, '', ''),
-('h9sgbsfgd20mua82477fr2r3pu383t2l', '::1', 1717843570, '', ''),
-('i6h8f204u23tq3m8v9qol9bmiu2v7a4d', '::1', 1717826324, '__ci_last_regenerate|i:1717826315;', ''),
-('ipbkah7fi3f514n4e7cbm84ucndekrvu', '::1', 1717843750, '', ''),
-('is91je6g1cei5f0hkuo1lk0hhi9c6svu', '::1', 1717839731, '', ''),
-('j9etstqn7uf437hg55amnq2v4s6u3sb4', '::1', 1717830282, '', ''),
-('lqon11h6s6piv5s3u6mvgsskevoigcvn', '::1', 1717830273, '', ''),
-('nbi0j5l5s717emv5vlk6tk7gr3ps03oe', '::1', 1717834391, '', ''),
-('oljlvrm1easgpq2i4qdk10a0r2nkn08t', '::1', 1717830334, '', ''),
-('omutuflqmbhe9g1k328lh0ucfiqlafjs', '::1', 1717843990, '', ''),
-('puj18qnn5nc9v55ancbn1li7dbe6na7f', '::1', 1717613464, '__ci_last_regenerate|i:1717613343;', ''),
-('q721jfuglsnkj50fbdr5s24271hguo9r', '::1', 1717832043, '', ''),
-('ri2c5928a9jq3ngiph20h5ajnkv62d7h', '::1', 1717843930, '', ''),
-('sm38hlvu5au5tns0ututuf5rs91k04ls', '::1', 1717843870, '', ''),
-('tgf20fub8hon55rhu1vjavel2p1drksf', '::1', 1717849150, '', ''),
-('vsfuvqj32kq6re3p4479ebl5d5628k39', '::1', 1717834631, '', '');
+('21n174fnbkk3d0bedv54u65m65g08i69', '::1', 1717875097, '__ci_last_regenerate|i:1717867939;id|s:1:\"1\";username|s:5:\"admin\";nama|s:10:\"Toko Petir\";is_active|s:1:\"1\";is_merchant|b:1;', ''),
+('2j0oig2avlnloov7e5vfq070q2m3mqr9', '::1', 1717934193, '__ci_last_regenerate|i:1717934193;', ''),
+('6js4g4i6rsdu2htlphlp3cg7h3eegaca', '::1', 1717873777, '__ci_last_regenerate|i:1717873706;', ''),
+('ahc24fvn3k9ausnloegl1r0je8v1mc9b', '::1', 1717934191, '__ci_last_regenerate|i:1717934191;', ''),
+('ccnd9vfidunjltl0oekvo5oa5gc6cqtt', '::1', 1717934193, '__ci_last_regenerate|i:1717934193;', ''),
+('f0g5u069n7q2aocmi2h6tbakq8e8r3q0', '::1', 1717867915, '__ci_last_regenerate|i:1717866712;id|s:1:\"1\";username|s:5:\"admin\";nama|s:10:\"Toko Petir\";is_active|s:1:\"1\";is_merchant|b:1;', ''),
+('pq6h7fkhg20o6tumfboor6e0pntm0sok', '::1', 1717872058, '__ci_last_regenerate|i:1717871761;id_pelanggan|s:2:\"38\";username|s:6:\"jennvo\";nama_pelanggan|s:14:\"Muhammad Ridho\";email|s:17:\"rdofx91@gmail.com\";photo|s:11:\"foto_38.jpg\";logged_in|b:1;id|s:1:\"6\";nama|s:14:\"Muhammad Ridho\";is_active|s:1:\"1\";is_merchant|b:1;', ''),
+('r6megiemt8enek018f9pm9rvld5gf8aq', '::1', 1717934396, '__ci_last_regenerate|i:1717934348;id|s:1:\"1\";username|s:5:\"admin\";nama|s:10:\"Toko Petir\";is_active|s:1:\"1\";is_merchant|b:1;', '');
 
 -- --------------------------------------------------------
 
@@ -477,7 +466,7 @@ ALTER TABLE `balasan_ulasan`
 -- AUTO_INCREMENT untuk tabel `chatting`
 --
 ALTER TABLE `chatting`
-  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_pesanan`
