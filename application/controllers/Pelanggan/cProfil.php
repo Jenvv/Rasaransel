@@ -353,6 +353,7 @@ class cProfil extends CI_Controller
 			'title' => 'Profil',
 			'users' => $getData->row(),
 			'aktivitas' => $aktivitas->row(),
+			'merchant' => $this->mMerchant->select(),
 		];
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
