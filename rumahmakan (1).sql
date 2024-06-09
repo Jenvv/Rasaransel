@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2024 pada 14.00
+-- Waktu pembuatan: 09 Jun 2024 pada 14.44
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.0.28
 
@@ -112,13 +112,15 @@ CREATE TABLE `ci_sessions` (
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`, `user_agent`) VALUES
 ('21n174fnbkk3d0bedv54u65m65g08i69', '::1', 1717875097, '__ci_last_regenerate|i:1717867939;id|s:1:\"1\";username|s:5:\"admin\";nama|s:10:\"Toko Petir\";is_active|s:1:\"1\";is_merchant|b:1;', ''),
+('2ekr7c3h4vctibd2s4f33pfdq93aqnms', '::1', 1717936375, '__ci_last_regenerate|i:1717936219;', ''),
 ('2j0oig2avlnloov7e5vfq070q2m3mqr9', '::1', 1717934193, '__ci_last_regenerate|i:1717934193;', ''),
 ('6js4g4i6rsdu2htlphlp3cg7h3eegaca', '::1', 1717873777, '__ci_last_regenerate|i:1717873706;', ''),
 ('ahc24fvn3k9ausnloegl1r0je8v1mc9b', '::1', 1717934191, '__ci_last_regenerate|i:1717934191;', ''),
 ('ccnd9vfidunjltl0oekvo5oa5gc6cqtt', '::1', 1717934193, '__ci_last_regenerate|i:1717934193;', ''),
 ('f0g5u069n7q2aocmi2h6tbakq8e8r3q0', '::1', 1717867915, '__ci_last_regenerate|i:1717866712;id|s:1:\"1\";username|s:5:\"admin\";nama|s:10:\"Toko Petir\";is_active|s:1:\"1\";is_merchant|b:1;', ''),
 ('pq6h7fkhg20o6tumfboor6e0pntm0sok', '::1', 1717872058, '__ci_last_regenerate|i:1717871761;id_pelanggan|s:2:\"38\";username|s:6:\"jennvo\";nama_pelanggan|s:14:\"Muhammad Ridho\";email|s:17:\"rdofx91@gmail.com\";photo|s:11:\"foto_38.jpg\";logged_in|b:1;id|s:1:\"6\";nama|s:14:\"Muhammad Ridho\";is_active|s:1:\"1\";is_merchant|b:1;', ''),
-('r6megiemt8enek018f9pm9rvld5gf8aq', '::1', 1717934396, '__ci_last_regenerate|i:1717934348;id|s:1:\"1\";username|s:5:\"admin\";nama|s:10:\"Toko Petir\";is_active|s:1:\"1\";is_merchant|b:1;', '');
+('r6b2dpm52h4l7t6ieihsebpjrrtnbara', '::1', 1717937061, '__ci_last_regenerate|i:1717937026;id|s:12:\"adminganteng\";username|s:5:\"jennv\";nama|s:13:\"Admin Ganteng\";level_user|s:1:\"1\";', ''),
+('u2dfhvvjkc5r4ui9g659l4eq5a8s38rn', '::1', 1717934686, '__ci_last_regenerate|i:1717934686;', '');
 
 -- --------------------------------------------------------
 
@@ -291,6 +293,30 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `username`, `password`, `
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pelayanan`
+--
+
+CREATE TABLE `pelayanan` (
+  `id_layanan` int(11) NOT NULL,
+  `pesan` text NOT NULL,
+  `nama` varchar(150) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `no_hp` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `pelayanan`
+--
+
+INSERT INTO `pelayanan` (`id_layanan`, `pesan`, `nama`, `email`, `no_hp`, `created_at`) VALUES
+(1, 'oederede', 'Muhammad Ridho Adhari', 'user1@gmail.com', '45645655544', '2024-06-09 12:30:19'),
+(2, 'asedede', 'Muhammad Ridho', 'rdofx99@gmail.com', '45645655544', '2024-06-09 12:31:19'),
+(3, 'wrqigdsxad', 'Muhammad Ridho AS', 'manabolehbro@gmail.com', '45645655544', '2024-06-09 12:32:06');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pesanan`
 --
 
@@ -360,7 +386,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `alamat`, `email`, `no_hp`, `photo`, `deskripsi`, `username`, `password`, `is_active`, `created_at`, `updated_at`) VALUES
 (1, 'Toko Petir', 'Kuningan', 'petirnyabangkuh@gmail.com', '089887656545', 'foto_1.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur dignissimos assumenda tempora consequuntur temporibus quia, impedit nisi nobis qui, molestias expedita?\r\n', 'admin', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 1, '2024-05-31 16:02:47', '2024-06-05 13:28:56'),
 (3, 'ALAW', 'Kuningan, Jawa Barat', 'alawmenyala@gmail.com', '089987656543', 'default.jpg', '', 'pemilik', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 0, '2024-05-31 16:02:47', '2024-05-31 16:02:47'),
-(6, 'Muhammad Ridho', 'Mempawah Timur,Jln Bardan Nad', 'rdofx91@gmail.com', '089832321221', 'foto_38.jpg', '', 'jennvo', '$2y$10$LehRW1FUOh.fV00mnpC.OOKp69h/.AxgwvM9N4763eRG/mf4Lxqfa', 1, '2024-06-01 18:37:08', '2024-06-04 16:58:21'),
+(6, 'Muhammad Ridho', 'Mempawah Timur,Jln Bardan Nad', 'rdofx91@gmail.com', '089832321221', 'foto_38.jpg', '', 'jennvo', '$2y$10$LehRW1FUOh.fV00mnpC.OOKp69h/.AxgwvM9N4763eRG/mf4Lxqfa', 0, '2024-06-01 18:37:08', '2024-06-09 12:02:51'),
 (7, 'Uci Sunengasih', 'jl.raya Kluwut Barat Klompeks Ponpes Al-ikhlas, Kluwut, Kec. Bulakamba, Kab. Brebes', 'Uci_Sunengasih@gmail.com', '88706686653', '', 'Ntah Gabisa', 'uci54', '$2y$10$swT1BxTARnJKC/rKMm13vOtIFgbF.IlnG9QkBD6RFyZMWUht7ijLq', 1, '2024-06-04 11:38:10', '2024-06-04 11:39:14');
 
 --
@@ -433,6 +459,12 @@ ALTER TABLE `notif`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
+
+--
+-- Indeks untuk tabel `pelayanan`
+--
+ALTER TABLE `pelayanan`
+  ADD PRIMARY KEY (`id_layanan`);
 
 --
 -- Indeks untuk tabel `pesanan`
@@ -509,6 +541,12 @@ ALTER TABLE `notif`
 --
 ALTER TABLE `pelanggan`
   MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT untuk tabel `pelayanan`
+--
+ALTER TABLE `pelayanan`
+  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan`

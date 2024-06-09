@@ -1,7 +1,7 @@
 <main class="content">
 	<div class="container-fluid p-0">
 
-		<h1 class="h3 mb-3">Chatting Pelanggan</h1>
+		<h1 class="h3 mb-3">Ulasan Pelanggan</h1>
 		<?php
 		if ($this->session->userdata('success')) {
 		?>
@@ -13,7 +13,7 @@
 					<i class="far fa-fw fa-bell"></i>
 				</div>
 				<div class="alert-message">
-					<strong>Hallo!!!</strong> <?= $this->session->userdata('success') ?>
+					<?= $this->session->userdata('success') ?>
 				</div>
 			</div>
 		<?php
@@ -25,13 +25,13 @@
 			<div class="col-6 col-xl-7">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title">Informasi Chatting Pelanggan</h5>
+						<h5 class="card-title">Informasi Ulasan Pelanggan</h5>
 					</div>
 					<table class="table">
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Nama Pelanggan</th>
+								<th>Nama</th>
 								<th>Time</th>
 								<th>Action</th>
 							</tr>
@@ -43,11 +43,11 @@
 							?>
 								<tr>
 									<td><?= $no++ ?></td>
-									<td><?= $value->nama_plggn ?></td>
-									<td><?= $value->time ?></td>
+									<td><?= $value->nama ?></td>
+									<td><?= $value->created_at ?></td>
 
 									<td class="table-action">
-										<a href="<?= base_url('pemilik/cChatting/detail_chatting/' . $value->id_pelanggan) ?>" class="btn btn-success"><i class="align-middle" data-feather="eye"></i></a>
+										<a href="<?= base_url('pemilik/cChatting/detail_chatting/' . $value->id_layanan) ?>" class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
 									</td>
 								</tr>
 							<?php

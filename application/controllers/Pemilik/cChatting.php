@@ -9,12 +9,13 @@ class cChatting extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mChatting');
+		$this->load->model('mLayanan');
 	}
 
 	public function index()
 	{
 		$data = array(
-			'chat' => $this->mChatting->chat_pelanggan()
+			'chat' => $this->mLayanan->layanan()
 		);
 		$this->load->view('pemilik/Layouts/head');
 		$this->load->view('pemilik/Chatting/vChatting', $data);
@@ -23,8 +24,8 @@ class cChatting extends CI_Controller
 	public function detail_chatting($id)
 	{
 		$data = array(
-			'id_pelanggan' => $id,
-			'chat' => $this->mChatting->detail_chatting($id)
+			'id_layanan' => $id,
+			'chat' => $this->mLayanan->detail_layanan($id)
 		);
 		$this->load->view('pemilik/Layouts/head');
 		$this->load->view('pemilik/Chatting/vDetailChatting', $data);

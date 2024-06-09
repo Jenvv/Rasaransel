@@ -213,13 +213,39 @@ class cHome extends CI_Controller
 		}
 	}
 
+	// public function kontak()
+	// {
+	// 	$this->load->view('Pelanggan/layouts/header');
+	// 	$this->load->view('Pelanggan/layouts/aside');
+	// 	$this->load->view('Pelanggan/kontak');
+	// 	$this->load->view('Pelanggan/Layouts/footer');
+	// }
 	public function kontak()
 	{
-		$this->load->view('Pelanggan/layouts/header');
-		$this->load->view('Pelanggan/layouts/aside');
-		$this->load->view('Pelanggan/kontak');
-		$this->load->view('Pelanggan/Layouts/footer');
+		$this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('no_hp', 'No Telepon', 'required');
+		$this->form_validation->set_rules('pesan', 'Pesan', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('Pelanggan/layouts/header');
+			$this->load->view('Pelanggan/layouts/aside');
+			$this->load->view('Pelanggan/kontak');
+			$this->load->view('Pelanggan/Layouts/footer');
+		} else {
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'pesan' => $this->input->post('pesan'),
+				'email' => $this->input->post('email'),
+				'no_hp' => $this->input->post('no_hp'),
+			);
+			$this->db->insert('pelayanan', $data);
+
+			$this->session->set_flashdata('success', 'Keluhan Berhasil Dikirim Ke Admin!');
+			redirect('pelanggan/cHome/kontak');
+		}
 	}
 }
+
 
 /* End of file cHome.php */

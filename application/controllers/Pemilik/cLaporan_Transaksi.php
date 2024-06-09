@@ -40,7 +40,7 @@ class cLaporan_Transaksi extends CI_Controller
 		$pdf->AddPage();
 
 		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Image('asset/logo.jpg', 3, 3, 50);
+		$pdf->Image('asset/icon/logo.png', 6, 3, 35);
 		$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI HARIAN', 0, 0, 'C');
 		$pdf->SetLineWidth(0);
 		$pdf->Cell(10, 30, '', 0, 1);
@@ -94,7 +94,7 @@ class cLaporan_Transaksi extends CI_Controller
 		$pdf->AddPage();
 
 		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Image('asset/logo.jpg', 3, 3, 50);
+		$pdf->Image('asset/icon/logo.png', 6, 3, 35);
 		$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI BULANAN', 0, 0, 'C');
 		$pdf->SetLineWidth(0);
 		$pdf->Cell(10, 30, '', 0, 1);
@@ -146,7 +146,7 @@ class cLaporan_Transaksi extends CI_Controller
 		$pdf->AddPage();
 
 		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Image('asset/logo.jpg', 3, 3, 50);
+		$pdf->Image('asset/icon/logo.png', 6, 3, 35);
 		$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI TAHUNAN', 0, 0, 'C');
 		$pdf->SetLineWidth(0);
 		$pdf->Cell(10, 30, '', 0, 1);
@@ -195,7 +195,7 @@ class cLaporan_Transaksi extends CI_Controller
 		$pdf->AddPage();
 
 		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Image('asset/logo.jpg', 3, 3, 40);
+		$pdf->Image('asset/icon/logo.png', 3, 3, 40);
 		$pdf->Cell(200, 40, 'LAPORAN HASIL ANALISIS PELANGGAN', 0, 0, 'C');
 		$pdf->SetLineWidth(0);
 		$pdf->Cell(10, 30, '', 0, 1);
