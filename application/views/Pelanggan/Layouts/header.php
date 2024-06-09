@@ -115,10 +115,12 @@
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cprofil') ?>"><?= $this->session->userdata('nama_pelanggan'); ?></a>
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cprofil/aktivitas') ?>">Aktivitas</a>
 											<a class="dropdown-item" href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
+											<a class="dropdown-item" style="color: #dc3545;" href="<?= base_url('pelanggan/cchatting') ?>">Daftar Merchant</a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item" href="<?= base_url('pelanggan/clogin/Logout') ?>">Keluar</a>
 										</div>
 									</li>
+
 								<?php } ?>
 								<li>
 									<a href="<?= base_url('pelanggan/chome/kontak') ?>">Pelayanan Pelanggan</a>

@@ -100,7 +100,7 @@ class cMerchant extends CI_Controller
             ];
             if ($this->db->insert('user', $data)) {
                 $this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
-                redirect('pelanggan/cprofil');
+                redirect('pelanggan/cMerchant/aktivitas');
             } else {
                 $this->session->set_flashdata('error', 'Registrasi Gagal!');
                 redirect('pelanggan/chome/');
