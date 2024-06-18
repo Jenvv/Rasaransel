@@ -40,32 +40,86 @@
 
 		<div class="row">
 			<div class="col-12 col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Grafik Analisis Pendaftar</h5>
+						<!-- <h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6> -->
+					</div>
+					<div class="card-body">
+						<div class="overview-item overview-item--c3">
+							<div class="overview__inner">
+								<div class="overview-box clearfix">
+									<div class="icon">
+										<i class="zmdi zmdi-account-o"></i>
+									</div>
+									<div class="text">
+										<h2><?= count($pelanggan) ?></h2>
+										<span>Pelanggan Daftar</span>
+									</div>
+								</div>
+								<div class="overview-chart">
+									<canvas id="widgetChart3"></canvas>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Grafik Analisis Merchant Aktif</h5>
+						<!-- <h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6> -->
+					</div>
+					<div class="card-body">
+						<div class="overview-item overview-item--c1">
+							<div class="overview__inner">
+								<div class="overview-box clearfix">
+									<div class="icon">
+										<i class="zmdi zmdi-account-o"></i>
+									</div>
+									<div class="text">
+										<h2><?= count($user_aktif) ?></h2>
+										<span>Merchant Aktif</span>
+									</div>
+								</div>
+								<div class="overview-chart">
+									<canvas id="widgetChart1"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
 				<div class="card flex-fill w-100">
 					<div class="card-header">
-						<h5 class="card-title">Grafik Analisis Produk Terjual</h5>
+						<h5 class="card-title">Grafik Analisis Pendaftar Merchant</h5>
 						<!-- <h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6> -->
 					</div>
 					<div class="card-body">
-						<div class="chart">
-							<canvas id="produk"></canvas>
+						<div class="overview-item overview-item--c2">
+							<div class="overview__inner">
+								<div class="overview-box clearfix">
+									<div class="icon">
+										<i class="zmdi zmdi-account-o"></i>
+									</div>
+									<div class="text">
+										<h2><?= count($user) ?></h2>
+										<span>Pendaftar merchant</span>
+									</div>
+								</div>
+								<div class="overview-chart">
+									<canvas id="widgetChart2"></canvas>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-12 col-lg-6">
-				<div class="card">
-					<div class="card-header">
-						<h5 class="card-title">Grafik Analisis Transaksi</h5>
-						<!-- <h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6> -->
-					</div>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="transaksi"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
+
 
 		</div>
 

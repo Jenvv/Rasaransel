@@ -3,7 +3,8 @@
 
 		<div class="row mb-2 mb-xl-3">
 			<div class="col-auto d-none d-sm-block">
-				<h3><strong>Laporan</strong> Transaksi</h3>
+				<h3><strong>Laporan</strong> Pelanggan</h3>
+				<h5 class="text-secondary">Laporan Pendaftar Pelanggan</h5>
 			</div>
 
 			<div class="col-auto ml-auto text-right mt-n1">
@@ -15,7 +16,25 @@
 				</nav>
 			</div>
 		</div>
-
+		<div class="col-lg-12">
+			<?php
+			if ($this->session->userdata('error')) {
+			?>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<div class="alert-icon">
+						<i class="align-middle" data-feather="bell"></i>
+					</div>
+					<div class="alert-message">
+						<strong>Gagal!</strong> <?= $this->session->userdata('error') ?>
+					</div>
+				</div>
+			<?php
+			}
+			?>
+		</div>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card card-light">
@@ -166,5 +185,181 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		<hr>
+		<div class="row mb-2 mb-xl-3 mt-4">
+			<div class="col-auto d-none d-sm-block">
+				<h3><strong>Laporan</strong> Merchant</h3>
+
+				<h5 class="text-secondary">Laporan Pendaftar Merchant</h5>
+			</div>
+			<div class="col-lg-12">
+				<?php
+				if ($this->session->userdata('errors')) {
+				?>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<div class="alert-icon">
+							<i class="align-middle" data-feather="bell"></i>
+						</div>
+						<div class="alert-message">
+							<strong>Gagal!</strong> <?= $this->session->userdata('errors') ?>
+						</div>
+					</div>
+				<?php
+				}
+				?>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card card-light">
+						<div class="card-header">
+							<h3 class="card-title">Laporan Harian</h3>
+						</div>
+						<div class="card-body">
+							<?php
+							echo form_open('Pemilik/cLaporan_Transaksi/lap_harian_merchant') ?>
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label>Tanggal</label>
+										<select name="tanggal" class="form-control">
+											<?php
+											$mulai = 1;
+											for ($i = $mulai; $i < $mulai + 31; $i++) {
+												$sel = $i == date('Y') ? 'selected="selected"' : '';
+												echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label>Bulan</label>
+										<select name="bulan" class="form-control">
+											<?php
+											$mulai = 1;
+											for ($i = $mulai; $i < $mulai + 12; $i++) {
+												$sel = $i == date('Y') ? 'selected="selected"' : '';
+												echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label>Tahun</label>
+										<select name="tahun" class="form-control">
+											<?php
+											$mulai = date('Y') - 1;
+											for ($i = $mulai; $i < $mulai + 10; $i++) {
+												$sel = $i == date('Y') ? 'selected="selected"' : '';
+												echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group">
+										<button type="submit" class="btn btn-info mt-3"><i class="fa fa-print"></i> Cetak Laporan</button>
+									</div>
+								</div>
+							</div>
+							<?php
+							echo form_close() ?>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-4">
+					<div class="card card-light">
+						<div class="card-header">
+							<h3 class="card-title">Laporan Bulanan</h3>
+						</div>
+						<div class="card-body">
+							<?php
+							echo form_open('Pemilik/cLaporan_Transaksi/lap_bulanan_merchant') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Bulan</label>
+										<select name="bulan" class="form-control">
+											<?php
+											$mulai = 1;
+											for ($i = $mulai; $i < $mulai + 12; $i++) {
+												$sel = $i == date('Y') ? 'selected="selected"' : '';
+												echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Tahun</label>
+										<select name="tahun" class="form-control">
+											<?php
+											$mulai = date('Y') - 1;
+											for ($i = $mulai; $i < $mulai + 10; $i++) {
+												$sel = $i == date('Y') ? 'selected="selected"' : '';
+												echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group">
+										<button type="submit" class="btn btn-info mt-3"><i class="fa fa-print"></i> Cetak Laporan</button>
+									</div>
+								</div>
+							</div>
+							<?php
+							echo form_close() ?>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-4">
+					<div class="card card-light">
+						<div class="card-header">
+							<h3 class="card-title">Laporan Tahunan</h3>
+						</div>
+						<div class="card-body">
+							<?php
+							echo form_open('Pemilik/cLaporan_Transaksi/lap_tahunan_merchant') ?>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label>Tahun</label>
+										<select name="tahun" class="form-control">
+											<?php
+											$mulai = date('Y') - 1;
+											for ($i = $mulai; $i < $mulai + 10; $i++) {
+												$sel = $i == date('Y') ? 'selected="selected"' : '';
+												echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group">
+										<button type="submit" class="btn btn-info mt-3"><i class="fa fa-print"></i> Cetak Laporan</button>
+									</div>
+								</div>
+							</div>
+							<?php
+							echo form_close() ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </main>

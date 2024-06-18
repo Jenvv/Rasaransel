@@ -14,6 +14,13 @@ class mUser extends CI_Model
 		$this->db->from('user');
 		return $this->db->get()->result();
 	}
+	public function select_aktif()
+	{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->where('is_active', '1');
+		return $this->db->get()->result();
+	}
 	public function edit($id)
 	{
 		$this->db->select('*');
