@@ -1,5 +1,4 @@
     <style>
-    	
     	.chat-online {
     		color: #34ce57
     	}
@@ -47,8 +46,6 @@
     	.border-top {
     		border-top: 1px solid #dee2e6 !important;
     	}
-
-
     </style>
 
     <main class="content " style="background-color:#f1f1f1">
@@ -96,10 +93,10 @@
                                 </div>
                         </div>
                         <div class="d-flex align-items-start coba" data-id="${d.id_pelanggan}">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                            <img src="<?= base_url('asset/pelanggan/${d.photo}') ?>" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
                             <div class="flex-grow-1 ml-3">
                                 ${d.nama_plggn}
-                                <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> ${d.id_chatting}</div>
+                                <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> ${d.time}</div>
                             </div>
                         </div>
                     </div>`;
@@ -123,4 +120,3 @@
     		window.location.href = "<?= base_url() ?>Admin/cChatting/pesan/" + id;
     	});
     </script>
-  
