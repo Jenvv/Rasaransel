@@ -5,7 +5,6 @@
 	</h2>
 </section>
 
-
 <!-- Reservation -->
 <section class="section-reservation bg1-pattern p-t-100 p-b-113">
 	<div class="container">
@@ -21,8 +20,6 @@
 				</div>
 			</div>
 			<div class="col-lg-9 p-b-30">
-
-				<?php echo form_open('pelanggan/chome/update_cart'); ?>
 				<table class="table table-striped">
 					<thead>
 						<th>No</th>
@@ -44,11 +41,10 @@
 								<td><img style="width: 150px;" class="rounded-circle" src="<?= base_url('asset/foto-produk/' . $value['picture']) ?>"></td>
 								<td><?= $value['name'] ?></td>
 								<td>
-									<input name="<?= $i . '[qty]' ?>" min="1" type="number" value="<?= $value['qty'] ?>">
-									<button type="submit" class="btn btn-success">Update Qty</button>
+									<input name="<?= $i . '[qty]' ?>" min="1" type="number" value="<?= $value['qty'] ?>" class="qty-input" data-rowid="<?= $value['rowid'] ?>">
 								</td>
-								<td>Rp. <?= number_format($value['price'], 0)  ?></td>
-								<td>Rp. <?= number_format($value['price'] * $value["qty"])  ?></td>
+								<td>Rp. <?= number_format($value['price'], 2, ',', '.') ?></td>
+								<td class="subtotal">Rp. <?= number_format($value['price'] * $value["qty"], 2, ',', '.') ?></td>
 								<td><a href="<?= base_url('pelanggan/chome/delete/' . $value['rowid']) ?>">Hapus</a></td>
 							</tr>
 						<?php
@@ -57,10 +53,8 @@
 						?>
 					</tbody>
 				</table>
-				<?php echo form_close(); ?>
 			</div>
 			<div class="col-lg-3">
-
 				<table class="table table-striped">
 					<tr>
 						<th>Keranjang</th>
@@ -69,15 +63,41 @@
 					<tr>
 						<td>Total</td>
 						<td>
-							<h5>Rp. <?php echo $this->cart->format_number($this->cart->total()); ?></h5>
+							<h5>Rp. <span id="total-price"><?php echo number_format($this->cart->total(), 2, ',', '.'); ?></span></h5>
 						</td>
 					</tr>
-
 				</table>
 				<a href="<?= base_url('pelanggan/chome/pengiriman') ?>" class="btn btn-warning">Checkout</a>
 			</div>
 		</div>
-
-
 	</div>
 </section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.qty-input').on('change', function() {
+			var rowid = $(this).data('rowid');
+			var qty = $(this).val();
+			$.ajax({
+				url: '<?= base_url('pelanggan/chome/update_cart') ?>',
+				type: 'POST',
+				data: {
+					rowid: rowid,
+					qty: qty
+				},
+				success: function(response) {
+					var data = JSON.parse(response);
+					if (data.status === 'success') {
+						// Update the subtotal and total price on the page
+						var row = $('input[data-rowid="' + rowid + '"]').closest('tr');
+						row.find('.subtotal').text('Rp. ' + data.subtotal);
+						$('#total-price').text(data.total);
+					} else {
+						alert('Failed to update cart. Please try again.');
+					}
+				}
+			});
+		});
+	});
+</script>

@@ -659,17 +659,31 @@
 	}
 </script>
 <script>
+	<?php
+	$produk = $this->db->query("SELECT COUNT(id_pelanggan) as jumlah, MONTH(created_at) as bulan FROM pelanggan GROUP BY MONTH(created_at)")->result();
+	$jumlah = [];
+	$bulan = [];
+	foreach ($produk as $data) {
+		$jumlah[] = $data->jumlah;
+		$bulan[] = $data->bulan;
+	}
+
+	$bulan_nama = array_map(function ($num) {
+		return date('F', mktime(0, 0, 0, $num, 10));
+	}, $bulan);
+	?>
 	var ctx = document.getElementById("widgetChart3");
 	if (ctx) {
 		ctx.height = 130;
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+				labels: <?= json_encode($bulan_nama) ?>,
+
 				type: 'line',
 				datasets: [{
-					data: [65, 59, 84, 84, 51, 55],
-					label: 'Dataset',
+					data: <?= json_encode($jumlah) ?>,
+					label: 'Pelanggan',
 					backgroundColor: 'transparent',
 					borderColor: 'rgba(255,255,255,.55)',
 				}, ]

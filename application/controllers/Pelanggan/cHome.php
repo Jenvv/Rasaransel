@@ -114,21 +114,45 @@ class cHome extends CI_Controller
 		$this->cart->insert($data);
 		redirect('pelanggan/chome/view_cart');
 	}
+	// public function update_cart()
+	// {
+	// 	$this->getsecurity();
+
+	// 	$i = 1;
+	// 	foreach ($this->cart->contents() as $items) {
+	// 		$data = array(
+	// 			'rowid'  => $items['rowid'],
+	// 			'qty'    => $this->input->post($i . '[qty]')
+	// 		);
+	// 		$this->cart->update($data);
+	// 		$i++;
+	// 	}
+	// 	redirect('pelanggan/chome/view_cart');
+	// }
 	public function update_cart()
 	{
-		$this->getsecurity();
+		$rowid = $this->input->post('rowid');
+		$qty = $this->input->post('qty');
 
-		$i = 1;
-		foreach ($this->cart->contents() as $items) {
-			$data = array(
-				'rowid'  => $items['rowid'],
-				'qty'    => $this->input->post($i . '[qty]')
-			);
-			$this->cart->update($data);
-			$i++;
+		$data = array(
+			'rowid'  => $rowid,
+			'qty'    => $qty
+		);
+
+		if ($this->cart->update($data)) {
+			$updated_item = $this->cart->get_item($rowid);
+			$subtotal = $updated_item['price'] * $updated_item['qty'];
+			$total = $this->cart->total();
+			echo json_encode(array(
+				'status' => 'success',
+				'subtotal' => number_format($subtotal, 2, ',', '.'),
+				'total' => number_format($total, 2, ',', '.')
+			));
+		} else {
+			echo json_encode(array('status' => 'error'));
 		}
-		redirect('pelanggan/chome/view_cart');
 	}
+
 	public function delete($rowid)
 	{
 		$this->getsecurity();
