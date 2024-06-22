@@ -199,15 +199,12 @@
                                     <?php
                                     if ($value->diskon != NULL) {
                                     ?>
-                                        <span class="text-muted text-decoration-line-through">Rp.<?= number_format($value->harga, 0) ?></span>
-                                        Rp.
-                                        <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
-                                    <?php } else { ?>
-                                        Rp.<?= number_format($value->harga, 0) ?> 
-
+                                        <span class="text-muted text-decoration-line-through">Rp.
+                                            <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
                                     <?php
                                     }
                                     ?>
+                                    Rp. <?= number_format($value->harga, 0) ?>
                                 </h6>
                             </div>
                         </div>
