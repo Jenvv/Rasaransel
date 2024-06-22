@@ -79,7 +79,7 @@
 				<?php foreach ($users as $user) : ?>
 					<div class="d-flex align-items-center pt-5">
 						<div class="rounded-circle overflow-hidden mr-3" style="width: 50px; height: 50px;">
-							<img src="<?= base_url('asset/merchant/' . $user->photo) ?>" alt="Foto Produk" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+							<img src="<?= base_url('asset/fotoprofil/' . $user->photo) ?>" alt="Foto Produk" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 						</div>
 						<div>
 							<hr>

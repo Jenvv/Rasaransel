@@ -47,7 +47,7 @@
             <div class="card mb-3">
                 <div class="row no-gutters ">
                     <div class="col-md-3 text-center p-3">
-                        <img src="<?= base_url('asset/pelanggan/' . $users->photo) ?>" class="img-fluid rounded-circle" width="100" height="100" alt="Profile Picture">
+                        <img src="<?= base_url('asset/fotoprofil/' . $users->photo) ?>" class="img-fluid rounded-circle" width="100" height="100" alt="Profile Picture">
                         <h5 class="mt-2"><?= $users->nama ?></h5>
                         <small class="text-muted">Aktif 4 menit lalu</small>
                         <div class="mt-2">

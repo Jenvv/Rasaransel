@@ -21,6 +21,16 @@ class mProfil extends CI_Model
 	{
 		return $this->db->update($table, $data, $where);
 	}
+	public function update_data($id, $kode)
+	{
+		$data = array(
+			'kd_merchant' => $kode
+		);
+		$this->db->where('id_pelanggan', $id); // Menentukan kondisi where untuk update
+		$this->db->update('pelanggan', $data); // Menentukan tabel dan data untuk update
+		// Mengembalikan hasil operasi update
+		return $this->db->affected_rows();
+	}
 }
 
 /* End of file mProfil.php */

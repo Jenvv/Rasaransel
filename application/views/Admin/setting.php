@@ -34,6 +34,7 @@
 									<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
 										Profil
 									</a>
+									<!-- $this->uri->segment(2) -->
 									<a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
 										Password
 									</a>
@@ -49,10 +50,15 @@
 										<div class="card-header">
 											<h5 class="card-title mb-0">info Profil</h5>
 										</div>
+										
 										<div class="card-body">
 											<?= form_open_multipart(); ?>
 											<div class="row">
 												<div class="col-md-8">
+													<div class="form-group">
+														<label for="inputFirstName">Nama Lengkap</label>
+														<input type="text" name="nama_user" class="form-control" value="<?= $users->nama_user ?>" placeholder="Nama Lengkap">
+													</div>
 													<div class="form-group">
 														<label for="inputFirstName">Nama Toko</label>
 														<input type="text" name="nama" class="form-control" value="<?= $users->nama ?>" placeholder="Nama Toko">
@@ -72,7 +78,7 @@
 												</div>
 												<div class="col-md-4">
 													<div class="text-center">
-														<img alt="<?= $users->nama ?>" src="<?= base_url('asset/merchant/' . $users->photo) ?>" class="rounded-circle img-responsive mt-2" width="128" height="128" />
+														<img alt="<?= $users->nama ?>" src="<?= base_url('asset/fotoprofil/' . $users->photo) ?>" class="rounded-circle img-responsive mt-2" width="128" height="128" />
 														<div class="mt-2">
 															<input type="file" name="fotouser">
 														</div>
@@ -97,12 +103,13 @@
 									</div>
 									<!-- Passw -->
 								</div>
+
 								<div class="tab-pane fade" id="password" role="tabpanel">
 									<div class="card">
 										<div class="card-body">
 											<h5 class="card-title">Password</h5>
 
-											<form action="<?= base_url('admin/csetting/ganti_password') ?>" method="POST">
+											<form action="<?= base_url('admin/cSetting/ganti_password') ?>" method="POST">
 												<div class="form-group">
 													<label for="inputPasswordCurrent">Current password</label>
 													<input type="password" name="pwLama" class="form-control" id="inputPasswordCurrent">
@@ -116,7 +123,7 @@
 													<label for="inputPasswordNew2">Verify password</label>
 													<input type="password" name="pwBaru2" class="form-control" id="inputPasswordNew2">
 												</div>
-												<button type="submit" class="btn btn-primary">Save changes</button>
+												<button type="submit" name="submit" value="submit" class="btn btn-primary">Save changes</button>
 											</form>
 
 										</div>

@@ -24,7 +24,7 @@
 			<div class="col-3">
 				<div class="blo5 pos-relative p-t-90 m-b-155">
 					<div class="pic-blo5 bo4 wrap-cir-pic hov-img-zoom ab-c-t" style="width: 180px; height:180px;">
-						<a href="#"><img src="<?= base_url('asset/pelanggan/' . $users->photo) ?>" alt="IGM-AVATAR"></a>
+						<a href="#"><img src="<?= base_url('asset/fotoprofil/' . $users->photo) ?>" alt="IGM-AVATAR"></a>
 					</div>
 				</div>
 			</div>

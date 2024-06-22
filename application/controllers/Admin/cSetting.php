@@ -47,7 +47,7 @@ class cSetting extends CI_Controller
             if ($this->form_validation->run() == TRUE) {
                 // Foto
                 $foto = $p->photo;
-                $config['upload_path']      = './asset/merchant/';
+                $config['upload_path']      = './asset/fotoprofil/';
                 $config['allowed_types']    = 'jpg|png|jpeg';
                 $config['max_size']         = '2048';
                 $config['file_name']        =  'foto_' . $this->session->userdata('id');
@@ -58,11 +58,11 @@ class cSetting extends CI_Controller
                     $foto = $b['file_name'];
                     $this->load->library('image_lib');
                     $config2['image_library']   = 'gd2';
-                    $config2['source_image']    = './asset/merchant/' . $foto;
-                    $config2['new_image']       = './asset/merchant/' . $foto;
+                    $config2['source_image']    = './asset/fotoprofil/' . $foto;
+                    $config2['new_image']       = './asset/fotoprofil/' . $foto;
                     $config2['maintain_ratio']  = FALSE;
                     if ($p->photo != 'default.jpg' && $p->photo != '') {
-                        $imagePath = FCPATH . 'asset/merchant/';
+                        $imagePath = FCPATH . 'asset/fotoprofil/';
                         $mainImagePath = $imagePath . $p->photo;
                         if (file_exists($mainImagePath)) {
                             unlink($mainImagePath);
@@ -72,7 +72,16 @@ class cSetting extends CI_Controller
                 $update = [
                     'username' => $this->security->xss_clean($this->input->post('username')),
                     'nama' => $this->security->xss_clean($this->input->post('nama', TRUE)),
+                    'nama_user' => $this->security->xss_clean($this->input->post('nama_user', TRUE)),
                     'deskripsi' => $this->security->xss_clean($this->input->post('deskripsi', TRUE)),
+                    'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
+                    'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
+                    'alamat' => $this->security->xss_clean($this->input->post('alamat', TRUE)),
+                    'photo' => $foto,
+                ];
+                $updatedata = [
+                    'username' => $this->security->xss_clean($this->input->post('username')),
+                    'nama_plggn' => $this->security->xss_clean($this->input->post('nama_user', TRUE)),
                     'email' => $this->security->xss_clean($this->input->post('email', TRUE)),
                     'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
                     'alamat' => $this->security->xss_clean($this->input->post('alamat', TRUE)),
@@ -83,6 +92,8 @@ class cSetting extends CI_Controller
                 ];
                 $up = $this->mProfil->update('user', $update, $where);
                 if ($up) {
+                    $this->mProfil->update_pelanggan($p->kd_merchant, $updatedata);
+                    // $this->mProfil->update_data($$p->kd_merchant, $kode);
                     $this->session->set_flashdata('success', 'Data berhasil diperbarui..');
                     $this->session->set_userdata(
                         array(
@@ -130,41 +141,32 @@ class cSetting extends CI_Controller
             $this->form_validation->set_rules($rules);
             if ($this->form_validation->run() == TRUE) {
 
-                $getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
+                $getData = $this->mProfil->getData('user', ['id_user' => $this->session->userdata('id')]);
                 $f = $getData->row();
                 $pwBaru = $this->security->xss_clean($this->input->post('pwBaru', TRUE));
                 $pwLama = $this->security->xss_clean($this->input->post('pwLama', TRUE));
                 if (!password_verify($pwLama, $f->password)) {
                     $this->session->set_flashdata('error', 'Password Lama yang anda masukkan salah..');
-                    redirect('pelanggan/cprofil/ganti_password');
+                    redirect('admin/cprofil/ganti_password');
                 }
                 if ($pwBaru == $pwLama) {
                     $this->session->set_flashdata('error', 'Password Baru dan Password Lama sama, Data tidak diubah...');
-                    redirect('pelanggan/cprofil/ganti_password');
+                    redirect('admin/cprofil/ganti_password');
                 }
                 //encrypt & update password
                 $hash_password = password_hash($pwBaru, PASSWORD_DEFAULT);
 
-                $update = $this->mProfil->update('pelanggan', ['password' => $hash_password], ['id_pelanggan' => $f->id_pelanggan]);
+                $update = $this->mProfil->update('user', ['password' => $hash_password], ['id_user' => $f->id_user]);
 
                 if ($update) {
                     $this->session->set_flashdata('success', 'Password berhasil diubah..');
-                    redirect('pelanggan/clogin/logout');
+                    redirect('admin/clogin/logout');
                 } else {
                     $this->session->set_flashdata('error', 'Password gagal diubah..');
                 }
             }
         }
-        $getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
-
-        $data = [
-            'title' => 'Profil',
-            'users' => $getData->row()
-        ];
-        $this->load->view('Pelanggan/layouts/header');
-        $this->load->view('Pelanggan/layouts/aside');
-        $this->load->view('Pelanggan/auth/password', $data);
-        $this->load->view('Pelanggan/Layouts/footer');
+        $this->index();
     }
 }
 

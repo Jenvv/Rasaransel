@@ -146,7 +146,7 @@
                                 </div>
                         </div>
                         <div class="d-flex align-items-start coba" data-id="${d.id_user}">
-                            <img src="<?= base_url('asset/merchant/') . '${d.photo}' ?>" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                            <img src="<?= base_url('asset/fotoprofil/') . '${d.photo}' ?>" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
                             <div class="flex-grow-1 ml-3">
                                 ${d.nama}
                                 <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> ${d.id_chatting}</div>

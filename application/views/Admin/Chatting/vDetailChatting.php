@@ -21,7 +21,7 @@
 								<a href="" style="text-decoration: none; color: black;">
 
 									<div class="position-relative">
-										<img src="<?= base_url('asset/pelanggan/') . $data->photo ?>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+										<img src="<?= base_url('asset/fotoprofil/') . $data->photo ?>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
 									</div>
 									<div class="flex-grow-1 pl-3">
 										<strong><?= $data->nama_plggn ?></strong>
@@ -239,7 +239,7 @@
 							html += `<div class="list-group-item list-group-item-action border-0 coba" data-id="${d.id_pelanggan}">
                             <div class="badge bg-success float-right">5</div>
                             <div class="d-flex align-items-start">
-                                <img src="<?= base_url('asset/pelanggan/') ?>${d.photo}" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                <img src="<?= base_url('asset/fotoprofil/') ?>${d.photo}" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
                                 <div class="flex-grow-1 ml-3">
                                     ${d.nama_plggn}
                                     <div class="small"><span class="fa fa-circle mt-2" style="font-size:10px; color:green;"></span> Online</div>

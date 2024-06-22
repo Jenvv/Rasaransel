@@ -87,6 +87,7 @@ class cMerchant extends CI_Controller
         } else {
             $getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
             $d = $getData->row();
+            $kode = $this->get_kodMerchant();
             $data = [
                 'nama' => $this->security->xss_clean($this->input->post('nama', TRUE)),
                 'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
@@ -96,7 +97,8 @@ class cMerchant extends CI_Controller
                 'photo' => $this->security->xss_clean($this->input->post('photo', TRUE)),
                 'username' => $d->username,
                 'password' => $d->password,
-                'is_active' => 0
+                'is_active' => 0,
+                'kd_merchant' => $kode
             ];
             if ($this->db->insert('user', $data)) {
                 $this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
@@ -106,6 +108,23 @@ class cMerchant extends CI_Controller
                 redirect('pelanggan/chome/');
             }
         }
+    }
+    function get_kodMerchant()
+    {
+        $this->db->select_max('id_pelanggan', 'max_code');
+        $result = $this->db->get('pelanggan')->row();
+
+        $max_code = $result->max_code;
+
+        if (!empty($max_code)) {
+            $numeric_part = (int)substr($max_code, 3);
+            $new_numeric_part = $numeric_part + 1;
+            $new_kd = 'MRC' . sprintf("%03d", $new_numeric_part);
+        } else {
+            $new_kd = 'MRC001';
+        }
+
+        return $new_kd;
     }
     public function aktivitas()
     {

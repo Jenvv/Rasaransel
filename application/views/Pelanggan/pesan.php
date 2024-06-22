@@ -20,7 +20,7 @@
                                     ?>
                                     <?php if ($value_merchant->username == $users->username) : ?>
                                         <div class="media">
-                                            <img src="<?= base_url('asset/pelanggan/' . $users->photo) ?>" width="36" height="36" class="rounded-circle mr-2" alt="Vanessa Tucker">
+                                            <img src="<?= base_url('asset/fotoprofil/' . $users->photo) ?>" width="36" height="36" class="rounded-circle mr-2" alt="Vanessa Tucker">
                                             <div class="media-body">
                                                 <small class="float-right text-navy"><?= time_since($aktivitas->created_at) ?></small>
                                                 <?php if ($aktivitas->is_active == 0) { ?>

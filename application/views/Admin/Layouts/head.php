@@ -242,7 +242,10 @@
                     <span class="align-middle">MERCHANT</span>
                 </a>
 
-                <ul class="sidebar-nav">
+                <ul class="sidebar-nav pb-5">
+                    <li class="sidebar-header">
+                        Menu
+                    </li>
                     <li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDashboard') {
                                                 echo 'active';
                                             }  ?>">
@@ -299,6 +302,25 @@
                                             }  ?>">
                         <a class="sidebar-link" href="<?= base_url('Admin/cLaporan_transaksi') ?>" style="background-color: #A92828;color:white;">
                             <i class="align-middle" style="color:white;" data-feather="activity"></i> <span class="align-middle">Laporan Transaksi</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('pelanggan/cMerchant/merchant_detail/' . $this->session->userdata('id')) ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="globe"></i> <span class="align-middle">Profil Toko</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-header">
+                        Lainnya
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('admin/cProfil') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="user"></i> <span class="align-middle">Profil</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= base_url('admin/cSetting') ?>" style="background-color: #A92828;color:white;">
+                            <i class="align-middle" style="color:white;" data-feather="settings"></i> <span class="align-middle">Pengaturan</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -478,7 +500,7 @@
                                 $getData = $this->mProfil->getData('user', ['id_user' => $this->session->userdata('id')]);
                                 $d = $getData->row();
                                 ?>
-                                <img src="<?= base_url('asset/merchant/' . $d->photo) ?>" class="avatar img-fluid rounded mr-1" alt="<?= $this->session->userdata('nama') ?>" /> <span class="text-dark"><?= $this->session->userdata('nama') ?></span>
+                                <img src="<?= base_url('asset/fotoprofil/' . $d->photo) ?>" class="avatar img-fluid rounded mr-1" alt="<?= $this->session->userdata('nama') ?>" /> <span class="text-dark"><?= $this->session->userdata('nama') ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="<?= base_url('admin/cProfil') ?>"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>

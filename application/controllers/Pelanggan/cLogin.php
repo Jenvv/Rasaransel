@@ -142,7 +142,6 @@ class cLogin extends CI_Controller
 	//registrasi pelanggan
 	public function registrasi()
 	{
-
 		$rules = [
 
 			[

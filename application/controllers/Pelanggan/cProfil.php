@@ -57,7 +57,7 @@ class cProfil extends CI_Controller
 			if ($this->form_validation->run() == TRUE) {
 				// Foto
 				$foto = $p->photo;
-				$config['upload_path']      = './asset/pelanggan/';
+				$config['upload_path']      = './asset/fotoprofil/';
 				$config['allowed_types']    = 'jpg|png|jpeg';
 				$config['max_size']         = '2048';
 				$config['file_name']        =  'foto_' . $this->session->userdata('id_pelanggan');
@@ -69,11 +69,11 @@ class cProfil extends CI_Controller
 					$foto = $b['file_name'];
 					$this->load->library('image_lib');
 					$config2['image_library']   = 'gd2';
-					$config2['source_image']    = './asset/pelanggan/' . $foto;
-					$config2['new_image']       = './asset/pelanggan/' . $foto;
+					$config2['source_image']    = './asset/fotoprofil/' . $foto;
+					$config2['new_image']       = './asset/fotoprofil/' . $foto;
 					$config2['maintain_ratio']  = FALSE;
 					if ($p->photo != 'default.jpg' && $p->photo != '') {
-						$imagePath = FCPATH . 'asset/pelanggan/';
+						$imagePath = FCPATH . 'asset/fotoprofil/';
 						$mainImagePath = $imagePath . $p->photo;
 						if (file_exists($mainImagePath)) {
 							unlink($mainImagePath);
@@ -264,7 +264,7 @@ class cProfil extends CI_Controller
 	}
 	public function merchant()
 	{
-
+		$id = $this->session->userdata('id_pelanggan');
 		$rules = [
 
 			[
@@ -325,6 +325,7 @@ class cProfil extends CI_Controller
 		} else {
 			$getData = $this->mProfil->getData('pelanggan', ['id_pelanggan' => $this->session->userdata('id_pelanggan')]);
 			$d = $getData->row();
+			$kode = $this->get_kodMerchant();
 			$data = [
 				'nama' => $this->security->xss_clean($this->input->post('nama', TRUE)),
 				'no_hp' => $this->security->xss_clean($this->input->post('no_hp', TRUE)),
@@ -334,16 +335,35 @@ class cProfil extends CI_Controller
 				'photo' => $this->security->xss_clean($this->input->post('photo', TRUE)),
 				'username' => $d->username,
 				'password' => $d->password,
-				'is_active' => 0
+				'is_active' => 0,
+				'kd_merchant' => $kode
 			];
 			if ($this->db->insert('user', $data)) {
-				$this->session->set_flashdata('success', 'Anda Berhasil Register, Silahkan Login!');
-				redirect('pelanggan/cprofil');
+				$this->mProfil->update_data($id, $kode);
+				$this->session->set_flashdata('success', 'Anda Berhasil Mendaftar Sebgai Merchant, Tunggu Verifikasi Admin!');
+				redirect('pelanggan/cprofil/aktivitas');
 			} else {
 				$this->session->set_flashdata('error', 'Registrasi Gagal!');
 				redirect('pelanggan/chome/');
 			}
 		}
+	}
+	function get_kodMerchant()
+	{
+		$this->db->select_max('id_pelanggan', 'max_code');
+		$result = $this->db->get('pelanggan')->row();
+
+		$max_code = $result->max_code;
+
+		if (!empty($max_code)) {
+			$numeric_part = (int)substr($max_code, 3);
+			$new_numeric_part = $numeric_part + 1;
+			$new_kd = 'MRC' . sprintf("%03d", $new_numeric_part);
+		} else {
+			$new_kd = 'MRC001';
+		}
+
+		return $new_kd;
 	}
 	public function aktivitas()
 	{

@@ -40,7 +40,7 @@
                         </span>
                         <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
                             <input value="<?= $users->photo ?>" type="hidden" name="photo">
-                            <input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= $users->nama_plggn ?>" type="text" name="nama" placeholder="Masukkan Nama Toko Anda">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="nama" placeholder="Masukkan Nama Toko Anda">
                             <?= form_error('nama', '<small class="form-text text-danger">', '</small>'); ?>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <span class="txt9">
                             Deskripsi
                         </span>
-                        <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="deskripsi" placeholder="Optional"></textarea>
+                        <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="deskripsi" placeholder="Optional" <?= set_value('deskripsi') ?>></textarea>
                         <?= form_error('deskripsi', '<small class="form-text text-danger">', '</small>'); ?>
                     </div>
                 </div>
