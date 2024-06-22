@@ -124,7 +124,7 @@ class cLogin extends CI_Controller
 						$this->session->set_userdata($sess_pelanggan);
 					}
 
-					$this->session->set_flashdata('success', 'Selamat Datang, ' . $this->session->userdata('nama'));
+					$this->session->set_flashdata('success', 'Selamat Datang, <strong>' . $this->session->userdata('nama') . '</strong>');
 					redirect('Admin/cDashboard');
 				}
 			} else {

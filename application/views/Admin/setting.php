@@ -59,7 +59,7 @@
 													</div>
 													<div class="form-group">
 														<label for="inputUsername">Deskripsi Toko</label>
-														<textarea class="form-control" name="deskripsi" ><?= $users->deskripsi?></textarea>
+														<textarea class="form-control" name="deskripsi"><?= $users->deskripsi ?></textarea>
 													</div>
 													<div class="form-group">
 														<label for="inputUsername">Username</label>
@@ -72,11 +72,11 @@
 												</div>
 												<div class="col-md-4">
 													<div class="text-center">
-														<img alt="Charles Hall" src="<?= base_url('asset/merchant/' . $users->photo) ?>" class="rounded-circle img-responsive mt-2" width="128" height="128" />
+														<img alt="<?= $users->nama ?>" src="<?= base_url('asset/merchant/' . $users->photo) ?>" class="rounded-circle img-responsive mt-2" width="128" height="128" />
 														<div class="mt-2">
 															<input type="file" name="fotouser">
 														</div>
-														<small>For best results, use an image at least 128px by 128px in .jpg format</small>
+														<small>Gunakan 128px x 128px untuk kualitas terbaik dengan format jpg|png|jpeg</small>
 													</div>
 												</div>
 

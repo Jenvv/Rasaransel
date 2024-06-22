@@ -16,13 +16,15 @@
 							<input type="text" value="<?= set_value('nama') ?>" name="nama" class="form-control" placeholder="Masukkan Nama Produk">
 							<?= form_error('nama', '<small class="form-text text-danger">', '</small>'); ?>
 						</div>
+
 						<div class="form-group">
 							<label class="form-label">Kategori Produk</label>
 							<select class="form-control" name="kategori" id="exampleFormControlSelect1">
 								<option selected>Pilih Kategori...</option>
-								<?php foreach ($kategori as $key => $value) {
+								<?php foreach ($kategori as $value) {
 								?>
 									<option value="<?= $value->id_kategori ?>"><?= $value->kategori; ?></option>
+
 								<?php } ?>
 							</select>
 							<!-- <input type="text" value="<?= set_value('nama') ?>" name="nama" class="form-control" placeholder="Masukkan Nama Produk"> -->

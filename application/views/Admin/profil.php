@@ -8,7 +8,7 @@
 						<h5 class="card-title mb-0">Detail Profil</h5>
 					</div>
 					<div class="card-body text-center">
-						<img src="<?= base_url('asset/merchant/' . $users->photo) ?>" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+						<img src="<?= base_url('asset/merchant/' . $users->photo) ?>" alt="<?= $users->nama?>" class="img-fluid rounded-circle mb-2" width="128" height="128" />
 						<h5 class="card-title mb-0"><?= $users->nama ?></h5>
 						<div class="text-muted mb-2"><?= $users->deskripsi ?></div>
 
