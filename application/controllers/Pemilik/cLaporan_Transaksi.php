@@ -146,7 +146,7 @@ class cLaporan_Transaksi extends CI_Controller
 	public function lap_tahunan_transaksi()
 	{
 		$tahun = $this->input->post('tahun');
-		$data = $this->mLaporan->lap_bulanan_transaksi($tahun);
+		$data = $this->mLaporan->lap_tahunan_transaksi($tahun);
 		if ($data == NULL) {
 			$this->session->set_flashdata('error', 'Laporan Pada Tanggal ' . $tahun . ' Tidak Ada!');
 			redirect('pemilik/cLaporan_Transaksi');
