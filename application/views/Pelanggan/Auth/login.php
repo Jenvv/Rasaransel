@@ -6,7 +6,7 @@
 </section>
 <!-- Reservation -->
 <section class="section-reservation bg1-pattern p-t-100 p-b-113">
-    <div class="container">
+    <div id="loginSection" class="container">
         <div class="row">
             <div class="col-lg-12 p-b-30">
                 <div class="t-center">
@@ -70,3 +70,20 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.href.includes('pelanggan/clogin')) {
+            const loginSection = document.getElementById('loginSection');
+            if (loginSection) {
+                const offset = 200; // Sesuaikan nilai ini sesuai kebutuhan
+                const elementPosition = loginSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+</script>

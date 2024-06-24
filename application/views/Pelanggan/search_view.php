@@ -30,8 +30,8 @@
             Cari
         </button>
     </form>
-
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <!-- Section Menu Search -->
+    <div id="menuSearchSection" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <?php
         foreach ($menu as $key => $value) {
         ?>
@@ -110,3 +110,19 @@
         <?php } ?>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('fr')) {
+            const element = document.getElementById('menuSearchSection');
+            const offset = 100; // Adjust this value as needed
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+</script>

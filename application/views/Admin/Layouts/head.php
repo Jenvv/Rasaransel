@@ -306,7 +306,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="<?= base_url('pelanggan/cMerchant/merchant_detail/' . $this->session->userdata('id')) ?>" style="background-color: #A92828;color:white;">
-                            <i class="align-middle" style="color:white;" data-feather="globe"></i> <span class="align-middle">Profil Toko</span>
+                            <i class="align-middle" style="color:white;" data-feather="globe"></i> <span class="align-middle">Lihat Profil Toko</span>
                         </a>
                     </li>
                     <li class="sidebar-header">

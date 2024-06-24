@@ -12,9 +12,17 @@ class cSetting extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->helper("file");
-        // $this->getsecurity();
+        $this->getsecurity();
     }
-
+    function getsecurity($value = '')
+    {
+        $id_merchant = $this->session->userdata('id');
+        $is_active = $this->session->userdata('is_active');
+        if (empty($id_merchant) || $is_active != '1') {
+            $this->session->sess_destroy();
+            redirect('admin/clogin');
+        }
+    }
 
     public function index()
     {

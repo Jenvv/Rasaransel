@@ -9,7 +9,7 @@
 
 <!-- Kategori -->
 
-<div class="container px-4 px-lg-5 mt-5">
+<div id="menuSection" class="container px-4 px-lg-5 mt-5">
     <div class="container  justify-content-between pl-1" style="text-align: center;">
         <div class="row">
             <?php foreach ($kategori as $key => $value) {
@@ -125,3 +125,20 @@
         <?php } ?>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.href.includes('pelanggan/chome/menu')) {
+            const loginSection = document.getElementById('menuSection');
+            if (loginSection) {
+                const offset = 148; // Sesuaikan nilai ini sesuai kebutuhan
+                const elementPosition = loginSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+</script>

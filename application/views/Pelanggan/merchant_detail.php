@@ -32,6 +32,29 @@
         margin-right: 8px;
         /* Spasi antara ikon dan teks */
     }
+
+    .center-content {
+        /* display: flex; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .center-content img {
+        max-width: 100%;
+        height: auto;
+        width: 15%;
+        /* Adjust the width as needed */
+        margin-bottom: 0;
+        /* Reduce the space between image and text */
+    }
+
+    .center-content h5 {
+        margin-top: 5px;
+        font-size: 17px;
+        /* Reduce the space between image and text */
+    }
 </style>
 
 <!-- Title Page -->
@@ -42,7 +65,7 @@
 </section>
 
 <section class="section-reservation bg1-pattern  p-b-113">
-    <div class="container">
+    <div id="loginSection" class="container">
         <div class="container p-t-20">
             <div class="card mb-3">
                 <div class="row no-gutters ">
@@ -135,86 +158,99 @@
 
                                 <section class="py-4">
                                     <div class="container px-4 px-lg-5 ">
-                                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                                            <?php
-                                            foreach ($produk as $key => $value) {
-                                            ?>
+                                        <?php if ($produk != NULL) : ?>
+                                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                                <?php
+                                                foreach ($produk as $key => $value) {
+                                                ?>
 
-                                                <div class="col mb-5">
-                                                    <div class="card h-100">
-                                                        <!-- Sale badge-->
-                                                        <?php
-                                                        if ($value->diskon != NULL) {
-                                                        ?>
-                                                            <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?= $value->nama_promo ?>
-                                                                <?= $value->diskon ?>%</div>
-                                                        <?php } ?>
-                                                        <!-- Product image-->
-                                                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                                                            <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
-                                                        </div>
-                                                        <!-- Product details-->
-                                                        <div class="card-body p-3 justify-content-around">
-                                                            <div class="text-center">
-                                                                <!-- Product name-->
-
-                                                                <h5 class="fw-bolder"><?= $value->nama_produk ?> </h5>
-                                                                <!-- Product reviews-->
-                                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                                    <div class="bi-star-fill"></div>
-                                                                    <div class="bi-star-fill"></div>
-                                                                    <div class="bi-star-fill"></div>
-                                                                    <div class="bi-star-fill"></div>
-                                                                    <div class="bi-star-fill"></div>
-                                                                </div>
-                                                                <!-- Product price-->
-                                                                <h6>
-
-                                                                    <?php
-                                                                    if ($value->diskon != NULL) {
-                                                                    ?>
-                                                                        <span class="text-muted text-decoration-line-through">Rp. <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
-                                                                    Rp. <?= number_format($value->harga, 0) ?>
-                                                                </h6>
+                                                    <div class="col mb-5">
+                                                        <div class="card h-100">
+                                                            <!-- Sale badge-->
+                                                            <?php
+                                                            if ($value->diskon != NULL) {
+                                                            ?>
+                                                                <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?= $value->nama_promo ?>
+                                                                    <?= $value->diskon ?>%</div>
+                                                            <?php } ?>
+                                                            <!-- Product image-->
+                                                            <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+                                                                <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
                                                             </div>
-                                                        </div>
-                                                        <?php
-                                                        if ($this->session->userdata('id_pelanggan') != '') {
-                                                        ?>
-                                                            <!-- Product actions-->
-                                                            <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
-                                                                <input type="hidden" name="id" value="<?= $value->id_produk ?>">
-                                                                <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
-                                                                <input type="hidden" name="qty" value="1">
-                                                                <input type="hidden" name="picture" value="<?= $value->foto ?>">
-                                                                <input type="hidden" name="user" value="<?= $value->id_user ?>">
-                                                                <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
-                                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                                    <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
+                                                            <!-- Product details-->
+                                                            <div class="card-body p-3 justify-content-around">
+                                                                <div class="text-center">
+                                                                    <!-- Product name-->
+
+                                                                    <h5 class="fw-bolder"><?= $value->nama_produk ?> </h5>
+                                                                    <!-- Product reviews-->
+                                                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                                                        <div class="bi-star-fill"></div>
+                                                                        <div class="bi-star-fill"></div>
+                                                                        <div class="bi-star-fill"></div>
+                                                                        <div class="bi-star-fill"></div>
+                                                                        <div class="bi-star-fill"></div>
+                                                                    </div>
+                                                                    <!-- Product price-->
+                                                                    <h6>
+
+                                                                        <?php
+                                                                        if ($value->diskon != NULL) {
+                                                                        ?>
+                                                                            <span class="text-muted text-decoration-line-through">Rp. <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?></span>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                        Rp. <?= number_format($value->harga, 0) ?>
+                                                                    </h6>
                                                                 </div>
+                                                            </div>
+                                                            <?php
+                                                            if ($this->session->userdata('id_pelanggan') != '') {
+                                                            ?>
+                                                                <!-- Product actions-->
+                                                                <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
+                                                                    <input type="hidden" name="id" value="<?= $value->id_produk ?>">
+                                                                    <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
+                                                                    <input type="hidden" name="qty" value="1">
+                                                                    <input type="hidden" name="picture" value="<?= $value->foto ?>">
+                                                                    <input type="hidden" name="user" value="<?= $value->id_user ?>">
+                                                                    <input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
+                                                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                        <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
+                                                                    </div>
+                                                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                                                                    </div>
+                                                                </form>
+                                                            <?php } else {
+                                                            ?>
+                                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                                                                    <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
+                                                                </div>
+                                                                <?= $value->id_produk ?>
                                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
                                                                 </div>
-                                                            </form>
-                                                        <?php } else {
-                                                        ?>
-                                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
-                                                                <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
-                                                            </div>
-                                                            <?= $value->id_produk ?>
-                                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
-                                                            </div>
 
-                                                        <?php } ?>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+
+                                                <?php } ?>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-12 center-content">
+                                                            <img src="<?= base_url('asset/icon/empty_result.png') ?>" alt="No Result">
+                                                            <h5 class="mt-3" style="color:#707070;">Belum ada produk tersedia</h5>
+                                                        </div>
                                                     </div>
                                                 </div>
-
-                                            <?php } ?>
-                                        </div>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </section>
                             </div>
@@ -223,15 +259,16 @@
                                 <div class="tab-pane fade" id="pills-<?= str_replace(' ', '_', $kategori_value->kategori) ?>" role="tabpanel" aria-labelledby="pills-<?= str_replace(' ', '_', $kategori_value->kategori) ?>-tab">
 
                                     <section class="py-4">
-                                        <div class="container px-4 px-lg-5 ">
+                                        <div class="container px-4 px-lg-5">
                                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                                 <?php
+                                                $hasProduct = false; // Variabel untuk melacak apakah ada produk yang sesuai dengan kategori
                                                 foreach ($produk as $key => $produk_value) {
+                                                    if ($produk_value->id_kategori == $kategori_value->id_kategori) {
+                                                        $hasProduct = true; // Setel ke true jika ada produk yang sesuai
                                                 ?>
-                                                    <?php if ($produk_value->id_kategori == $kategori_value->id_kategori) { ?>
                                                         <div class="col mb-5">
                                                             <div class="card h-100">
-
                                                                 <!-- Product image-->
                                                                 <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
                                                                     <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $produk_value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
@@ -251,11 +288,10 @@
                                                                         </div>
                                                                         <!-- Product price-->
                                                                         <h6>
-
                                                                             <?php
                                                                             if ($produk_value->diskon != NULL) {
                                                                             ?>
-                                                                                <span class="text-muted text-decoration-line-through">Rp. <?= number_format($produk_value->harga - (($produk_value->diskon / 100) * $produk_value->harga), 0)  ?></span>
+                                                                                <span class="text-muted text-decoration-line-through">Rp. <?= number_format($produk_value->harga - (($produk_value->diskon / 100) * $produk_value->harga), 0) ?></span>
                                                                             <?php
                                                                             }
                                                                             ?>
@@ -273,7 +309,7 @@
                                                                         <input type="hidden" name="qty" value="1">
                                                                         <input type="hidden" name="picture" value="<?= $produk_value->foto ?>">
                                                                         <input type="hidden" name="user" value="<?= $produk_value->id_user ?>">
-                                                                        <input type="hidden" name="price" value="<?= $produk_value->harga - (($produk_value->diskon / 100)  * $produk_value->harga) ?>">
+                                                                        <input type="hidden" name="price" value="<?= $produk_value->harga - (($produk_value->diskon / 100) * $produk_value->harga) ?>">
                                                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                                             <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
                                                                         </div>
@@ -281,24 +317,31 @@
                                                                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $produk_value->id_produk) ?>">Detail</a></div>
                                                                         </div>
                                                                     </form>
-                                                                <?php } else {
-                                                                ?>
+                                                                <?php } else { ?>
                                                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
                                                                         <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
                                                                     </div>
                                                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                                         <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $produk_value->id_produk) ?>">Detail</a></div>
                                                                     </div>
-
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
-
-                                                    <?php } ?>
+                                                    <?php
+                                                    }
+                                                }
+                                                // Tampilkan gambar "No Result" jika tidak ada produk yang sesuai dengan kategori
+                                                if (!$hasProduct) {
+                                                    ?>
+                                                    <div class="col-12 center-content">
+                                                        <img src="<?= base_url('asset/icon/empty_result.png') ?>" alt="No Result">
+                                                        <h5 class="mt-3" style="color:#707070;">Belum ada produk untuk kategori ini</h5>
+                                                    </div>
                                                 <?php } ?>
                                             </div>
                                         </div>
                                     </section>
+
                                 </div>
 
                             <?php } ?>
@@ -311,3 +354,20 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.href.includes('pelanggan/cmerchant/merchant_detail/') || window.location.href.includes('pelanggan/cMerchant/merchant_detail/')) {
+            const loginSection = document.getElementById('loginSection');
+            if (loginSection) {
+                const offset = 100; // Sesuaikan nilai ini sesuai kebutuhan
+                const elementPosition = loginSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+</script>

@@ -47,8 +47,13 @@ class cHome extends CI_Controller
 				$this->load->view('Pelanggan/search_view', $data);
 				$this->load->view('Pelanggan/Layouts/footer');
 			} else {
-				$this->session->set_flashdata('error', '<div class="alert alert-danger alert-pesan">Menu tidak Ditemukan</div>');
-				redirect('pelanggan/chome/menu');
+				$data = array(
+					'cari' => $_GET['fr']
+				);
+				$this->load->view('Pelanggan/layouts/header');
+				$this->load->view('Pelanggan/layouts/aside');
+				$this->load->view('Pelanggan/empty_search', $data);
+				$this->load->view('Pelanggan/Layouts/footer');
 			}
 		}
 	}

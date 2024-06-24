@@ -79,6 +79,13 @@
 		$('.qty-input').on('change', function() {
 			var rowid = $(this).data('rowid');
 			var qty = $(this).val();
+
+			// Cek jika qty kosong atau kurang dari 1, set ke 1
+			if (qty === "" || qty < 1) {
+				qty = 1;
+				$(this).val(qty); // Update input value ke 1
+			}
+
 			$.ajax({
 				url: '<?= base_url('pelanggan/chome/update_cart') ?>',
 				type: 'POST',
@@ -89,7 +96,7 @@
 				success: function(response) {
 					var data = JSON.parse(response);
 					if (data.status === 'success') {
-						// Update the subtotal and total price on the page
+						// Update subtotal dan total price pada halaman
 						var row = $('input[data-rowid="' + rowid + '"]').closest('tr');
 						row.find('.subtotal').text('Rp. ' + data.subtotal);
 						$('#total-price').text(data.total);

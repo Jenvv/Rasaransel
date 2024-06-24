@@ -8,4 +8,8 @@ class Home extends CI_Controller
     {
         redirect('pelanggan/chome');
     }
+    public function error_404()
+    {
+        $this->load->view('errors/404_err');
+    }
 }
