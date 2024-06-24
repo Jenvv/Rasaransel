@@ -21,8 +21,10 @@ class cPesananSaya extends CI_Controller
 	public function index()
 	{
 		// $this->protect->protect();
+		$id = $this->input->post('id_pesanan');
 		$data = array(
-			'pesanan' => $this->mPesanan_Saya->pesanan()
+			'pesanan' => $this->mPesanan_Saya->pesanan(),
+			'produk' => $this->mPesanan_Saya->produk_beli_nilai()
 		);
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
@@ -100,13 +102,17 @@ class cPesananSaya extends CI_Controller
 	}
 	public function komentar($id)
 	{
-		$data = array(
-			'id_detail' => $id,
-			'rating' => $this->input->post('rating'),
-			'komentar' => $this->input->post('ulasan')
-		);
-		$this->db->insert('ulasan', $data);
-		redirect('Pelanggan/cPesananSaya');
+		$this->form_validation->set_rules('rating', 'Rating', 'required');
+		$this->form_validation->set_rules('ulasan', 'Ulasan', 'required');
+		if ($this->form_validation->run() == TRUE	) {
+			$data = array(
+				'id_detail' => $id,
+				'rating' => $this->input->post('rating'),
+				'komentar' => $this->input->post('ulasan')
+			);
+			$this->db->insert('ulasan', $data);
+			redirect('Pelanggan/cPesananSaya');
+		}
 	}
 	public function perbaharui_ulasan($id)
 	{

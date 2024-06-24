@@ -54,12 +54,22 @@ class mKatalog extends CI_Model
 		$this->db->like('nama_produk', $fquery, 'both');
 		$this->db->group_end();
 
-		$this->db->order_by('menu_makanan.id_produk', 'ASC');
+		// Select the columns explicitly with aliases to avoid conflict
+		$this->db->select('menu_makanan.id_produk as menu_id_produk, menu_makanan.nama_produk, menu_makanan.harga, foto,id_user,deskripsi,  diskon.id_produk as diskon_id_produk, diskon.*');
+
+		// Join the 'diskon' table on 'id_produk'
 		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
+
+		// Order the results by 'id_produk'
+		$this->db->order_by('menu_makanan.id_produk', 'ASC');
+
+		// Limit the results to 100
 		$this->db->limit(100);
 
+		// Execute the query and return the results
 		return $this->db->get('menu_makanan')->result();
 	}
+
 
 
 	public function data_pelanggan()

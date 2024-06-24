@@ -21,7 +21,7 @@
             <i class="fa fa-filter" aria-hidden="true"></i>
         </button> -->
         <div class="wrap-input-search size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="fr" placeholder="Cari Menu Makanan">
+            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="fr" placeholder="Cari Menu Makanan" value="<?= isset($_GET['fr']) ? htmlspecialchars($_GET['fr']) : '' ?>">
             <i class="fa fa-search ab-r-m m-r-18" aria-hidden="true"></i>
         </div>
 
@@ -35,16 +35,15 @@
         <?php
         foreach ($menu as $key => $value) {
         ?>
-
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Sale badge-->
                     <?php
-                    if ($value->diskon != NULL) {
+                    if ($value->diskon != NULL) :
                     ?>
                         <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?= $value->nama_promo ?>
                             <?= $value->diskon ?>%</div>
-                    <?php } ?>
+                    <?php endif; ?>
                     <!-- Product image-->
                     <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
                         <img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" style="height: 200px; object-fit: cover; object-position: center center;" alt="..." />
@@ -54,6 +53,7 @@
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 class="fw-bolder"><?= $value->nama_produk ?></h5>
+
                             <!-- Product reviews-->
                             <div class="d-flex justify-content-center small text-warning mb-2">
                                 <div class="bi-star-fill"></div>
@@ -76,12 +76,13 @@
                             </h6>
                         </div>
                     </div>
+
                     <?php
                     if ($this->session->userdata('id_pelanggan') != '') {
                     ?>
                         <!-- Product actions-->
                         <form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
-                            <input type="hidden" name="id" value="<?= $value->id_produk ?>">
+                            <input type="hidden" name="id" value="<?= $value->menu_id_produk ?>">
                             <input type="hidden" name="name" value="<?= $value->nama_produk ?>">
                             <input type="hidden" name="qty" value="1">
                             <input type="hidden" name="picture" value="<?= $value->foto ?>">
@@ -91,7 +92,7 @@
                                 <div class="text-center"><button type="submit" class="btn3 size18 txt11 trans-0-4 mt-auto" href="#">Add to cart</button></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->menu_id_produk) ?>">Detail</a></div>
                             </div>
                         </form>
                     <?php } else {
@@ -99,8 +100,9 @@
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
                             <div class="text-center "><a class="btn3 size18 txt11 trans-0-4" style="padding: 12px 33px 13px 33px;" href="<?= base_url('pelanggan/clogin') ?>">Add to cart</a></div>
                         </div>
+                        <?= $value->id_pesanan ?>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>">Detail</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->menu_id_produk) ?>">Detail</a></div>
                         </div>
 
                     <?php } ?>

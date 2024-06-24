@@ -41,6 +41,17 @@ class mPesanan_Saya extends CI_Model
 		$this->db->where('pesanan.id_pesanan', $id);
 		return $this->db->get()->result();
 	}
+	public function produk_beli_nilai()
+	{
+		$this->db->select('detail_pesanan.id_detail, pesanan.id_pesanan,nama_produk, qty, foto, komentar, id_ulasan, rating');
+		$this->db->from('pesanan');
+		$this->db->join('detail_pesanan', 'pesanan.id_pesanan = detail_pesanan.id_pesanan', 'left');
+		$this->db->join('menu_makanan', 'detail_pesanan.id_produk = menu_makanan.id_produk', 'left');
+		$this->db->join('ulasan', 'ulasan.id_detail = detail_pesanan.id_detail', 'left');
+
+
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file mPesananSaya.php */

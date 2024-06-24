@@ -61,7 +61,53 @@
 										if ($value->status_order == '3') {
 											echo ' <span class="badge badge-primary">Pesanan Dikirim</span>';
 										?>
-											<a href="<?= base_url('Pelanggan/cPesananSaya/diterima/' . $value->id_pesanan) ?>" class="btn btn-warning">Pesanan Diterima</a>
+
+											<!-- <a href="<?= base_url('Pelanggan/cPesananSaya/diterima/' . $value->id_pesanan) ?>" class="btn btn-warning">Pesanan Diterima</a> -->
+											<?php foreach ($produk as $key => $value_produk) { ?>
+												<?php if ($value_produk->id_pesanan == $value->id_pesanan) {
+
+												?>
+													<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal<?= $value_produk->id_detail ?>">
+														Pesanan Diterima
+													</button>
+													<div class="modal fade" id="exampleModal<?= $value_produk->id_detail ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="exampleModalLabel">Penilaian Produk <?= $value_produk->nama_produk ?></h5>
+																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																</div>
+																<form action="<?= base_url('pelanggan/cpesanansaya/komentar/' . $value_produk->id_detail) ?>" method="POST">
+																	<div class="modal-body">
+																		<p>Masukkan Rating bintang anda sesuai penilaian anda...</p>
+																		<div id='rate-0'>
+																			<input type='hidden' name='rating' id='rating'>
+																			<?php echo "<ul class='star' onMouseOut=\"resetRating('0')\">"; //untuk menampilan value dari bintang
+																			for ($i = 1; $i <= 5; $i++) {
+																				if ($i <= 0) {
+																					$selected = "selected";
+																				} else {
+																					$selected = "";
+																				}
+																				echo "<li class='select' class='$selected' onmouseover=\" highlightStar(this,0)\" onmouseout=\"removeHighlight(0);\" onClick=\"addRating(this,0)\">&#9733;</li>";
+																			}
+																			echo "<ul></div> "; ?>
+																			<textarea rows="3" name="ulasan" class="form-control" placeholder="Masukkan komentar anda..." required></textarea>
+
+																		</div>
+																		<div class="modal-footer">
+																			<a href="<?= base_url('Pelanggan/cPesananSaya/diterima/' . $value->id_pesanan) ?>" class="btn btn-secondary">Nilai Nanti</a>
+																			<button type="submit" class="btn btn-primary submit-form" data-id-pesanan="<?= $value->id_pesanan ?>">Kirim Penilaian</button>
+																		</div>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												<?php } ?>
+											<?php } ?>
 										<?php
 										}
 										if ($value->status_order == '4') {
@@ -242,3 +288,33 @@
 
 	</div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.submit-form').on('click', function(e) {
+			e.preventDefault();
+			var form = $(this).closest('form');
+			var idPesanan = $(this).data('id-pesanan');
+			var formData = form.serialize();
+			var formAction = form.attr('action');
+
+			$.ajax({
+				type: 'POST',
+				url: formAction,
+				data: formData,
+				success: function(response) {
+					var diterimaUrl = '<?= base_url('Pelanggan/cPesananSaya/diterima/') ?>' + idPesanan;
+					$.ajax({
+						type: 'GET',
+						url: diterimaUrl,
+						success: function(response) {
+							form.closest('.modal').modal('hide');
+							location.reload();
+						},
+
+					});
+				},
+			});
+		});
+	});
+</script>
