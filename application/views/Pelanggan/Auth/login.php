@@ -1,3 +1,18 @@
+<style>
+    .wrap-inputphone {
+        position: relative;
+    }
+
+    .wrap-inputphone .fa-eye,
+    .wrap-inputphone .fa-eye-slash {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+    }
+</style>
 <!-- Title Page -->
 <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(<?= base_url('asset/foto2.jpg') ?>);">
     <h2 class="tit6 t-center">
@@ -43,15 +58,17 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <!-- Phone -->
+                            <!-- Password -->
                             <span class="txt9">
                                 Password
                             </span>
 
-                            <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="password" name="password" placeholder="Masukkan Password Anda" value="123123">
+                            <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23 position-relative">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="password" id="password" name="password" placeholder="Masukkan Password Anda" value="123123">
                                 <?= form_error('password', '<small class="form-text text-danger">', '</small>'); ?>
+                                <i onclick="togglePasswordVisibility()" class="fa fa-eye position-absolute" aria-hidden="true" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;color:#424242;"></i>
                             </div>
+
                         </div>
                     </div>
                     <div class="row">
@@ -71,6 +88,20 @@
     </div>
 </section>
 <script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        const passwordIcon = passwordField.nextElementSibling;
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            passwordIcon.classList.remove('fa-eye');
+            passwordIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            passwordIcon.classList.remove('fa-eye-slash');
+            passwordIcon.classList.add('fa-eye');
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         if (window.location.href.includes('pelanggan/clogin')) {
             const loginSection = document.getElementById('loginSection');
