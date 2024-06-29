@@ -21,6 +21,21 @@
 
 
 </head>
+<style>
+	.wrap-inputphone {
+		position: relative;
+	}
+
+	.wrap-inputphone .icon-eye,
+	.wrap-inputphone .icon-eye-off {
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		color: #424242;
+	}
+</style>
 <div class="container">
 
 	<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -75,8 +90,12 @@
 								</div>
 								<div class="col-12 mt-2">
 									<label for="yourPassword" class="form-label">Password</label>
-									<input type="password" name="password" class="form-control" id="yourPassword">
-									<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+									<div class="wrap-inputphone">
+										<input type="password" name="password" class="form-control" id="password">
+										<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+										<i data-feather="eye" class="icon-eye" onclick="togglePasswordVisibility()"></i>
+										<i data-feather="eye-off" class="icon-eye-off d-none" onclick="togglePasswordVisibility()"></i>
+									</div>
 								</div>
 								<div class="col-12 mt-3">
 									<button class="btn btn-primary w-100" type="submit">Login</button>
@@ -95,6 +114,24 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
+	feather.replace();
+
+	function togglePasswordVisibility() {
+		const passwordField = document.getElementById('password');
+		const eyeIcon = document.querySelector('.icon-eye');
+		const eyeOffIcon = document.querySelector('.icon-eye-off');
+
+		if (passwordField.type === 'password') {
+			passwordField.type = 'text';
+			eyeIcon.classList.add('d-none');
+			eyeOffIcon.classList.remove('d-none');
+		} else {
+			passwordField.type = 'password';
+			eyeIcon.classList.remove('d-none');
+			eyeOffIcon.classList.add('d-none');
+		}
+	}
+
 	window.setTimeout(function() {
 		$(".alert").fadeTo(500, 0).slideUp(500, function() {
 			$(this).remove();
